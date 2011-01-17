@@ -1,9 +1,9 @@
 /**
  * アプリケーション ユーティリティ関数
  *
- * @package __PACKAGE__
+ * @package jo.co.commons.forms.mail
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: application.js 1982 2010-04-09 03:25:02Z pooza $
+ * @version $Id$
  */
 
 document.observe('dom:loaded', function () {

@@ -1,8 +1,8 @@
 # ホスト別設定ファイル
 #
-# @package __PACKAGE__
+# @package jo.co.commons.forms.mail
 # @author 小石達也 <tkoishi@b-shock.co.jp>
-# @version $Id: carrot.glaive.local.yaml 2327 2010-09-06 10:21:17Z pooza $
+# @version $Id$
 
 root_url: http://carrot.glaive.local/
 root_url_https: http://carrot.glaive.local/

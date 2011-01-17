@@ -1,8 +1,8 @@
 # ホスト別設定ファイル
 #
-# @package __PACKAGE__
+# @package jo.co.commons.forms.mail
 # @author 小石達也 <tkoishi@b-shock.co.jp>
-# @version $Id: carrot.toroid.local.yaml 2435 2010-11-23 11:04:23Z pooza $
+# @version $Id$
 
 root_url: http://carrot.toroid.local/
 root_url_https: http://carrot.toroid.local/
