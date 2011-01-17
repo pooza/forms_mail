@@ -6,8 +6,8 @@
 
 app:
   name:
-    ja: FORMS-MAIL
-    en: FORMS-MAIL
+    ja: forms-mail
+    en: forms-mail
   ver: 1.0.0
 
 crypt:
