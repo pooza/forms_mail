@@ -1,0 +1,14 @@
+# モジュール設定ファイル
+#
+# @package org.carrot-framework
+# @subpackage AdminTwitter
+# @author 小石達也 <tkoishi@b-shock.co.jp>
+# @version $Id: module.yaml 2320 2010-08-28 10:14:32Z pooza $
+
+module:
+  title_menu: Twitter
+  title: Twitter管理モジュール
+
+actions:
+  Summary:
+    title: Twitterの状態

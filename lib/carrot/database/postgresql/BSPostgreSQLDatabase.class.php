@@ -1,0 +1,100 @@
+<?php
+/**
+ * @package org.carrot-framework
+ * @subpackage database.postgresql
+ */
+
+/**
+ * PostgreSQLデータベース
+ *
+ * @author 小石達也 <tkoishi@b-shock.co.jp>
+ * @version $Id: BSPostgreSQLDatabase.class.php 2417 2010-10-31 07:09:27Z pooza $
+ */
+class BSPostgreSQLDatabase extends BSDatabase {
+
+	/**
+	 * 命名規則に従い、シーケンス名を返す
+	 *
+	 * @access public
+	 * @param string $table テーブル名
+	 * @param string $field 主キーフィールド名
+	 * @return string シーケンス名
+	 */
+	public function getSequenceName ($table, $field = 'id') {
+		return implode('_', array($table, $field, 'seq'));
+	}
+
+	/**
+	 * テーブル名のリストを配列で返す
+	 *
+	 * @access public
+	 * @return BSArray テーブル名のリスト
+	 */
+	public function getTableNames () {
+		if (!$this->tables) {
+			$this->tables = new BSArray;
+			$query = BSSQL::getSelectQueryString(
+				'tablename',
+				'pg_tables',
+				'schemaname=' . $this->quote('public')
+			);
+			foreach ($this->query($query) as $row) {
+				$this->tables[] = $row['tablename'];
+			}
+		}
+		return $this->tables;
+	}
+
+	/**
+	 * ダンプ実行
+	 *
+	 * @access protected
+	 * @return string 結果
+	 */
+	protected function dump () {
+		$command = $this->getCommandLine('pg_dump');
+		if ($command->hasError()) {
+			throw new BSDatabaseException($command->getResult());
+		}
+		return $command->getResult()->join("\n");
+	}
+
+	/**
+	 * コマンドラインを返す
+	 *
+	 * @access private
+	 * @param string $command コマンド名
+	 * @return BSCommandLine コマンドライン
+	 */
+	private function getCommandLine ($command = 'psql') {
+		$command = new BSCommandLine('bin/' . $command);
+		$command->setDirectory(BSFileUtility::getDirectory('pgsql'));
+		$command->push('--host=' . $this['host']->getAddress());
+		$command->push('--user=' . $this['user']);
+		$command->push($this['database_name']);
+		return $command;
+	}
+
+	/**
+	 * 最適化
+	 *
+	 * @access public
+	 */
+	public function optimize () {
+		$this->exec('VACUUM');
+		$this->putLog($this . 'を最適化しました。');
+	}
+
+	/**
+	 * バージョンを返す
+	 *
+	 * @access protected
+	 * @return float バージョン
+	 */
+	protected function getVersion () {
+		$result = PDO::query('SELECT version() AS ver')->fetch();
+		return $result['ver'];
+	}
+}
+
+/* vim:set tabstop=4: */

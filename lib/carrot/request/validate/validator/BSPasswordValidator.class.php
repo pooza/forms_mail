@@ -1,0 +1,33 @@
+<?php
+/**
+ * @package org.carrot-framework
+ * @subpackage request.validate.validator
+ */
+
+/**
+ * パスワードバリデータ
+ *
+ * @author 小石達也 <tkoishi@b-shock.co.jp>
+ * @version $Id: BSPasswordValidator.class.php 1812 2010-02-03 15:15:09Z pooza $
+ */
+class BSPasswordValidator extends BSRegexValidator {
+
+	/**
+	 * 初期化
+	 *
+	 * @access public
+	 * @param string[] $params パラメータ配列
+	 */
+	public function initialize ($params = array()) {
+		if (!isset($params['digits'])) {
+			$params['digits'] = 6;
+		}
+		$params['match'] = true;
+		$params['match_error'] = $params['digits'] . '桁以上の英数字を入力して下さい。';
+		$params['pattern'] = '[[:ascii:]]{' . $params['digits'] . ',}';
+
+		return BSValidator::initialize($params);
+	}
+}
+
+/* vim:set tabstop=4: */

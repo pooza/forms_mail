@@ -1,0 +1,262 @@
+# アプリケーション定数設定ファイル - carrot分
+#
+# @package org.carrot-framework
+# @author 小石達也 <tkoishi@b-shock.co.jp>
+# @version $Id: carrot.yaml 2463 2011-01-15 06:01:29Z pooza $
+
+carrot:
+  name: carrot Framework
+  ver: 2.4.46
+
+admin:
+  email:
+  password:
+  jid:
+  networks:
+app:
+  name:
+    ja: unknown
+    en: unknown
+  ver: unknown
+  xmpp:
+    jid:
+    password:
+  basic_auth:
+    uid:
+    password:
+  http_cache:
+    mode: private
+    seconds: 60
+  force_https: no
+  process:
+    uid: nobody
+author:
+  name:
+  email:
+  password:
+  twitter: carrot_fw
+awstats:
+  daily: yes
+  server_name_aliases:
+cookie:
+  checker:
+    hours: 6
+crypt:
+  salt: carrot
+  engine: blowfish
+  digest:
+    method: sha1
+date:
+  timezone: Asia/Tokyo
+debug: yes
+decoration_mail:
+  type:
+    docomo: application/x-decomail-template
+    au: application/x-kddi-htmlmail
+    softbank: application/x-htmlmail-template
+ffmpeg:
+  dir: /usr/local
+  convert:
+    flv:
+      video_codec: flv
+      audio_codec: libfaac
+    3gp:
+      video_codec: mpeg4
+      audio_codec: libfaac
+      width: 176
+      height: 144
+      frame_rate: 10
+      force: yes
+      mobile:
+        softbank:
+          max_file_size: 256
+    3g2:
+      video_codec: mpeg4
+      audio_codec: libfaac
+      force: yes
+      width: 176
+      height: 144
+      frame_rate: 10
+    mp3:
+flash:
+  player_ver: 9.0.0
+  installer:
+    href: /carrotlib/swf/expressInstall.swf
+home:
+  href: /index.html
+image:
+  mobile:
+    size:
+      width: 240
+      height: 320
+    type:
+      docomo: image/jpeg
+      au: image/png
+      softbank: image/png
+  qrcode:
+    size: 100
+  thumbnail:
+    bgcolor: black
+    type: image/png
+  apple_icon:
+    pixels: 57
+  favicon:
+    pixels: 16
+languages:
+  - ja
+log:
+  loggers:
+    - file
+    - mail
+    - system
+  syslog:
+    facility: LOCAL6
+  mail:
+    patterns:
+      - BSDatabaseException
+      - BSFileException
+  jabber:
+    patterns:
+      - BSDatabaseException
+      - BSMailException
+      - BSFileException
+mail:
+  sender: sendmail
+memcache:
+  daemon_name: memcached
+  host: localhost
+  port: 11211
+module:
+  prefixes:
+    - Admin
+    - User
+    - Develop
+    - Console
+  default:
+    module: Default
+    action: Default
+  cookie_disabled:
+    module: Default
+    action: CookieDisabled
+  not_found:
+    module: Default
+    action: NotFound
+  secure:
+    module: Default
+    action: NotFound
+  empty_site:
+    module: Default
+    action: EmptySite
+movie:
+  flv:
+    player:
+      height: 0
+      href: /carrotlib/swf/flowplayer-3.2.1.swf
+      control_bar:
+        href: /carrotlib/swf/flowplayer.controls-3.2.0.swf
+  wmv:
+    player:
+      clsid: 6BF52A52-394A-11d3-B153-00C04F79FAA6
+      height: 45
+  quicktime:
+    player:
+      clsid: 02BF25D5-8C17-4B23-BC80-D3488ABDDC6B
+      height: 16
+music:
+  mp3:
+    player:
+      href: /carrotlib/swf/player_mp3_maxi.swf
+      width: 200
+      height: 20
+mysql:
+  dir: /usr/local
+net:
+  resolvable: yes
+  url:
+    shorter: google_url_shortner
+package:
+  name:
+  ver:
+pdo:
+  default:
+    dsn: sqlite:%BS_VAR_DIR%/db/default.sqlite3
+    loggable: yes
+  geocode:
+    dsn: sqlite:%BS_VAR_DIR%/db/geocode.sqlite3
+  log:
+    dsn: sqlite:%BS_VAR_DIR%/db/log.sqlite3
+  serialize:
+    dsn: sqlite:%BS_VAR_DIR%/db/serialize.sqlite3
+  twitter:
+    dsn: sqlite:%BS_VAR_DIR%/db/twitter.sqlite3
+pgsql:
+  dir: /usr/local
+pictogram:
+png2ico:
+  dir: /usr/local
+proctools:
+  dir: /usr/local
+request:
+  validate:
+    strict: no
+sendmail:
+  dir: /usr
+serialize:
+  storage: default
+  serializer: JSON
+  keep:
+    - BSCounter.*
+service:
+  ajaxzip3:
+    zipdata:
+      href: /svn/trunk/ajaxzip3/zipdata/
+  bitly:
+    version: 2.0.1
+    login: carrotfw
+    api_key: R_dbbb70d7b5959e23289acfc3458f836f
+  google:
+    maps:
+      api_key: ABQIAAAATsMwobOX_2h6mtmVGXYj7hRDPMaTZsAqlqCvYqUSXVpA0IN8hBR3QFfr0mhWyh4H99uEfkf2XzBZyA
+      zoom: 17
+      format: gif
+    analytics:
+      id:
+      beacon_href: /carrotlib/php/ga.php
+    url_shortener:
+      api_key: AIzaSyBaW8hQuYbXo1hMe-sB1fgZmEOj-p9Spws
+  twitter:
+    consumer:
+      key: hhXdKP3kEwvWumb1AFbTlQ
+      secret: m5dkKU4xnuLfD5WHOpctisvR08rSfB80x9Bfy0nnlk
+    suffix: .json
+    minutes: 5
+session:
+  storage: default
+  regenerate_id: no
+smtp:
+  host: localhost
+  check_addresses: no
+sqlite3:
+  dir: /usr/local
+string:
+  mobile:
+    force_convert: no
+    softbank:
+      raw_output: no
+unzip:
+  dir: /usr
+upload:
+  progress:
+    key: progress_key
+user:
+  class:
+xmpp:
+  host: talk.google.com
+  port: 5222
+  server: gmail.com
+  ssl: yes
+view:
+  frame_options: sameorigin
+  content_type_options: nosniff
+  mobile:
+    xhtml: no

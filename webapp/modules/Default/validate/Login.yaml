@@ -1,0 +1,17 @@
+# ログイン画面バリデーション設定ファイル
+#
+# @package __PACKAGE__
+# @subpackage Default
+# @author 小石達也 <tkoishi@b-shock.co.jp>
+# @version $Id: Login.yaml 1812 2010-02-03 15:15:09Z pooza $
+
+methods:
+  - POST
+
+fields:
+  email:
+    required: yes
+    validators:
+      - email
+  password:
+    required: yes

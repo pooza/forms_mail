@@ -1,0 +1,23 @@
+# アプリケーション定数設定ファイル
+#
+# @package __PACKAGE__
+# @author 小石達也 <tkoishi@b-shock.co.jp>
+# @version $Id: application.yaml 1959 2010-04-04 06:17:40Z pooza $
+
+app:
+  name:
+    ja: __NAME_JA__
+    en: __NAME_EN__
+  ver: 1.0.0-dev
+
+author:
+  name: 有限会社 ビーショック
+  email: info@b-shock.co.jp
+
+crypt:
+  salt: carrot
+
+service:
+  google:
+    analytics:
+      id: 0000000-00 # 先頭の "UA-" は含めない。

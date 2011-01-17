@@ -1,0 +1,21 @@
+# 設定コンパイラ設定ファイル
+#
+# @package org.carrot-framework
+# @author 小石達也 <tkoishi@b-shock.co.jp>
+# @version $Id: config_compilers.yaml 1812 2010-02-03 15:15:09Z pooza $
+
+- class: BSDefineConfigCompiler
+  params:
+    pattern: constant/
+- class: BSValidatorConfigCompiler
+  params:
+    pattern: validate/
+- class: BSLayoutConfigCompiler
+  params:
+    pattern: layout/
+- class: BSPictogramConfigCompiler
+  params:
+    pattern: pictogram
+- class: BSObjectRegisterConfigCompiler
+  params:
+    pattern: filters

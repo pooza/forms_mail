@@ -1,0 +1,108 @@
+<?php
+/**
+ * @package org.carrot-framework
+ * @subpackage log.logger.database
+ */
+
+/**
+ * データベース用ロガー
+ *
+ * @author 小石達也 <tkoishi@b-shock.co.jp>
+ * @version $Id: BSDatabaseLogger.class.php 1812 2010-02-03 15:15:09Z pooza $
+ */
+class BSDatabaseLogger extends BSLogger {
+	private $table;
+	private $dates;
+	private $entries;
+	const TABLE_NAME = 'log_entry';
+
+	/**
+	 * 初期化
+	 *
+	 * @access public
+	 * @return string 利用可能ならTrue
+	 */
+	public function initialize () {
+		try {
+			$this->table = BSTableHandler::getInstance(self::TABLE_NAME);
+			return true;
+		} catch (BSDatabaseException $e) {
+			return false;
+		}
+	}
+
+	/**
+	 * テーブルを返す
+	 *
+	 * @access public
+	 * @return BSTableHandler テーブル
+	 */
+	public function getTable () {
+		return $this->table;
+	}
+
+	/**
+	 * ログを出力
+	 *
+	 * @access public
+	 * @param mixed $message ログメッセージ又は例外
+	 * @param string $priority 優先順位
+	 */
+	public function put ($message, $priority = self::DEFAULT_PRIORITY) {
+		if ($message instanceof Exception) {
+			if (BSString::isBlank($priority)) {
+				$priority = $message->getName();
+			}
+			$message = $message->getMessage();
+		}
+		$values = array(
+			'date' => BSDate::getNow('Y-m-d H:i:s'),
+			'remote_host' => BSRequest::getInstance()->getHost()->getName(),
+			'priority' => $priority,
+			'message' => $message,
+		);
+		$this->getTable()->createRecord($values);
+	}
+
+	/**
+	 * 日付の配列を返す
+	 *
+	 * @access public
+	 * @return BSArray 日付の配列
+	 */
+	public function getDates () {
+		if (!$this->dates) {
+			$this->dates = new BSArray;
+			foreach ($this->getTable()->getDates() as $date) {
+				$date = BSDate::getInstance($date);
+				$month = $date->format('Y-m');
+				if (!$this->dates[$month]) {
+					$this->dates[$month] = new BSArray;
+				}
+				$this->dates[$month][$date->format('Y-m-d')] = $date->format('Y-m-d(ww)');
+			}
+		}
+		return $this->dates;
+	}
+
+	/**
+	 * エントリーを抽出して返す
+	 *
+	 * @access public
+	 * @param string BSDate 対象日付
+	 * @return BSArray エントリーの配列
+	 */
+	public function getEntries (BSDate $date) {
+		if (!$this->entries) {
+			$this->entries = new BSArray;
+			foreach ($this->getTable()->getEntries($date) as $entry) {
+				$values = $entry->getAttributes();
+				$values['exception'] = $entry->isException();
+				$this->entries[] = $values;
+			}
+		}
+		return $this->entries;
+	}
+}
+
+/* vim:set tabstop=4: */

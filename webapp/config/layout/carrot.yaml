@@ -1,0 +1,159 @@
+# ディレクトリレイアウト設定ファイル
+#
+# @package org.carrot-framework
+# @author 小石達也 <tkoishi@b-shock.co.jp>
+# @version $Id: carrot.yaml 2463 2011-01-15 06:01:29Z pooza $
+
+awstats:
+  parent: lib
+  name: AWStats
+awstats_data:
+  parent: var
+awstats_log:
+  constant: yes
+backup:
+  parent: var
+  suffix: .zip
+  purge:
+    month: 1
+bin:
+  constant: yes
+cache:
+  parent: var
+  suffix: .cache.php
+carrot:
+  parent: lib
+carrotlib:
+  parent: www
+chart:
+  parent: var
+  suffix: .png
+config:
+  parent: webapp
+compile:
+  parent: var
+css:
+  parent: carrotlib
+  suffix: .css
+css_cache:
+  parent: var
+  suffix: .css
+  href: /carrotlib/css/cache/
+db:
+  parent: var
+  suffix: .sqlite3
+dictionaries:
+  parent: webapp
+  class: BSDictionaryDirectory
+dump:
+  parent: var
+  suffix: .sql
+  purge:
+    month: 1
+favicon:
+  parent: var
+  suffix: .png
+  purge:
+    day: 7
+ffmpeg:
+  constant: yes
+font:
+  parent: share
+  suffix: .ttf
+images:
+  parent: carrotlib
+image_cache:
+  parent: var
+  href: /carrotlib/images/cache/
+js:
+  parent: carrotlib
+  suffix: .js
+js_cache:
+  parent: var
+  suffix: .js
+  href: /carrotlib/js/cache/
+lib:
+  constant: yes
+local_lib:
+  parent: webapp
+  name: lib
+local_tests:
+  parent: webapp
+  name: tests
+log:
+  parent: var
+  class: BSLogDirectory
+  purge:
+    month: 3
+man:
+  parent: share
+maps:
+  parent: var
+  suffix: .gif
+  purge:
+    month: 1
+menu:
+  parent: config
+modules:
+  parent: webapp
+movies:
+  parent: carrotlib
+  suffix: .flv
+musics:
+  parent: carrotlib
+  suffix: .mp3
+mysql:
+  constant: yes
+pictogram:
+  parent: images
+png2ico:
+  constant: yes
+proctools:
+  constant: yes
+pgsql:
+  constant: yes
+request:
+  parent: var
+  suffix: .txt
+  purge:
+    day: 7
+root:
+  constant: yes
+sample:
+  parent: share
+sendmail:
+  constant: yes
+serialized:
+  parent: var
+share:
+  constant: yes
+sql:
+  parent: share
+  suffix: .sql
+sqlite3:
+  constant: yes
+swf:
+  parent: carrotlib
+  suffix: .swf
+templates:
+  parent: webapp
+  suffix: .tpl
+tests:
+  parent: root
+tmp:
+  parent: var
+  purge:
+    day: 3
+twitter_account:
+  parent: var
+  suffix: .png
+  purge:
+    day: 1
+unzip:
+  constant: yes
+var:
+  constant: yes
+webapp:
+  constant: yes
+www:
+  constant: yes

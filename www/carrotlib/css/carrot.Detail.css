@@ -1,0 +1,41 @@
+/**
+ * carrot標準スタイルシート 詳細画面
+ *
+ * @package org.carrot-framework
+ * @author 小石達也 <tkoishi@b-shock.co.jp>
+ * @version $Id: carrot.Detail.css 1808 2010-02-03 03:55:50Z pooza $
+ */
+
+table.Detail th {
+	width: 120px;
+	text-align: left;
+}
+
+table.Detail td {
+	width: 480px;
+}
+
+table.Detail td td {
+	width: auto;
+}
+table.Detail td th {
+	width: auto;
+}
+
+table.Detail .image_uploader_half {
+	float: left;
+	width: 220px;
+	height: 60px;
+	border: 1px solid #666666;
+	padding: 4px;
+	margin: 2px;
+}
+
+table.Detail .image_uploader {
+	float: left;
+	width: 220px;
+	height: 250px;
+	border: 1px solid #666666;
+	padding: 4px;
+	margin: 2px;
+}

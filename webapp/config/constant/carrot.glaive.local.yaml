@@ -1,0 +1,36 @@
+# ホスト別設定ファイル
+#
+# @package __PACKAGE__
+# @author 小石達也 <tkoishi@b-shock.co.jp>
+# @version $Id: carrot.glaive.local.yaml 2327 2010-09-06 10:21:17Z pooza $
+
+root_url: http://carrot.glaive.local/
+root_url_https: http://carrot.glaive.local/
+debug: yes
+
+admin:
+  email: admin@b-shock.co.jp
+  password: 7e240de74fb1ed08fa08d38063f6a6a91462a815
+  networks:
+    - 192.168.102.0/24
+
+app:
+  process:
+    uid: www
+
+pdo:
+  default:
+    #dsn: mysql:host=127.0.0.1;dbname=carrot
+    #dsn: pgsql:host=localhost dbname=carrot user=postgres
+    uid: root
+    password:
+
+mysql:
+  dir: /opt/local/lib/mysql5
+
+pgsql:
+  dir: /opt/local/lib/postgresql84
+
+awstats:
+  log_dir: /var/log/httpd/www.example.com
+  server_name_aliases: 
