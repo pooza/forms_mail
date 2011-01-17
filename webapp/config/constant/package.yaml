@@ -5,5 +5,5 @@
 # @version $Id$
 
 package:
-  name:
-  ver:
+  name: FORMS-MAIL
+  ver: 1.0.0-dev

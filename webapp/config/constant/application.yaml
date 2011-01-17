@@ -6,18 +6,9 @@
 
 app:
   name:
-    ja: __NAME_JA__
-    en: __NAME_EN__
-  ver: 1.0.0-dev
-
-author:
-  name: 有限会社 ビーショック
-  email: info@b-shock.co.jp
+    ja: FORMS-MAIL
+    en: FORMS-MAIL
+  ver: 1.0.0
 
 crypt:
-  salt: carrot
-
-service:
-  google:
-    analytics:
-      id: 0000000-00 # 先頭の "UA-" は含めない。
+  salt: I8BDT76KZX6Z6IIE

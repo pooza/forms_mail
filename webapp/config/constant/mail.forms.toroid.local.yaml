@@ -4,8 +4,8 @@
 # @author 小石達也 <tkoishi@b-shock.co.jp>
 # @version $Id$
 
-root_url: http://carrot.toroid.local/
-root_url_https: http://carrot.toroid.local/
+root_url: http://mail.forms.toroid.local/
+root_url_https: http://mail.forms.toroid.local/
 debug: yes
 
 admin:
@@ -16,23 +16,15 @@ admin:
     - 192.168.1.0/24
     - 192.168.101.0/24
 
-app:
-  process:
-    uid: www
+author:
+  name: 有限会社 ビーショック
+  email: info@b-shock.co.jp
 
 pdo:
   default:
-    #dsn: mysql:host=127.0.0.1;dbname=carrot
-    #dsn: pgsql:host=localhost dbname=carrot user=postgres
+    dsn: mysql:host=127.0.0.1;dbname=forms_mail
     uid: root
     password:
 
 mysql:
   dir: /opt/local/lib/mysql5
-
-pgsql:
-  dir: /opt/local/lib/postgresql84
-
-awstats:
-  log_dir: /var/log/httpd/www.example.com
-  server_name_aliases: 
