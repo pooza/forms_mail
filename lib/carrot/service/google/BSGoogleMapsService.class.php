@@ -8,7 +8,7 @@
  * Google Mapsクライアント
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSGoogleMapsService.class.php 2376 2010-10-07 11:56:52Z pooza $
+ * @version $Id: BSGoogleMapsService.class.php 2465 2011-01-21 11:25:18Z pooza $
  */
 class BSGoogleMapsService extends BSCurlHTTP {
 	private $table;
@@ -63,9 +63,14 @@ class BSGoogleMapsService extends BSCurlHTTP {
 			$params->removeParameter('width');
 			$params->removeParameter('height');
 			return $this->getImageElement($geocode, $params);
-		} else {
-			return $this->getScriptElement($geocode, $params);
 		}
+
+		$info = $this->useragent->getDisplayInfo();
+		if ($info['width'] && $params['width'] && ($info['width'] < $params['width'])) {
+			$params['width'] = $info['width'];
+		}
+
+		return $this->getScriptElement($geocode, $params);
 	}
 
 	/**

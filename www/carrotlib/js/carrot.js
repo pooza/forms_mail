@@ -3,7 +3,7 @@
  *
  * @package org.carrot-framework
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: carrot.js 2352 2010-09-20 07:15:23Z pooza $
+ * @version $Id: carrot.js 2466 2011-01-22 06:36:17Z pooza $
  */
 
 var CarrotLib = {
@@ -59,6 +59,20 @@ var CarrotLib = {
       field.selectionStart = position + tag.length;
       field.selectionEnd = field.selectionStart;
     }
+  },
+
+  handleGPS: function (href) {
+    navigator.geolocation.getCurrentPosition(
+      function (result) {
+        var params = {};
+        params.lat = result.coords.latitude;
+        params.lng = result.coords.longitude;
+        document.location.href = href + '?' + $H(params).toQueryString();
+      },
+      function () {
+        alert('Attempt to get location failed.');
+      }
+    );
   },
 
   handleUploadProgress: function (element) {

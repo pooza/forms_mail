@@ -8,7 +8,7 @@
  * a要素
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSAnchorElement.class.php 2406 2010-10-29 12:37:29Z pooza $
+ * @version $Id: BSAnchorElement.class.php 2467 2011-01-22 07:06:12Z pooza $
  */
 class BSAnchorElement extends BSXHTMLElement {
 
@@ -31,6 +31,8 @@ class BSAnchorElement extends BSXHTMLElement {
 	public function setURL ($url) {
 		if ($url instanceof BSHTTPRedirector) {
 			$url = $url->getURL()->getContents();
+		} else if ($url instanceof BSURL) {
+			$url = $url->getContents();
 		}
 		$this->setAttribute('href', $url);
 	}

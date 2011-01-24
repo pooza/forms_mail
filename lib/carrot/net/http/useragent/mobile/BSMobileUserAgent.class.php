@@ -8,7 +8,7 @@
  * モバイルユーザーエージェント
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSMobileUserAgent.class.php 2428 2010-11-16 11:13:46Z pooza $
+ * @version $Id: BSMobileUserAgent.class.php 2467 2011-01-22 07:06:12Z pooza $
  * @abstract
  */
 abstract class BSMobileUserAgent extends BSUserAgent implements BSUserIdentifier {
@@ -172,6 +172,18 @@ abstract class BSMobileUserAgent extends BSUserAgent implements BSUserIdentifier
 		$object->setAttribute('width', $params['width']);
 		$object->setAttribute('height', $params['height']);
 		return $container;
+	}
+
+	/**
+	 * GPS情報を取得するリンクを返す
+	 *
+	 * @access public
+	 * @param BSHTTPRedirector $url 対象リンク
+	 * @param string $label ラベル
+	 * @return BSAnchorElement リンク
+	 */
+	public function getGPSAnchorElement (BSHTTPRedirector $url, $label) {
+		return $this->getCarrier()->getGPSAnchorElement($url, $label);
 	}
 
 	/**
