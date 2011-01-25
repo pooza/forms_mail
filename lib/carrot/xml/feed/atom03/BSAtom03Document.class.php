@@ -8,7 +8,7 @@
  * Atom0.3文書
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSAtom03Document.class.php 2249 2010-08-04 17:15:42Z pooza $
+ * @version $Id: BSAtom03Document.class.php 2470 2011-01-25 03:02:33Z pooza $
  */
 class BSAtom03Document extends BSXMLDocument implements BSFeedDocument {
 	protected $version = '0.3';
@@ -190,7 +190,7 @@ class BSAtom03Document extends BSXMLDocument implements BSFeedDocument {
 		if (!$element = $this->getElement('modified')) {
 			$element = $this->createElement('modified');
 		}
-		$element->setBody($date->format(DATE_RFC3339));
+		$element->setBody($date->format(DateTime::ATOM));
 	}
 
 	/**

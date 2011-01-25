@@ -8,7 +8,7 @@
  * Atom0.3エントリー
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSAtom03Entry.class.php 1812 2010-02-03 15:15:09Z pooza $
+ * @version $Id: BSAtom03Entry.class.php 2470 2011-01-25 03:02:33Z pooza $
  */
 class BSAtom03Entry extends BSXMLElement implements BSFeedEntry {
 	protected $document;
@@ -94,7 +94,7 @@ class BSAtom03Entry extends BSXMLElement implements BSFeedEntry {
 			if (!$element = $this->getElement($field)) {
 				$element = $this->createElement($field);
 			}
-			$element->setBody($date->format(DATE_RFC3339));
+			$element->setBody($date->format(DateTime::ATOM));
 		}
 	}
 

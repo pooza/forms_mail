@@ -8,7 +8,7 @@
  * Atom1.0文書
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSAtom10Document.class.php 1812 2010-02-03 15:15:09Z pooza $
+ * @version $Id: BSAtom10Document.class.php 2470 2011-01-25 03:02:33Z pooza $
  */
 class BSAtom10Document extends BSAtom03Document {
 	protected $version = '1.0';
@@ -36,7 +36,7 @@ class BSAtom10Document extends BSAtom03Document {
 		if (!$element = $this->getElement('updated')) {
 			$element = $this->createElement('updated');
 		}
-		$element->setBody($date->format(DATE_RFC3339));
+		$element->setBody($date->format(DateTime::ATOM));
 	}
 
 	/**

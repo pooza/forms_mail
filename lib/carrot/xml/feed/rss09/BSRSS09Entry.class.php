@@ -8,7 +8,7 @@
  * RSS0.9xエントリー
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSRSS09Entry.class.php 1812 2010-02-03 15:15:09Z pooza $
+ * @version $Id: BSRSS09Entry.class.php 2470 2011-01-25 03:02:33Z pooza $
  */
 class BSRSS09Entry extends BSXMLElement implements BSFeedEntry {
 	protected $document;
@@ -85,7 +85,7 @@ class BSRSS09Entry extends BSXMLElement implements BSFeedEntry {
 		if (!$element = $this->getElement('pubDate')) {
 			$element = $this->createElement('pubDate');
 		}
-		$element->setBody($date->format(DATE_RFC2822));
+		$element->setBody($date->format(DateTime::RSS));
 	}
 
 	/**

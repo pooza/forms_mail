@@ -8,7 +8,7 @@
  * RSS1.0エントリー
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSRSS10Entry.class.php 1812 2010-02-03 15:15:09Z pooza $
+ * @version $Id: BSRSS10Entry.class.php 2470 2011-01-25 03:02:33Z pooza $
  */
 class BSRSS10Entry extends BSRSS09Entry {
 
@@ -48,7 +48,7 @@ class BSRSS10Entry extends BSRSS09Entry {
 		if (!$element = $this->getElement('dc:date')) {
 			$element = $this->createElement('dc:date');
 		}
-		$element->setBody($date->format(DATE_RFC3339));
+		$element->setBody($date->format(DateTime::W3C));
 	}
 }
 
