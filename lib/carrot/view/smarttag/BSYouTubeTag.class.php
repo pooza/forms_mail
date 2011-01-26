@@ -5,12 +5,12 @@
  */
 
 /**
- * Google Mapタグ
+ * YouTubeタグ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSMapTag.class.php 2471 2011-01-25 12:18:26Z pooza $
+ * @version $Id: BSYouTubeTag.class.php 2473 2011-01-26 03:51:48Z pooza $
  */
-class BSMapTag extends BSSmartTag {
+class BSYouTubeTag extends BSSmartTag {
 
 	/**
 	 * タグ名を返す
@@ -19,7 +19,7 @@ class BSMapTag extends BSSmartTag {
 	 * @return string タグ名
 	 */
 	public function getTagName () {
-		return 'map';
+		return 'youtube';
 	}
 
 	/**
@@ -31,9 +31,10 @@ class BSMapTag extends BSSmartTag {
 	 */
 	public function execute ($body) {
 		try {
-			$service = new BSGoogleMapsService;
+			$params = new BSArray($this->getQueryParameters());
+			$service = new BSYouTubeService;
 			$service->setUserAgent($this->getUserAgent());
-			$element = $service->getElement($this->tag[1], $this->getQueryParameters());
+			$element = $service->getElement($this->tag[1], $params);
 			$replace = $element->getContents();
 		} catch (Exception $e) {
 			$replace = sprintf('[エラー: %s]', $e->getMessage());
