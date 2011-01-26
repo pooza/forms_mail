@@ -8,7 +8,7 @@
  * YouTubeタグ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSYouTubeTag.class.php 2473 2011-01-26 03:51:48Z pooza $
+ * @version $Id: BSYouTubeTag.class.php 2474 2011-01-26 09:47:25Z pooza $
  */
 class BSYouTubeTag extends BSSmartTag {
 
@@ -31,10 +31,9 @@ class BSYouTubeTag extends BSSmartTag {
 	 */
 	public function execute ($body) {
 		try {
-			$params = new BSArray($this->getQueryParameters());
 			$service = new BSYouTubeService;
 			$service->setUserAgent($this->getUserAgent());
-			$element = $service->getElement($this->tag[1], $params);
+			$element = $service->getElement($this->tag[1], $this->getQueryParameters());
 			$replace = $element->getContents();
 		} catch (Exception $e) {
 			$replace = sprintf('[エラー: %s]', $e->getMessage());

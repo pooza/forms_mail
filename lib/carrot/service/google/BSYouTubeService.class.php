@@ -8,7 +8,7 @@
  * YouTubeクライアント
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSYouTubeService.class.php 2473 2011-01-26 03:51:48Z pooza $
+ * @version $Id: BSYouTubeService.class.php 2474 2011-01-26 09:47:25Z pooza $
  */
 class BSYouTubeService extends BSCurlHTTP {
 	private $useragent;
@@ -66,6 +66,10 @@ class BSYouTubeService extends BSCurlHTTP {
 			$element->setMovie($id, $params);
 			$element->setAttribute('width', $params['width']);
 			$element->setAttribute('height', $params['height']);
+			if ($params['align']) {
+				$element->setStyle('width', $params['width']);
+				$element = $element->setAlignment($params['align']);
+			}
 		}
 		return $element;
 	}

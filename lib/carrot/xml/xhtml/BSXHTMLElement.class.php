@@ -8,7 +8,7 @@
  * XHTMLの要素
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSXHTMLElement.class.php 2409 2010-10-29 13:11:14Z pooza $
+ * @version $Id: BSXHTMLElement.class.php 2474 2011-01-26 09:47:25Z pooza $
  */
 class BSXHTMLElement extends BSXMLElement {
 	protected $tag;
@@ -166,6 +166,33 @@ class BSXHTMLElement extends BSXMLElement {
 		}
 		$this->styleClasses->uniquize();
 		$this->styleClasses->trim();
+	}
+
+	/**
+	 * コンテナの配置を設定して返す
+	 *
+	 * @access protected
+	 * @param string $value 配置
+	 * @return BSXHTMLElement ラッパー要素
+	 */
+	public function setAlignment ($value) {
+		if ($this->getUserAgent()->isMobile()) {
+			if ($container instanceof BSDivisionElement) {
+				$container = $this;
+			} else {
+				$container = $this->wrap(new BSDivisionElement);
+			}
+			$container->setAttribute('align', $value);
+		} else {
+			if ($value == 'center') {
+				$container = $this->wrap(new BSDivisionElement);
+				$container->setStyle('width', '100%');
+			} else {
+				$container = $this;
+			}
+			$container->registerStyleClass($value);
+		}
+		return $container;
 	}
 
 	/**

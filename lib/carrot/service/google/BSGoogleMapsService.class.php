@@ -8,7 +8,7 @@
  * Google Mapsクライアント
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSGoogleMapsService.class.php 2465 2011-01-21 11:25:18Z pooza $
+ * @version $Id: BSGoogleMapsService.class.php 2474 2011-01-26 09:47:25Z pooza $
  */
 class BSGoogleMapsService extends BSCurlHTTP {
 	private $table;
@@ -100,6 +100,11 @@ class BSGoogleMapsService extends BSCurlHTTP {
 		$statement[] = $geocode['lng'];
 		$statement[] = $params['zoom'];
 		$script->setBody($statement->getContents());
+
+		if ($params['align']) {
+			$container->setStyle('width', $params['width']);
+			$container = $container->setAlignment($params['align']);
+		}
 		return $container;
 	}
 
