@@ -1,9 +1,10 @@
 # メニュー設定ファイル - 管理メニュー
 #
-# @package jo.co.commons.forms.mail
+# @package jp.co.commons.forms.mail
 # @author 小石達也 <tkoishi@b-shock.co.jp>
 # @version $Id$
 
+- module: AdminConnection
 - separator: yes
 - module: AdminLog
 - module: DevelopTableReport
