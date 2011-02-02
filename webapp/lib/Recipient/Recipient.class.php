@@ -1,6 +1,6 @@
 <?php
 /**
- * @package jo.co.commons.forms.mail
+ * @package jp.co.commons.forms.mail
  */
 
 /**
