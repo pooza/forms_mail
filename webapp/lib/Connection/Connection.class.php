@@ -69,6 +69,17 @@ class Connection extends BSSortableRecord {
 	public function isSerializable () {
 		return true;
 	}
+
+	/**
+	 * ラベルを返す
+	 *
+	 * @access public
+	 * @param string $language 言語
+	 * @return string ラベル
+	 */
+	public function getLabel ($language = 'ja') {
+		return $this['url'];
+	}
 }
 
 /* vim:set tabstop=4 */
