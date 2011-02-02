@@ -9,6 +9,7 @@
  * @author 小石達也 <tkoishi@b-shock.co.jp>
  */
 class Article extends BSRecord {
+	private $logs;
 
 	/**
 	 * 更新可能か？
@@ -38,6 +39,31 @@ class Article extends BSRecord {
 	 */
 	public function getParent () {
 		return $this->getConnection();
+	}
+
+	/**
+	 * メールログを返す
+	 *
+	 * @access public
+	 * @return MailLogHandler メールログ
+	 */
+	public function getLogs () {
+		if (!$this->logs) {
+			$this->logs = new MailLogHandler;
+			$this->logs->getCriteria()->register('article_id', $this);
+		}
+		return $this->logs;
+	}
+
+	/**
+	 * メールログを返す
+	 *
+	 * @access public
+	 * @return MailLogHandler メールログ
+	 * @final
+	 */
+	final public function getMailLogs () {
+		return $this->getLogs();
 	}
 
 	/**
