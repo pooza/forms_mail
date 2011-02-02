@@ -8,7 +8,6 @@
  * Cookieのサポートをチェックするフィルタ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSCookieFilter.class.php 2074 2010-05-13 11:44:27Z pooza $
  */
 class BSCookieFilter extends BSFilter {
 	private $cookieName;

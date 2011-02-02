@@ -3,7 +3,6 @@
  *
  * @package org.carrot-framework
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: carrot.js 2466 2011-01-22 06:36:17Z pooza $
  */
 
 var CarrotLib = {

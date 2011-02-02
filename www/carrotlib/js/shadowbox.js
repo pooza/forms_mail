@@ -2,7 +2,6 @@
  * Shadowbox.js carrot対応版
  *
  * @package org.carrot-framework
- * @version $Id: shadowbox.js 2235 2010-08-02 02:08:33Z pooza $
  */
 
 /*!

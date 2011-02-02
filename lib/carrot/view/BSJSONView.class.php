@@ -8,7 +8,6 @@
  * API結果文書用 既定ビュー
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSJSONView.class.php 2212 2010-07-10 12:53:44Z pooza $
  */
 class BSJSONView extends BSView {
 

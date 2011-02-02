@@ -1,6 +1,5 @@
 <?php
 // ※Carrot環境に合わせて一部修正
-// $Id: common.php 1992 2010-04-11 07:51:43Z pooza $
 
 /* 変換後の絵文字タイプ */
 define('MPC_TO_FOMA'    , 'FOMA');

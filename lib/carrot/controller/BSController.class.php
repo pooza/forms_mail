@@ -8,7 +8,6 @@
  * Carrotアプリケーションコントローラ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSController.class.php 2430 2010-11-16 11:25:38Z pooza $
  * @abstract
  */
 abstract class BSController {

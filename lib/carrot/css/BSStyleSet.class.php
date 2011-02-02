@@ -8,7 +8,6 @@
  * スタイルセット
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSStyleSet.class.php 2120 2010-06-03 05:47:47Z pooza $
  */
 class BSStyleSet extends BSDocumentSet {
 

@@ -8,7 +8,6 @@
  * Google Mapタグ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSMapTag.class.php 2471 2011-01-25 12:18:26Z pooza $
  */
 class BSMapTag extends BSSmartTag {
 

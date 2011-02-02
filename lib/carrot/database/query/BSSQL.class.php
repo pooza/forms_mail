@@ -8,7 +8,6 @@
  * SQL生成に関するユーティリティ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSSQL.class.php 2183 2010-06-27 17:10:42Z pooza $
  */
 class BSSQL {
 

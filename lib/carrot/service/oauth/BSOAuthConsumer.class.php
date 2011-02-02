@@ -8,7 +8,6 @@
  * OAuthコンシューマ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSOAuthConsumer.class.php 2357 2010-09-24 09:10:01Z pooza $
  */
 class BSOAuthConsumer extends BSParameterHolder {
 

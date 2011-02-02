@@ -8,7 +8,6 @@
  * メール送信機能
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSMailSender.class.php 2084 2010-05-21 06:37:57Z pooza $
  * @abstract
  */
 abstract class BSMailSender {

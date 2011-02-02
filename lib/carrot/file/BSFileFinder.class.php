@@ -8,7 +8,6 @@
  * ファイル検索
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSFileFinder.class.php 2184 2010-06-28 02:32:56Z pooza $
  */
 class BSFileFinder {
 	private $directories;

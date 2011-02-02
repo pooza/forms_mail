@@ -8,7 +8,6 @@
  * メニュー構築フィルタ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSMenuFilter.class.php 2107 2010-05-28 11:44:22Z pooza $
  */
 class BSMenuFilter extends BSFilter {
 	private $menu;

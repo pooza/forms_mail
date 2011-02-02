@@ -8,7 +8,6 @@
  * デコメールテンプレートファイル
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSDecorationMailTemplateFile.class.php 2201 2010-07-05 11:08:57Z pooza $
  */
 class BSDecorationMailTemplateFile extends BSFile {
 	private $type;

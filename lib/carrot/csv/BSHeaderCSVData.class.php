@@ -8,7 +8,6 @@
  * ヘッダ付きCSVデータ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSHeaderCSVData.class.php 2384 2010-10-10 08:00:01Z pooza $
  */
 class BSHeaderCSVData extends BSCSVData {
 	protected $fields;

@@ -8,7 +8,6 @@
  * 添付ファイルコンテナ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSAttachmentContainer.interface.php 2196 2010-07-05 06:41:52Z pooza $
  */
 interface BSAttachmentContainer {
 

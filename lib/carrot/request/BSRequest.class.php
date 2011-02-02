@@ -8,7 +8,6 @@
  * 抽象リクエスト
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSRequest.class.php 2430 2010-11-16 11:25:38Z pooza $
  * @abstract
  */
 abstract class BSRequest extends BSHTTPRequest {

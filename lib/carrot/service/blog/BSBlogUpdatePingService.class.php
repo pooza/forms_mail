@@ -8,7 +8,6 @@
  * Blog更新Pingサービス
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSBlogUpdatePingService.class.php 2453 2011-01-05 02:45:48Z pooza $
  */
 class BSBlogUpdatePingService extends BSCurlHTTP {
 

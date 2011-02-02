@@ -8,7 +8,6 @@
  * 整形式XML文書
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSXMLDocument.class.php 1812 2010-02-03 15:15:09Z pooza $
  */
 class BSXMLDocument extends BSXMLElement implements BSTextRenderer {
 	private $dirty = false;

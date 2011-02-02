@@ -8,7 +8,6 @@
  * ディレクトリレイアウト
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSDirectoryLayout.class.php 1926 2010-03-21 14:36:34Z pooza $
  */
 class BSDirectoryLayout extends BSParameterHolder {
 	static private $instance;

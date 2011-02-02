@@ -10,7 +10,6 @@
  * sprintfのラッパー
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSStringFormat.class.php 2388 2010-10-12 13:06:17Z pooza $
  */
 class BSStringFormat extends BSArray {
 

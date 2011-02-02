@@ -20,7 +20,6 @@ define('MPC_TO_CHARSET_UTF8', 'UTF-8');
  * ケータイキャリア
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSMobileCarrier.class.php 2443 2010-12-07 03:17:40Z pooza $
  * @abstract
  */
 abstract class BSMobileCarrier {

@@ -8,7 +8,6 @@
  * 受信メール
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSPOP3Mail.class.php 1946 2010-03-27 16:43:17Z pooza $
  */
 class BSPOP3Mail extends BSMIMEDocument {
 	private $id;

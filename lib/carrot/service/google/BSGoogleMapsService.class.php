@@ -8,7 +8,6 @@
  * Google Mapsクライアント
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSGoogleMapsService.class.php 2474 2011-01-26 09:47:25Z pooza $
  */
 class BSGoogleMapsService extends BSCurlHTTP {
 	private $table;

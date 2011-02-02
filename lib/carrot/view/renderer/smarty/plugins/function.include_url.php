@@ -8,7 +8,6 @@
  * 外部コンテンツをインクルード
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: function.include_url.php 2342 2010-09-12 05:57:00Z pooza $
  */
 function smarty_function_include_url ($params, &$smarty) {
 	$params = new BSArray($params);

@@ -8,7 +8,6 @@
  * テストマネージャ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSTestManager.class.php 2432 2010-11-22 12:00:12Z pooza $
  */
 class BSTestManager implements IteratorAggregate {
 	private $tests;

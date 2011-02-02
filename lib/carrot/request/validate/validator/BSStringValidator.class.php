@@ -8,7 +8,6 @@
  * 文字列バリデータ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSStringValidator.class.php 2438 2010-11-29 07:26:18Z pooza $
  */
 class BSStringValidator extends BSValidator {
 	const MAX_SIZE = 1024;

@@ -8,7 +8,6 @@
  * 郵便番号 リクエストフィルタ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSZipcodeRequestFilter.class.php 1812 2010-02-03 15:15:09Z pooza $
  */
 class BSZipcodeRequestFilter extends BSRequestFilter {
 

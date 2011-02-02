@@ -8,7 +8,6 @@
  * memcacheセッションストレージ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSMemcacheSessionStorage.class.php 1888 2010-02-28 10:07:43Z pooza $
  */
 class BSMemcacheSessionStorage implements BSSessionStorage {
 

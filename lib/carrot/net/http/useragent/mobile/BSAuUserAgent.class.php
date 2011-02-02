@@ -8,7 +8,6 @@
  * Auユーザーエージェント
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSAuUserAgent.class.php 2204 2010-07-06 06:24:58Z pooza $
  */
 class BSAuUserAgent extends BSMobileUserAgent {
 	const DEFAULT_NAME = 'KDDI';

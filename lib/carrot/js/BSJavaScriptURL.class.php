@@ -8,7 +8,6 @@
  * JavaScriptのURL
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSJavaScriptURL.class.php 2328 2010-09-06 10:24:00Z pooza $
  */
 class BSJavaScriptURL extends BSURL {
 

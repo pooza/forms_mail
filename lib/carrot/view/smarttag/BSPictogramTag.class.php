@@ -8,7 +8,6 @@
  * 絵文字タグ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSPictogramTag.class.php 1824 2010-02-05 02:23:27Z pooza $
  */
 class BSPictogramTag extends BSSmartTag {
 

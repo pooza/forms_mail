@@ -8,7 +8,6 @@
  * MySQL用データソース名
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSMySQLDataSourceName.class.php 2262 2010-08-10 05:08:32Z pooza $
  */
 class BSMySQLDataSourceName extends BSDataSourceName {
 	private $file;

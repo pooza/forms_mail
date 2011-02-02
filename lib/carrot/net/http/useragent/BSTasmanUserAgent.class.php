@@ -8,7 +8,6 @@
  * Tasmanユーザーエージェント
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSTasmanUserAgent.class.php 2113 2010-05-29 16:54:14Z pooza $
  */
 class BSTasmanUserAgent extends BSUserAgent {
 

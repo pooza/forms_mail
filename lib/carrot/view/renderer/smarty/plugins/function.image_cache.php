@@ -10,7 +10,6 @@
  * BSImageManagerのフロントエンド
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: function.image_cache.php 2312 2010-08-26 14:03:25Z pooza $
  */
 function smarty_function_image_cache ($params, &$smarty) {
 	$params = new BSArray($params);

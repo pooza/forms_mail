@@ -7,7 +7,6 @@
  * パラメータホルダ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSParameterHolder.class.php 1987 2010-04-11 02:49:50Z pooza $
  * @abstract
  */
 abstract class BSParameterHolder implements IteratorAggregate, ArrayAccess, Countable {

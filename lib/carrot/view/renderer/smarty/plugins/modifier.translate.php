@@ -8,7 +8,6 @@
  * 翻訳修飾子
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: modifier.translate.php 1812 2010-02-03 15:15:09Z pooza $
  */
 function smarty_modifier_translate ($value, $dictionary = null, $language = null) {
 	if (is_array($value)) {

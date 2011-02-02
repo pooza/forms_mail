@@ -8,7 +8,6 @@
  * 絵文字用設定コンパイラ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSPictogramConfigCompiler.class.php 1862 2010-02-15 11:00:37Z pooza $
  */
 class BSPictogramConfigCompiler extends BSDefaultConfigCompiler {
 	public function execute (BSConfigFile $file) {

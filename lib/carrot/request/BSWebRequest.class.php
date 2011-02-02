@@ -8,7 +8,6 @@
  * Webリクエスト
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSWebRequest.class.php 2403 2010-10-21 11:30:45Z pooza $
  */
 class BSWebRequest extends BSRequest {
 

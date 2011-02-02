@@ -10,7 +10,6 @@
  * ファイルサイズ等に利用。
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: modifier.binary_size_format.php 1812 2010-02-03 15:15:09Z pooza $
  */
 function smarty_modifier_binary_size_format ($value) {
 	if (is_array($value)) {

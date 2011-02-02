@@ -8,7 +8,6 @@
  * Webコントローラー
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSWebController.class.php 2428 2010-11-16 11:13:46Z pooza $
  */
 class BSWebController extends BSController {
 

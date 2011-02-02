@@ -8,7 +8,6 @@
  * 画像マネージャ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSImageManager.class.php 2445 2010-12-13 05:41:58Z pooza $
  */
 class BSImageManager {
 	private $useragent;

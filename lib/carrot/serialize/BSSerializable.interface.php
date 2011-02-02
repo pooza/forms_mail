@@ -8,7 +8,6 @@
  * シリアライズ可能なオブジェクトへのインターフェース
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSSerializable.interface.php 1907 2010-03-10 05:19:39Z pooza $
  */
 interface BSSerializable {
 

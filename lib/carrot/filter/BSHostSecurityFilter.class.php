@@ -8,7 +8,6 @@
  * ホスト認証
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSHostSecurityFilter.class.php 1936 2010-03-25 13:50:22Z pooza $
  */
 class BSHostSecurityFilter extends BSFilter {
 	public function execute () {

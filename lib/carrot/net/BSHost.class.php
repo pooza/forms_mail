@@ -8,7 +8,6 @@
  * ホストコンピュータ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSHost.class.php 2458 2011-01-14 07:27:49Z pooza $
  */
 class BSHost implements BSAssignable, BSImageContainer {
 	protected $name;

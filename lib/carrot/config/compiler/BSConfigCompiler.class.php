@@ -8,7 +8,6 @@
  * 抽象設定コンパイラ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSConfigCompiler.class.php 2430 2010-11-16 11:25:38Z pooza $
  */
 abstract class BSConfigCompiler extends BSParameterHolder {
 	private $body;

@@ -4,7 +4,6 @@
  * prototype.jsを使った実装。
  *
  * @package org.carrot-framework
- * @version $Id: rollover.js 2273 2010-08-11 18:04:22Z pooza $
  * @link http://d.hatena.ne.jp/kazeburo/20051227/p1
  */
 

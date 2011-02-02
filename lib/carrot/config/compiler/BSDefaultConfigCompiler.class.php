@@ -8,7 +8,6 @@
  * 規定設定コンパイラ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSDefaultConfigCompiler.class.php 1848 2010-02-09 01:55:30Z pooza $
  */
 class BSDefaultConfigCompiler extends BSConfigCompiler {
 	public function execute (BSConfigFile $file) {

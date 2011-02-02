@@ -8,7 +8,6 @@
  * Content-Dispositionヘッダ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSContentDispositionMIMEHeader.class.php 2378 2010-10-08 14:10:29Z pooza $
  */
 class BSContentDispositionMIMEHeader extends BSMIMEHeader {
 	protected $name = 'Content-Disposition';

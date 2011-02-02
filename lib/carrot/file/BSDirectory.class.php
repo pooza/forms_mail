@@ -8,7 +8,6 @@
  * ディレクトリ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSDirectory.class.php 2135 2010-06-12 08:39:20Z pooza $
  */
 class BSDirectory extends BSDirectoryEntry implements IteratorAggregate {
 	private $suffix;

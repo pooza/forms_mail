@@ -8,7 +8,6 @@
  * シリアライズされたキャッシュ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSSerializeHandler.class.php 2399 2010-10-17 11:25:24Z pooza $
  */
 class BSSerializeHandler {
 	private $serializer;

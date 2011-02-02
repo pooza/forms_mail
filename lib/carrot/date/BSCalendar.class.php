@@ -8,7 +8,6 @@
  * カレンダー
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSCalendar.class.php 1987 2010-04-11 02:49:50Z pooza $
  */
 class BSCalendar implements IteratorAggregate {
 	private $dates;

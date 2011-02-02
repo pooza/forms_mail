@@ -8,7 +8,6 @@
  * CLI環境用 ダミーユーザーエージェント
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSConsoleUserAgent.class.php 2459 2011-01-14 07:55:25Z pooza $
  */
 class BSConsoleUserAgent extends BSUserAgent {
 

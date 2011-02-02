@@ -8,7 +8,6 @@
  * a要素
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSAnchorElement.class.php 2467 2011-01-22 07:06:12Z pooza $
  */
 class BSAnchorElement extends BSXHTMLElement {
 

@@ -8,7 +8,6 @@
  * HTTP例外
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSHTTPException.class.php 2407 2010-10-29 12:38:04Z pooza $
  */
 class BSHTTPException extends BSNetException {
 	private $response;

@@ -8,7 +8,6 @@
  * Twitterアカウント エントリーテーブル
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSTwitterAccountEntryHandler.class.php 2065 2010-05-04 10:54:17Z pooza $
  */
 class BSTwitterAccountEntryHandler extends BSTableHandler {
 

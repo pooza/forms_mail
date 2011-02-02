@@ -8,7 +8,6 @@
  * 数値演算に関するユーティリティ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSNumeric.class.php 2423 2010-11-08 06:20:42Z pooza $
  */
 class BSNumeric {
 

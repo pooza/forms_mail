@@ -8,7 +8,6 @@
  * 3GPP2への変換
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BS3GPP2MediaConvertor.class.php 2146 2010-06-15 17:32:54Z pooza $
  */
 class BS3GPP2MediaConvertor extends BSMediaConvertor {
 

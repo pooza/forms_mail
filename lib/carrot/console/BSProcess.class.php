@@ -8,7 +8,6 @@
  * プロセス関連のユーティリティ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSProcess.class.php 2417 2010-10-31 07:09:27Z pooza $
  */
 class BSProcess {
 

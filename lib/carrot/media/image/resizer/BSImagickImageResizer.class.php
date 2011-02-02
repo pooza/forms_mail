@@ -8,7 +8,6 @@
  * ImageMagick画像リサイズ機能
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSImagickImageResizer.class.php 2286 2010-08-17 14:07:35Z pooza $
  */
 class BSImagickImageResizer extends BSImageResizer {
 	private $file;

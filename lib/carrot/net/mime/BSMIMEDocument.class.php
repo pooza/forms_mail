@@ -8,7 +8,6 @@
  * 基底MIME文書
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSMIMEDocument.class.php 2026 2010-04-19 06:05:18Z pooza $
  */
 class BSMIMEDocument extends BSParameterHolder implements BSRenderer {
 	protected $headers;

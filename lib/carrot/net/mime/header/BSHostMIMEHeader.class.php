@@ -8,7 +8,6 @@
  * Hostヘッダ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSHostMIMEHeader.class.php 2378 2010-10-08 14:10:29Z pooza $
  */
 class BSHostMIMEHeader extends BSMIMEHeader {
 	protected $name = 'Host';

@@ -8,7 +8,6 @@
  * object要素
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSObjectElement.class.php 2114 2010-05-31 16:29:54Z pooza $
  */
 class BSObjectElement extends BSXHTMLElement {
 	protected $inner;

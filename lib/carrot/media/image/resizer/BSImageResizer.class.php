@@ -8,7 +8,6 @@
  * 画像リサイズ機能
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSImageResizer.class.php 1913 2010-03-18 11:15:44Z pooza $
  */
 abstract class BSImageResizer {
 	protected $source;

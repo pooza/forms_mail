@@ -8,7 +8,6 @@
  * Docomo ケータイキャリア
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSDocomoMobileCarrier.class.php 2385 2010-10-11 07:19:15Z pooza $
  */
 class BSDocomoMobileCarrier extends BSMobileCarrier {
 	const LIST_FILE_NAME = 'docomo_agents.xml';

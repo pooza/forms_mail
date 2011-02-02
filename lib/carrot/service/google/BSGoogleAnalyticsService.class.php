@@ -8,7 +8,6 @@
  * Google Analytics
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSGoogleAnalyticsService.class.php 2376 2010-10-07 11:56:52Z pooza $
  */
 class BSGoogleAnalyticsService implements BSAssignable {
 	private $id;

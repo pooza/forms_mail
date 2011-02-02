@@ -8,7 +8,6 @@
  * ジオコード エントリーレコード
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSGeocodeEntry.class.php 2169 2010-06-23 14:54:46Z pooza $
  */
 class BSGeocodeEntry extends BSRecord {
 	private $stations;

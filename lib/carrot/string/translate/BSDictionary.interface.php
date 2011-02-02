@@ -8,7 +8,6 @@
  * 辞書
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSDictionary.interface.php 1812 2010-02-03 15:15:09Z pooza $
  */
 interface BSDictionary {
 

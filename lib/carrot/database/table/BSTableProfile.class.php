@@ -8,7 +8,6 @@
  * テーブルのプロフィール
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSTableProfile.class.php 2091 2010-05-22 08:27:57Z pooza $
  * @abstract
  */
 abstract class BSTableProfile implements BSAssignable, BSSerializable {

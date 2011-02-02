@@ -8,7 +8,6 @@
  * Content-Typeヘッダ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSContentTypeMIMEHeader.class.php 2378 2010-10-08 14:10:29Z pooza $
  */
 class BSContentTypeMIMEHeader extends BSMIMEHeader {
 	protected $name = 'Content-Type';

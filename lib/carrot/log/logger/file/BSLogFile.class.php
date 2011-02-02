@@ -8,7 +8,6 @@
  * ログファイル
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSLogFile.class.php 2202 2010-07-05 11:37:30Z pooza $
  */
 class BSLogFile extends BSFile {
 	private $entries = array();

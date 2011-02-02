@@ -13,7 +13,6 @@
  *
  * @package org.carrot-framework
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: google_maps.js 2299 2010-08-21 10:31:55Z pooza $
  */
 var CarrotMapsLib = {
   handleMap: function (container, lat, lng, zoom) {

@@ -8,7 +8,6 @@
  * Smartyレンダラー用の基底ビュー
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSSmartyView.class.php 2427 2010-11-14 06:08:30Z pooza $
  */
 class BSSmartyView extends BSView {
 

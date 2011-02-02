@@ -8,7 +8,6 @@
  * Twitter検索クライアント
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSTwitterSearchService.class.php 2368 2010-09-29 11:32:32Z pooza $
  */
 class BSTwitterSearchService extends BSCurlHTTP {
 	const DEFAULT_HOST = 'search.twitter.com';

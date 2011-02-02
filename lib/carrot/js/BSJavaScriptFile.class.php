@@ -8,7 +8,6 @@
  * JavaScriptファイル
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSJavaScriptFile.class.php 2202 2010-07-05 11:37:30Z pooza $
  */
 class BSJavaScriptFile extends BSFile {
 

@@ -8,7 +8,6 @@
  * ファイルバリデータ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSFileValidator.class.php 1919 2010-03-20 00:20:50Z pooza $
  */
 class BSFileValidator extends BSValidator {
 	const ATTACHABLE = 'ATTACHABLE';

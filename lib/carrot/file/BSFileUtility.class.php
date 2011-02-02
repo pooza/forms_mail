@@ -8,7 +8,6 @@
  * ファイルユーティリティ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSFileUtility.class.php 2197 2010-07-05 10:13:37Z pooza $
  */
 class BSFileUtility {
 

@@ -8,7 +8,6 @@
  * Flashムービーファイル
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSFlashFile.class.php 2387 2010-10-11 10:53:18Z pooza $
  */
 class BSFlashFile extends BSMediaFile {
 

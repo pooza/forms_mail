@@ -8,7 +8,6 @@
  * HeartRails Expressクライアント
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSHeartRailsExpressService.class.php 2169 2010-06-23 14:54:46Z pooza $
  */
 class BSHeartRailsExpressService extends BSCurlHTTP {
 	const DEFAULT_HOST = 'express.heartrails.com';

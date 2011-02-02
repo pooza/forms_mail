@@ -8,7 +8,6 @@
  * Atom1.0文書
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSAtom10Document.class.php 2470 2011-01-25 03:02:33Z pooza $
  */
 class BSAtom10Document extends BSAtom03Document {
 	protected $version = '1.0';

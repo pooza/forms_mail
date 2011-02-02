@@ -8,7 +8,6 @@
  * 動画関数
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: function.movie.php 2364 2010-09-25 10:51:04Z pooza $
  */
 function smarty_function_movie ($params, &$smarty) {
 	$params = new BSArray($params);

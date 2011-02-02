@@ -8,7 +8,6 @@
  * memcacheサーバ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSMemcache.class.php 2008 2010-04-16 10:45:44Z pooza $
  */
 class BSMemcache extends Memcache implements ArrayAccess {
 	private $attributes;

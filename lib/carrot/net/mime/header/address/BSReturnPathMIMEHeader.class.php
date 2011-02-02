@@ -8,7 +8,6 @@
  * Return-Pathヘッダ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSReturnPathMIMEHeader.class.php 2378 2010-10-08 14:10:29Z pooza $
  */
 class BSReturnPathMIMEHeader extends BSAddressMIMEHeader {
 	protected $name = 'Return-Path';

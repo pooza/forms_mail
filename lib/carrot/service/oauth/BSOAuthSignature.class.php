@@ -8,7 +8,6 @@
  * OAuthシグネチャ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSOAuthSignature.class.php 2376 2010-10-07 11:56:52Z pooza $
  */
 class BSOAuthSignature extends BSParameterHolder {
 	private $method;

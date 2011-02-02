@@ -8,7 +8,6 @@
  * メールアドレスバリデータ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSMailAddressValidator.class.php 2385 2010-10-11 07:19:15Z pooza $
  */
 class BSMailAddressValidator extends BSValidator {
 

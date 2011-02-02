@@ -8,7 +8,6 @@
  * API結果文書用 JSONレンダラー
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSResultJSONRenderer.class.php 2110 2010-05-28 12:04:14Z pooza $
  */
 class BSResultJSONRenderer extends BSJSONRenderer {
 	private $params;

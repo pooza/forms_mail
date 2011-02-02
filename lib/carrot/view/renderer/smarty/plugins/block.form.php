@@ -8,7 +8,6 @@
  * form要素
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: block.form.php 2410 2010-10-29 13:15:30Z pooza $
  */
 function smarty_block_form ($params, $contents, &$smarty) {
 	$params = new BSArray($params);

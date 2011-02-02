@@ -8,7 +8,6 @@
  * Androidユーザーエージェント
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSAndroidUserAgent.class.php 2441 2010-12-07 03:04:10Z pooza $
  */
 class BSAndroidUserAgent extends BSWebKitUserAgent {
 

@@ -8,7 +8,6 @@
  * FLVへの変換
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSFLVMediaConvertor.class.php 2146 2010-06-15 17:32:54Z pooza $
  */
 class BSFLVMediaConvertor extends BSMediaConvertor {
 

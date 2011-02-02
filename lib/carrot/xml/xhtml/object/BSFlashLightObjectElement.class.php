@@ -8,7 +8,6 @@
  * FlashLight用object要素
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSFlashLightObjectElement.class.php 2144 2010-06-15 02:59:43Z pooza $
  */
 class BSFlashLightObjectElement extends BSFlashObjectElement {
 

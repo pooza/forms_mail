@@ -7,7 +7,6 @@
  * ユーティリティ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSUtility.class.php 2432 2010-11-22 12:00:12Z pooza $
  */
 class BSUtility {
 

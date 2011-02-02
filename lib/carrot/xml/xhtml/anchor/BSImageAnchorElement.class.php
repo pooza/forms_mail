@@ -8,7 +8,6 @@
  * 画像へのリンク
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSImageAnchorElement.class.php 2445 2010-12-13 05:41:58Z pooza $
  * @abstract
  */
 abstract class BSImageAnchorElement extends BSAnchorElement {

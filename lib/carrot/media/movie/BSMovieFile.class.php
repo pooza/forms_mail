@@ -8,7 +8,6 @@
  * 動画ファイル
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSMovieFile.class.php 2405 2010-10-27 01:17:43Z pooza $
  */
 class BSMovieFile extends BSMediaFile {
 

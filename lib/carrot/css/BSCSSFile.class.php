@@ -8,7 +8,6 @@
  * CSSファイル
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSCSSFile.class.php 2358 2010-09-24 09:12:44Z pooza $
  */
 class BSCSSFile extends BSFile {
 

@@ -8,7 +8,6 @@
  * アクション実行
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSExecutionFilter.class.php 1986 2010-04-11 02:38:14Z pooza $
  */
 class BSExecutionFilter extends BSFilter {
 	public function execute () {

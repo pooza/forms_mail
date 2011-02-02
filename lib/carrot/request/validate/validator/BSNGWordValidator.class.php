@@ -8,7 +8,6 @@
  * NGワードバリデータ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSNGWordValidator.class.php 2381 2010-10-09 08:46:10Z pooza $
  */
 class BSNGWordValidator extends BSValidator {
 

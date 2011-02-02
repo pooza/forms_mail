@@ -8,7 +8,6 @@
  * XML要素
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSXMLElement.class.php 2345 2010-09-15 00:39:32Z pooza $
  */
 class BSXMLElement implements IteratorAggregate {
 	protected $contents;

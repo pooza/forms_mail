@@ -8,7 +8,6 @@
  * ユーザー識別
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSUserIdentifier.interface.php 2423 2010-11-08 06:20:42Z pooza $
  */
 interface BSUserIdentifier {
 

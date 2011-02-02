@@ -8,7 +8,6 @@
  * 抽象フィルタ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSFilter.class.php 2436 2010-11-28 10:47:20Z pooza $
  * @abstract
  */
 abstract class BSFilter extends BSParameterHolder {

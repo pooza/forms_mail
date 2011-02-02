@@ -8,7 +8,6 @@
  * 暗号化器
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSCryptor.interface.php 1812 2010-02-03 15:15:09Z pooza $
  */
 interface BSCryptor {
 

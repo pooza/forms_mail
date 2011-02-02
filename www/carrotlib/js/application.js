@@ -1,9 +1,8 @@
 /**
  * アプリケーション ユーティリティ関数
  *
- * @package jo.co.commons.forms.mail
+ * @package __PACKAGE__
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id$
  */
 
 document.observe('dom:loaded', function () {

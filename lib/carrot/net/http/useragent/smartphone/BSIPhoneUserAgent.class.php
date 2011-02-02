@@ -8,7 +8,6 @@
  * iPhoneユーザーエージェント
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSIPhoneUserAgent.class.php 2351 2010-09-20 07:14:46Z pooza $
  */
 class BSIPhoneUserAgent extends BSWebKitUserAgent {
 

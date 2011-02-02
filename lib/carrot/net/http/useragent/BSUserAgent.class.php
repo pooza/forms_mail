@@ -8,7 +8,6 @@
  * ユーザーエージェント
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSUserAgent.class.php 2467 2011-01-22 07:06:12Z pooza $
  * @abstract
  */
 abstract class BSUserAgent implements ArrayAccess, BSAssignable {

@@ -8,7 +8,6 @@
  * form要素
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSFormElement.class.php 1995 2010-04-11 11:33:43Z pooza $
  */
 class BSFormElement extends BSXHTMLElement {
 	const ATTACHABLE_TYPE = 'multipart/form-data';

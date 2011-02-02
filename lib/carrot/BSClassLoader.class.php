@@ -10,7 +10,6 @@
  * 原則的に、PHP標準の関数以外は使用してはならない。
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSClassLoader.class.php 2432 2010-11-22 12:00:12Z pooza $
  */
 class BSClassLoader {
 	private $classes = array();
@@ -127,7 +126,7 @@ class BSClassLoader {
 		$iterator = new RecursiveDirectoryIterator($path);
 		$entries = array();
 		foreach ($iterator as $entry) {
-			if (in_array($entry->getFilename(), array('.', '..', '.svn'))) {
+			if (in_array($entry->getFilename(), array('.', '..', '.svn', '.git'))) {
 				continue;
 			} else if ($iterator->isDir()) {
 				$entries += $this->loadPath($entry->getPathname());

@@ -8,7 +8,6 @@
  * メールアドレス変換修飾子
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: modifier.email2link.php 1812 2010-02-03 15:15:09Z pooza $
  */
 function smarty_modifier_email2link ($value) {
 	if (is_array($value)) {

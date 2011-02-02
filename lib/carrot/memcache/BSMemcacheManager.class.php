@@ -8,7 +8,6 @@
  * memcacheマネージャ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSMemcacheManager.class.php 1926 2010-03-21 14:36:34Z pooza $
  */
 class BSMemcacheManager {
 	private $server;

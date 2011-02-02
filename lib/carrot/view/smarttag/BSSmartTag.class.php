@@ -8,7 +8,6 @@
  * スマートタグ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSSmartTag.class.php 2251 2010-08-05 06:38:33Z pooza $
  */
 abstract class BSSmartTag extends BSParameterHolder {
 	private $useragent;

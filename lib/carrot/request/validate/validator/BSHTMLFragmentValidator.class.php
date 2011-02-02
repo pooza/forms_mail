@@ -8,7 +8,6 @@
  * HTMLフラグメントバリデータ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSHTMLFragmentValidator.class.php 2035 2010-04-25 04:03:04Z pooza $
  */
 class BSHTMLFragmentValidator extends BSValidator {
 	private $allowedTags;

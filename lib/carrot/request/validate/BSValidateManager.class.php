@@ -8,7 +8,6 @@
  * バリデートマネージャ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSValidateManager.class.php 2436 2010-11-28 10:47:20Z pooza $
  */
 class BSValidateManager implements IteratorAggregate {
 	private $fields;

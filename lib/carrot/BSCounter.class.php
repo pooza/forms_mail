@@ -7,7 +7,6 @@
  * シンプル汎用カウンター
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSCounter.class.php 1853 2010-02-09 02:57:32Z pooza $
  */
 class BSCounter implements BSSerializable {
 	private $file;

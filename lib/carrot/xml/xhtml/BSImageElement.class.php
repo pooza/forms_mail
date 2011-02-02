@@ -8,7 +8,6 @@
  * img要素
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSImageElement.class.php 2409 2010-10-29 13:11:14Z pooza $
  */
 class BSImageElement extends BSXHTMLElement {
 

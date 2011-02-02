@@ -8,7 +8,6 @@
  * XMPPメッセージ送信ロガー
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSJabberLogger.class.php 2249 2010-08-04 17:15:42Z pooza $
  */
 class BSJabberLogger extends BSLogger {
 	private $server;

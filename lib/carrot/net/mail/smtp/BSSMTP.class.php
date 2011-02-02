@@ -8,7 +8,6 @@
  * SMTPプロトコル
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSSMTP.class.php 2084 2010-05-21 06:37:57Z pooza $
  */
 class BSSMTP extends BSSocket {
 	private $mail;

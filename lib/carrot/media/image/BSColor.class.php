@@ -8,7 +8,6 @@
  * 色
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSColor.class.php 2238 2010-08-03 06:42:38Z pooza $
  */
 class BSColor extends BSParameterHolder {
 	const DEFAULT_COLOR = 'black';

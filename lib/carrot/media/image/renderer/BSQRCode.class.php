@@ -8,7 +8,6 @@
  * QRコードレンダラー
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSQRCode.class.php 2463 2011-01-15 06:01:29Z pooza $
  */
 class BSQRCode implements BSImageRenderer {
 	private $gd;

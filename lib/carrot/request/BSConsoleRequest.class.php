@@ -8,7 +8,6 @@
  * コンソールリクエスト
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSConsoleRequest.class.php 2041 2010-04-27 01:05:49Z pooza $
  */
 class BSConsoleRequest extends BSRequest {
 	private $options;

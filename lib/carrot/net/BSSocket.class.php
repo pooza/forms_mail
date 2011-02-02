@@ -8,7 +8,6 @@
  * ソケット
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSSocket.class.php 1946 2010-03-27 16:43:17Z pooza $
  */
 class BSSocket {
 	protected $host;

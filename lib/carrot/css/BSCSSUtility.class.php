@@ -8,7 +8,6 @@
  * CSSユーティリティ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSCSSUtility.class.php 1928 2010-03-22 03:32:58Z pooza $
  */
 class BSCSSUtility {
 

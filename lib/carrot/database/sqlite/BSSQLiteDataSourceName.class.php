@@ -8,7 +8,6 @@
  * SQLite用データソース名
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSSQLiteDataSourceName.class.php 2260 2010-08-09 17:08:19Z pooza $
  */
 class BSSQLiteDataSourceName extends BSDataSourceName {
 

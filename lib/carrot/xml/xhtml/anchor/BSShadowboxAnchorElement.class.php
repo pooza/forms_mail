@@ -8,7 +8,6 @@
  * Shadowboxへのリンク
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSShadowboxAnchorElement.class.php 2220 2010-07-19 08:55:59Z pooza $
  */
 class BSShadowboxAnchorElement extends BSImageAnchorElement {
 	private $group;

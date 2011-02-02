@@ -8,7 +8,6 @@
  * XHTMLの要素
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSXHTMLElement.class.php 2474 2011-01-26 09:47:25Z pooza $
  */
 class BSXHTMLElement extends BSXMLElement {
 	protected $tag;

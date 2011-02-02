@@ -8,7 +8,6 @@
  * HTTPプロトコル
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSHTTP.class.php 2412 2010-10-29 13:22:14Z pooza $
  */
 class BSHTTP extends BSSocket {
 

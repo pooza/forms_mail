@@ -8,7 +8,6 @@
  * MIMEタイプ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSMIMEType.class.php 2447 2010-12-20 10:52:27Z pooza $
  */
 class BSMIMEType extends BSParameterHolder implements BSSerializable {
 	private $suffixes;

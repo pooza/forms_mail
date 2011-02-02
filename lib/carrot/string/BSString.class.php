@@ -8,7 +8,6 @@
  * 文字列に関するユーティリティ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSString.class.php 2438 2010-11-29 07:26:18Z pooza $
  */
 class BSString {
 

@@ -10,7 +10,6 @@ BSUtility::includeFile('Smarty/Smarty.class');
  * Smartyラッパー
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSSmarty.class.php 2414 2010-10-29 13:35:55Z pooza $
  */
 class BSSmarty extends Smarty implements BSTextRenderer {
 	private $type;

@@ -8,7 +8,6 @@
  * GD画像リサイズ機能
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSGDImageResizer.class.php 1916 2010-03-19 02:06:30Z pooza $
  */
 class BSGDImageResizer extends BSImageResizer {
 

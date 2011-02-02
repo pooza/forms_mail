@@ -8,7 +8,6 @@
  * MySQLデータベース
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSMySQLDatabase.class.php 2417 2010-10-31 07:09:27Z pooza $
  */
 class BSMySQLDatabase extends BSDatabase {
 	private $version;

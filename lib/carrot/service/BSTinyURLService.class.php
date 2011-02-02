@@ -8,7 +8,6 @@
  * TinyURLクライアント
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSTinyURLService.class.php 2063 2010-05-04 10:45:09Z pooza $
  */
 class BSTinyURLService extends BSCurlHTTP implements BSURLShorter {
 	const DEFAULT_HOST = 'tinyurl.com';

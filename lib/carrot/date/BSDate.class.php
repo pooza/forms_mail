@@ -8,7 +8,6 @@
  * 日付
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSDate.class.php 2432 2010-11-22 12:00:12Z pooza $
  */
 class BSDate implements ArrayAccess, BSAssignable {
 	const MON = 1;

@@ -8,7 +8,6 @@
  * 翻訳例外
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSTranslateException.class.php 1953 2010-03-29 03:49:07Z pooza $
  */
 class BSTranslateException extends BSException {
 

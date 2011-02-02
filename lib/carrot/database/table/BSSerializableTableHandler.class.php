@@ -8,7 +8,6 @@
  * シリアライズ可能なデータベーステーブル
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSSerializableTableHandler.class.php 1845 2010-02-08 12:55:29Z pooza $
  * @abstract
  */
 abstract class BSSerializableTableHandler extends BSTableHandler implements BSSerializable {

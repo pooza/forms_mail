@@ -8,7 +8,6 @@
  * ユーザー
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSUser.class.php 2355 2010-09-23 11:28:11Z pooza $
  */
 class BSUser extends BSParameterHolder {
 	protected $id;

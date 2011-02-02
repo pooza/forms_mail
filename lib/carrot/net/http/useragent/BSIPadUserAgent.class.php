@@ -8,7 +8,6 @@
  * iPadユーザーエージェント
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSIPadUserAgent.class.php 2442 2010-12-07 03:04:46Z pooza $
  */
 class BSIPadUserAgent extends BSWebKitUserAgent {
 

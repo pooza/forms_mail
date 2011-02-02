@@ -8,7 +8,6 @@
  * 画像バリデータ
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSImageValidator.class.php 2288 2010-08-17 15:26:33Z pooza $
  */
 class BSImageValidator extends BSValidator {
 

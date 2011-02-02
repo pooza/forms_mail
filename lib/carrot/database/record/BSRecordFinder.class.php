@@ -8,7 +8,6 @@
  * レコード検索
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSRecordFinder.class.php 2167 2010-06-21 08:21:05Z pooza $
  */
 class BSRecordFinder extends BSParameterHolder {
 	private $table;

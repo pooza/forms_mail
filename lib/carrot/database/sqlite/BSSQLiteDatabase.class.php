@@ -8,7 +8,6 @@
  * SQLiteデータベース
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSSQLiteDatabase.class.php 2417 2010-10-31 07:09:27Z pooza $
  */
 class BSSQLiteDatabase extends BSDatabase {
 

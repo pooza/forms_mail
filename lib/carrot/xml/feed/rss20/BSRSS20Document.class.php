@@ -8,7 +8,6 @@
  * RSS2.0文書
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSRSS20Document.class.php 1812 2010-02-03 15:15:09Z pooza $
  */
 class BSRSS20Document extends BSRSS09Document {
 	protected $version = '2.0';

@@ -8,7 +8,6 @@
  * JavaScriptセット
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSJavaScriptSet.class.php 2120 2010-06-03 05:47:47Z pooza $
  */
 class BSJavaScriptSet extends BSDocumentSet {
 

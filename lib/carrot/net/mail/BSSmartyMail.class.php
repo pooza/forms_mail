@@ -8,7 +8,6 @@
  * Smarty機能を内蔵したメールレンダラー
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSSmartyMail.class.php 2207 2010-07-07 01:49:15Z pooza $
  */
 class BSSmartyMail extends BSMail {
 

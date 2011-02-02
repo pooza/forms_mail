@@ -8,7 +8,6 @@
  * データソース名
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSDataSourceName.class.php 2276 2010-08-15 04:55:47Z pooza $
  * @abstract
  */
 abstract class BSDataSourceName extends BSParameterHolder {
