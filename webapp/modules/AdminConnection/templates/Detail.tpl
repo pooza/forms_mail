@@ -50,7 +50,7 @@
 			<tr>
 				<th>パスワード</th>
 				<td>
-					<input type="password" name="password" value="{$params.password}" size="24" maxlength="32" class="english"/>
+					<input type="password" name="password" value="{$params.password|default:$params.password_plaintext}" size="24" maxlength="32" class="english"/>
 				</td>
 			</tr>
 			<tr>
@@ -80,11 +80,11 @@
 	</tr>
 
 {foreach from=$fields item='field' name='fields'}
-	<tr">
+	<tr>
 		<td width="120">{$field.label}</td>
 		<td width="300">
 			{foreach from=$field.choices item='choice'}
-				{$choice}<br/>
+				<span class="choice">{$choice}</span>
 			{/foreach}
 		</td>
 	</tr>

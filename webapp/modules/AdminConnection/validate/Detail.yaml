@@ -13,6 +13,8 @@ fields:
     validators:
       - url
   uid:
+    required: yes
     validators:
       - english
   password:
+    required: yes

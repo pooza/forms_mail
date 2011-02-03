@@ -24,6 +24,23 @@ class Connection extends BSSortableRecord {
 	}
 
 	/**
+	 * 更新
+	 *
+	 * @access public
+	 * @param mixed $values 更新する値
+	 * @param integer $flags フラグのビット列
+	 *   BSDatabase::WITHOUT_LOGGING ログを残さない
+	 *   BSDatabase::WITHOUT_SERIALIZE シリアライズしない
+	 */
+	public function update ($values, $flags = null) {
+		$values = new BSArray($values);
+		if (!BSString::isBlank($values['password'])) {
+			$values['password'] = BSCrypt::getInstance()->encrypt($values['password']);
+		}
+		parent::update($values, $flags);
+	}
+
+	/**
 	 * 削除可能か？
 	 *
 	 * @access protected
@@ -85,10 +102,8 @@ class Connection extends BSSortableRecord {
 		try {
 			$url = $this->getURL();
 			$service = new BSCurlHTTP($url['host']);
-			$password = BSCrypt::getInstance()->encrypt($this['password']);
-			$service->setAuth($this['uid'], $password);
+			$service->setAuth($this['uid'], $this['password']);
 			$response = $service->sendGET($url->getFullPath());
-
 			$serializer = new BSJSONSerializer;
 			$data = $serializer->decode($response->getRenderer()->getContents());
 			return $data['fields'];
@@ -116,6 +131,18 @@ class Connection extends BSSortableRecord {
 	 */
 	public function isSerializable () {
 		return true;
+	}
+
+	/**
+	 * 全てのファイル属性
+	 *
+	 * @access protected
+	 * @return BSArray ファイル属性の配列
+	 */
+	protected function getFullAttributes () {
+		$values = parent::getFullAttributes();
+		$values['password_plaintext'] = BSCrypt::getInstance()->decrypt($values['password']);
+		return $values;
 	}
 }
 

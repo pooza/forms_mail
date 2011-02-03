@@ -1,6 +1,14 @@
 /**
  * アプリケーションローカルスタイルシート
  *
- * @package __PACKAGE__
+ * @package jp.co.commons.forms.mail
  * @author 小石達也 <tkoishi@b-shock.co.jp>
  */
+
+span.choice {
+	list-style-type: none;
+	float: left;
+	border: 1px solid #999;
+	background-color: #ccc;
+	margin: 1px 2px;
+}

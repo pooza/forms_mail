@@ -21,6 +21,23 @@ class ConnectionHandler extends BSSortableTableHandler {
 	}
 
 	/**
+	 * レコード追加
+	 *
+	 * @access public
+	 * @param mixed $values 値
+	 * @param integer $flags フラグのビット列
+	 *   BSDatabase::WITH_LOGGING ログを残さない
+	 * @return string レコードの主キー
+	 */
+	public function createRecord ($values, $flags = null) {
+		$values = new BSArray($values);
+		if (!BSString::isBlank($values['password'])) {
+			$values['password'] = BSCrypt::getInstance()->encrypt($values['password']);
+		}
+		return parent::createRecord($values, $flags);
+	}
+
+	/**
 	 * 子クラスを返す
 	 *
 	 * @access public
