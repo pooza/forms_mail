@@ -41,7 +41,11 @@ class DetailAction extends BSRecordAction {
 		if (!$this->request['submit']) {
 			$this->request['basicauth_password'] = $this->getRecord()->getPlainTextPassword();
 		}
-		$this->request->setAttribute('fields', $this->getRecord()->getRemoteFields());
+		try {
+			$this->request->setAttribute('fields', $this->getRecord()->getRemoteFields());
+		} catch (BSHTTPException $e) {
+			$this->request->setError('fields_url', $e->getMessage());
+		}
 		return BSView::INPUT;
 	}
 
