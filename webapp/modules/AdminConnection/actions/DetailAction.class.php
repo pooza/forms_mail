@@ -36,6 +36,7 @@ class DetailAction extends BSRecordAction {
 	}
 
 	public function getDefaultView () {
+		$this->request->setAttribute('fields', $this->getRecord()->getRemoteFields());
 		return BSView::INPUT;
 	}
 

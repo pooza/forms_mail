@@ -9,6 +9,7 @@
  * @author 小石達也 <tkoishi@b-shock.co.jp>
  */
 class Connection extends BSSortableRecord {
+	private $remoteFields;
 	private $articles;
 	private $recipients;
 
@@ -58,6 +59,42 @@ class Connection extends BSSortableRecord {
 			$this->recipients->getCriteria()->register('connection_id', $this);
 		}
 		return $this->recipients;
+	}
+
+	/**
+	 * リモートフィールドを返す
+	 *
+	 * @access public
+	 * @return BSArray リモートフィールドの配列を返す
+	 */
+	public function getRemoteFields () {
+		if (!$this->remoteFields) {
+			$this->remoteFields = new BSArray;
+			foreach ($this->fetchRemoteFields() as $field) {
+				$field = new BSArray($field);
+				if (!!$field['choices']) {
+					$field['choices'] = new BSArray($field['choices']);
+					$this->remoteFields[$field['name']] = $field;
+				}
+			}
+		}
+		return $this->remoteFields;
+	}
+
+	private function fetchRemoteFields () {
+		try {
+			$url = $this->getURL();
+			$service = new BSCurlHTTP($url['host']);
+			$password = BSCrypt::getInstance()->encrypt($this['password']);
+			$service->setAuth($this['uid'], $password);
+			$response = $service->sendGET($url->getFullPath());
+
+			$serializer = new BSJSONSerializer;
+			$data = $serializer->decode($response->getRenderer()->getContents());
+			return $data['fields'];
+		} catch (Exception $e) {
+			return array();
+		}
 	}
 
 	/**

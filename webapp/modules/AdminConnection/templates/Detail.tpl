@@ -18,6 +18,7 @@
 <div class="tabs10">
 	<ul id="Tabs">
 		<li><a href="#DetailForm"><span>{$module.record_class|translate}詳細</span></a></li>
+		<li><a href="#FieldList"><span>フィールド</span></a></li>
 		<li><a href="#ArticleList"><span>記事</span></a></li>
 		<li><a href="#RecipientList"><span>受取人</span></a></li>
 	</ul>
@@ -68,6 +69,32 @@
 			</tr>
 		</table>
 	{/form}
+</div>
+
+<div id="FieldList" class="panel">
+<h2>■ フィールド一覧</h2>
+<table>
+	<tr>
+		<th width="120">フィールド</th>
+		<th width="300">選択肢</th>
+	</tr>
+
+{foreach from=$fields item='field' name='fields'}
+	<tr">
+		<td width="120">{$field.label}</td>
+		<td width="300">
+			{foreach from=$field.choices item='choice'}
+				{$choice}<br/>
+			{/foreach}
+		</td>
+	</tr>
+{foreachelse}
+	<tr>
+		<td colspan="2" class="alert">該当する項目がありません。</td>
+	</tr>
+{/foreach}
+
+</table>
 </div>
 
 <div id="ArticleList" class="panel"></div>
