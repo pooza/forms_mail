@@ -9,6 +9,3 @@ app:
     ja: forms-mail
     en: forms-mail
   ver: 1.0.0
-
-crypt:
-  salt: I8BDT76KZX6Z6IIE

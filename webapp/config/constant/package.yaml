@@ -7,3 +7,6 @@
 package:
   name: forms-mail
   ver: 1.0.0-dev
+
+crypt:
+  salt: I8BDT76KZX6Z6IIE

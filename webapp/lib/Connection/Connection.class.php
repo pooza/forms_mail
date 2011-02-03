@@ -61,16 +61,6 @@ class Connection extends BSSortableRecord {
 	}
 
 	/**
-	 * シリアライズするか？
-	 *
-	 * @access public
-	 * @return boolean シリアライズするならTrue
-	 */
-	public function isSerializable () {
-		return true;
-	}
-
-	/**
 	 * ラベルを返す
 	 *
 	 * @access public
@@ -79,6 +69,16 @@ class Connection extends BSSortableRecord {
 	 */
 	public function getLabel ($language = 'ja') {
 		return $this['url'];
+	}
+
+	/**
+	 * シリアライズするか？
+	 *
+	 * @access public
+	 * @return boolean シリアライズするならTrue
+	 */
+	public function isSerializable () {
+		return true;
 	}
 }
 

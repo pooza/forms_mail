@@ -25,24 +25,24 @@
 		</td>
 	</tr>
 
-{foreach from=$forms item='form' name='forms'}
-	<tr class="{$form.status}">
-		<td width="420"><a href="/{$module.name}/Detail/{$form.id}">{$form.name}</a></td>
+{foreach from=$connections item='connection' name='connections'}
+	<tr class="{$connection.status}">
+		<td width="420"><a href="/{$module.name}/Detail/{$connection.id}">{$connection.url}</a></td>
 		<td width="60" align="center">
 		{if $smarty.foreach.forms.first}
 			<img src="/carrotlib/images/navigation_arrow/top_off.gif" width="11" height="11" alt="TOP"/>
 			<img src="/carrotlib/images/navigation_arrow/up_off.gif" width="11" height="11" alt="UP"/>
 		{else}
-			<a href="/{$module.name}/SetRank/{$form.id}?option=top"><img src="/carrotlib/images/navigation_arrow/top_on.gif" width="11" height="11" alt="TOP"/></a>
-			<a href="/{$module.name}/SetRank/{$form.id}?option=up"><img src="/carrotlib/images/navigation_arrow/up_on.gif" width="11" height="11" alt="UP"/></a>
+			<a href="/{$module.name}/SetRank/{$connection.id}?option=top"><img src="/carrotlib/images/navigation_arrow/top_on.gif" width="11" height="11" alt="TOP"/></a>
+			<a href="/{$module.name}/SetRank/{$connection.id}?option=up"><img src="/carrotlib/images/navigation_arrow/up_on.gif" width="11" height="11" alt="UP"/></a>
 		{/if}
 
 		{if $smarty.foreach.forms.last}
 			<img src="/carrotlib/images/navigation_arrow/down_off.gif" width="11" height="11" alt="DOWN"/>
 			<img src="/carrotlib/images/navigation_arrow/bottom_off.gif" width="11" height="11" alt="DOWN"/>
 		{else}
-			<a href="/{$module.name}/SetRank/{$form.id}?option=down"><img src="/carrotlib/images/navigation_arrow/down_on.gif" width="11" height="11" alt="DOWN"/></a>
-			<a href="/{$module.name}/SetRank/{$form.id}?option=bottom"><img src="/carrotlib/images/navigation_arrow/bottom_on.gif" width="11" height="11" alt="BOTTOM"/></a>
+			<a href="/{$module.name}/SetRank/{$connection.id}?option=down"><img src="/carrotlib/images/navigation_arrow/down_on.gif" width="11" height="11" alt="DOWN"/></a>
+			<a href="/{$module.name}/SetRank/{$connection.id}?option=bottom"><img src="/carrotlib/images/navigation_arrow/bottom_on.gif" width="11" height="11" alt="BOTTOM"/></a>
 		{/if}
 		</td>
 	</tr>
