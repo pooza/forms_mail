@@ -31,9 +31,7 @@ class ConnectionHandler extends BSSortableTableHandler {
 	 */
 	public function createRecord ($values, $flags = null) {
 		$values = new BSArray($values);
-		if (!BSString::isBlank($values['password'])) {
-			$values['password'] = BSCrypt::getInstance()->encrypt($values['password']);
-		}
+		$values['password'] = BSCrypt::getInstance()->encrypt($values['password']);
 		return parent::createRecord($values, $flags);
 	}
 
