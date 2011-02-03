@@ -27,13 +27,13 @@
 		<tr>
 			<th>フィールド取得APIのURL</th>
 			<td>
-				<input type="text" name="fields_url" value="{$params.fields_url}" size="48" maxlength="64" class="english"/>
+				<input type="text" name="fields_url" value="{$params.fields_url}" size="64" maxlength="128" class="english"/>
 			</td>
 		</tr>
 		<tr>
 			<th>メンバー取得APIのURL</th>
 			<td>
-				<input type="text" name="members_url" value="{$params.members_url}" size="48" maxlength="64" class="english"/>
+				<input type="text" name="members_url" value="{$params.members_url}" size="64" maxlength="128" class="english"/>
 			</td>
 		</tr>
 		<tr>
