@@ -16,9 +16,11 @@ class DetailAction extends BSRecordAction {
 	 */
 	protected function getRecordValues () {
 		return array(
-			'url' => $this->request['url'],
-			'uid' => $this->request['uid'],
-			'password' => $this->request['password'],
+			'name' => $this->request['name'],
+			'fields_url' => $this->request['fields_url'],
+			'members_url' => $this->request['members_url'],
+			'basicauth_uid' => $this->request['basicauth_uid'],
+			'basicauth_password' => $this->request['basicauth_password'],
 		);
 	}
 
@@ -36,6 +38,9 @@ class DetailAction extends BSRecordAction {
 	}
 
 	public function getDefaultView () {
+		if (!$this->request['submit']) {
+			$this->request['basicauth_password'] = $this->getRecord()->getPlainTextPassword();
+		}
 		$this->request->setAttribute('fields', $this->getRecord()->getRemoteFields());
 		return BSView::INPUT;
 	}

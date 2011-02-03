@@ -54,9 +54,11 @@ DROP TABLE IF EXISTS `connection`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `connection` (
   `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
-  `url` tinytext NOT NULL,
-  `uid` varchar(32) DEFAULT NULL,
-  `password` varchar(128) DEFAULT NULL,
+  `name` varchar(64) NOT NULL,
+  `fields_url` tinytext NOT NULL,
+  `members_url` tinytext NOT NULL,
+  `basicauth_uid` varchar(32) NOT NULL,
+  `basicauth_password` varchar(128) NOT NULL,
   `rank` smallint(5) unsigned NOT NULL,
   `create_date` datetime NOT NULL,
   `update_date` datetime NOT NULL,
@@ -86,6 +88,7 @@ CREATE TABLE `mail_log` (
   `email` varchar(64) NOT NULL,
   `create_date` datetime NOT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`,`article_id`),
   KEY `article_id` (`article_id`),
   CONSTRAINT `mail_log_ibfk_1` FOREIGN KEY (`article_id`) REFERENCES `article` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -139,4 +142,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2011-02-02 19:03:37
+-- Dump completed on 2011-02-03 20:34:45

@@ -34,8 +34,8 @@ class Connection extends BSSortableRecord {
 	 */
 	public function update ($values, $flags = null) {
 		$values = new BSArray($values);
-		if (!BSString::isBlank($values['password'])) {
-			$values['password'] = BSCrypt::getInstance()->encrypt($values['password']);
+		if (!BSString::isBlank($password = $values['basicauth_password'])) {
+			$values['basicauth_password'] = BSCrypt::getInstance()->encrypt($password);
 		}
 		parent::update($values, $flags);
 	}
@@ -87,9 +87,9 @@ class Connection extends BSSortableRecord {
 	public function getRemoteFields () {
 		if (!$this->remoteFields) {
 			$this->remoteFields = ConnectionHandler::fetchRemoteFields(
-				$this->getURL(),
-				$this['uid'],
-				$this['password']
+				BSURL::getInstance($this['fields_url']),
+				$this['basicauth_uid'],
+				$this['basicauth_password']
 			);
 		}
 		return $this->remoteFields;
@@ -102,18 +102,7 @@ class Connection extends BSSortableRecord {
 	 * @return string パスワード
 	 */
 	public function getPlainTextPassword () {
-		return BSCrypt::getInstance()->decrypt($this['password']);
-	}
-
-	/**
-	 * ラベルを返す
-	 *
-	 * @access public
-	 * @param string $language 言語
-	 * @return string ラベル
-	 */
-	public function getLabel ($language = 'ja') {
-		return $this['url'];
+		return BSCrypt::getInstance()->decrypt($this['basicauth_password']);
 	}
 
 	/**
@@ -124,18 +113,6 @@ class Connection extends BSSortableRecord {
 	 */
 	public function isSerializable () {
 		return true;
-	}
-
-	/**
-	 * 全てのファイル属性
-	 *
-	 * @access protected
-	 * @return BSArray ファイル属性の配列
-	 */
-	protected function getFullAttributes () {
-		$values = parent::getFullAttributes();
-		$values['password_plaintext'] = $this->getPlainTextPassword();
-		return $values;
 	}
 }
 

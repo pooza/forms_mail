@@ -8,13 +8,19 @@ methods:
   - POST
 
 fields:
-  url:
+  name:
+    required: yes
+  fields_url:
     required: yes
     validators:
       - url
-  uid:
+  members_url:
+    required: yes
+    validators:
+      - url
+  basicauth_uid:
     required: yes
     validators:
       - english
-  password:
+  basicauth_password:
     required: yes

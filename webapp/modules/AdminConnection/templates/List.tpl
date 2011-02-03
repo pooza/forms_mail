@@ -16,18 +16,22 @@
 <h1>{$action.title}</h1>
 <table>
 	<tr>
-		<th width="420">URL</th>
+		<th width="120">名前</th>
+		<th width="240">フィールド取得APIのURL</th>
+		<th width="240">メンバー取得APIのURL</th>
 		<th width="60"></th>
 	</tr>
 	<tr>
-		<td colspan="2">
+		<td colspan="4">
 			<a href="/{$module.name}/Create">新しい{$module.record_class|translate}を登録...</a>
 		</td>
 	</tr>
 
 {foreach from=$connections item='connection' name='connections'}
 	<tr class="{$connection.status}">
-		<td width="420"><a href="/{$module.name}/Detail/{$connection.id}">{$connection.url}</a></td>
+		<td width="120"><a href="/{$module.name}/Detail/{$connection.id}">{$connection.name}</a></td>
+		<td width="240">{$connection.fields_url|truncate:40}</td>
+		<td width="240">{$connection.members_url|truncate:40}</td>
 		<td width="60" align="center">
 		{if $smarty.foreach.forms.first}
 			<img src="/carrotlib/images/navigation_arrow/top_off.gif" width="11" height="11" alt="TOP"/>
@@ -48,7 +52,7 @@
 	</tr>
 {foreachelse}
 	<tr>
-		<td colspan="2" class="alert">登録されていません。</td>
+		<td colspan="4" class="alert">登録されていません。</td>
 	</tr>
 {/foreach}
 

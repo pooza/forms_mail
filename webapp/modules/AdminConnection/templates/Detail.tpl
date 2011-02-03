@@ -36,21 +36,33 @@
 				<td>{$connection.id}</td>
 			</tr>
 			<tr>
-				<th>URL</th>
+				<th>名前</th>
 				<td>
-					<input type="text" name="url" value="{$params.url}" size="48" maxlength="64" class="english"/>
+					<input type="text" name="name" value="{$params.name}" size="24" maxlength="64" />
 				</td>
 			</tr>
 			<tr>
-				<th>ユーザー名</th>
+				<th>フィールド取得APIのURL</th>
 				<td>
-					<input type="text" name="uid" value="{$params.uid}" size="24" maxlength="32" class="english"/>
+					<input type="text" name="fields_url" value="{$params.fields_url}" size="48" maxlength="64" class="english"/>
 				</td>
 			</tr>
 			<tr>
-				<th>パスワード</th>
+				<th>メンバー取得APIのURL</th>
 				<td>
-					<input type="password" name="password" value="{$params.password|default:$params.password_plaintext}" size="24" maxlength="32" class="english"/>
+					<input type="text" name="members_url" value="{$params.members_url}" size="48" maxlength="64" class="english"/>
+				</td>
+			</tr>
+			<tr>
+				<th>BASIC認証のユーザー名</th>
+				<td>
+					<input type="text" name="basicauth_uid" value="{$params.basicauth_uid}" size="24" maxlength="32" class="english"/>
+				</td>
+			</tr>
+			<tr>
+				<th>BASIC認証のパスワード</th>
+				<td>
+					<input type="password" name="basicauth_password" value="{$params.basicauth_password}" size="24" maxlength="32" class="english"/>
 				</td>
 			</tr>
 			<tr>

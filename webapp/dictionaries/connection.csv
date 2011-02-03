@@ -1,5 +1,7 @@
 label,ja
 connection,接続
 connection_id,接続
-url,URL
-uid,ユーザーID
+fields_url,フィールド取得APIのURL
+members_url,メンバー取得APIのURL
+basicauth_uid,BASIC認証のユーザーID
+basicauth_password,BASIC認証のパスワード
