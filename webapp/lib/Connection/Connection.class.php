@@ -86,30 +86,23 @@ class Connection extends BSSortableRecord {
 	 */
 	public function getRemoteFields () {
 		if (!$this->remoteFields) {
-			$this->remoteFields = new BSArray;
-			foreach ($this->fetchRemoteFields() as $field) {
-				$field = new BSArray($field);
-				if (!!$field['choices']) {
-					$field['choices'] = new BSArray($field['choices']);
-					$this->remoteFields[$field['name']] = $field;
-				}
-			}
+			$this->remoteFields = ConnectionHandler::fetchRemoteFields(
+				$this->getURL(),
+				$this['uid'],
+				$this['password']
+			);
 		}
 		return $this->remoteFields;
 	}
 
-	private function fetchRemoteFields () {
-		try {
-			$url = $this->getURL();
-			$service = new BSCurlHTTP($url['host']);
-			$service->setAuth($this['uid'], $this['password']);
-			$response = $service->sendGET($url->getFullPath());
-			$serializer = new BSJSONSerializer;
-			$data = $serializer->decode($response->getRenderer()->getContents());
-			return $data['fields'];
-		} catch (Exception $e) {
-			return array();
-		}
+	/**
+	 * パスワードをプレーンテキストで返す
+	 *
+	 * @access public
+	 * @return string パスワード
+	 */
+	public function getPlainTextPassword () {
+		return BSCrypt::getInstance()->decrypt($this['password']);
 	}
 
 	/**
@@ -141,7 +134,7 @@ class Connection extends BSSortableRecord {
 	 */
 	protected function getFullAttributes () {
 		$values = parent::getFullAttributes();
-		$values['password_plaintext'] = BSCrypt::getInstance()->decrypt($values['password']);
+		$values['password_plaintext'] = $this->getPlainTextPassword();
 		return $values;
 	}
 }
