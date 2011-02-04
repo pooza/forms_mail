@@ -87,12 +87,14 @@
 <h2>■ フィールド一覧</h2>
 <table>
 	<tr>
-		<th width="120">フィールド</th>
+		<th width="120">名前</th>
+		<th width="120">ラベル</th>
 		<th width="300">選択肢</th>
 	</tr>
 
 {foreach from=$fields item='field' name='fields'}
 	<tr>
+		<td width="120"><code>{$field.name}</code></td>
 		<td width="120">{$field.label}</td>
 		<td width="300">
 			{foreach from=$field.choices item='choice'}
@@ -102,7 +104,7 @@
 	</tr>
 {foreachelse}
 	<tr>
-		<td colspan="2" class="alert">該当する項目がありません。</td>
+		<td colspan="3" class="alert">該当する項目がありません。</td>
 	</tr>
 {/foreach}
 

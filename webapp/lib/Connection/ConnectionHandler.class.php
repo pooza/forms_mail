@@ -72,9 +72,7 @@ class ConnectionHandler extends BSSortableTableHandler {
 		foreach ($data['fields'] as $field) {
 			$field = new BSArray($field);
 			$field['choices'] = new BSArray($field['choices']);
-			if (!!$field['choices']->count()) {
-				$fields[$field['name']] = $field;
-			}
+			$fields[$field['name']] = $field;
 		}
 		return $fields;
 	}
