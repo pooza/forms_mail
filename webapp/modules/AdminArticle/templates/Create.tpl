@@ -33,13 +33,15 @@
 		</tr>
 		<tr>
 			<th>抽出</th>
-			<td>
+			<td id="criteria_container">
 				{foreach from=$fields item='field'}
 					{if $field.choices}
 						{assign var='field_name' value='fields['|cat:$field.name|cat:']'}
-						<div class="common_block">
-							{$field.label}:<br/>
-							{html_checkboxes name=$field_name values=$field.choices output=$field.choices selected=$params.fields[$field.name]}
+						<div class="common_block" id="criteria_{$field.name}">
+							<label><input type="checkbox" onchange="FormsMailLib.setCriteriaStatus('{$field.name}', this.checked)" />{$field.label}</label>
+							<div class="choices">
+								{html_checkboxes name=$field_name values=$field.choices output=$field.choices selected=$params.fields[$field.name]}
+							</div>
 						</div>
 					{/if}
 				{/foreach}

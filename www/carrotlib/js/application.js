@@ -1,10 +1,17 @@
 /**
  * アプリケーション ユーティリティ関数
  *
- * @package __PACKAGE__
+ * @package jp.co.commons.forms.mail
  * @author 小石達也 <tkoishi@b-shock.co.jp>
  */
 
-document.observe('dom:loaded', function () {
-  //alert('追加分の処理');
-});
+var FormsMailLib = {
+  setCriteriaStatus: function (id, flag) {
+    var container = $('criteria_' + id);
+    $$('#' + container.id + ' .choices input').each(function (element) {
+      element.checked = !!flag;
+    });
+  },
+
+  initialized: true
+};
