@@ -38,9 +38,15 @@
 					{if $field.choices}
 						{assign var='field_name' value='fields['|cat:$field.name|cat:']'}
 						<div class="common_block" id="criteria_{$field.name}">
-							<label><input type="checkbox" onchange="FormsMailLib.setCriteriaStatus('{$field.name}', this.checked)" />{$field.label}</label>
-							<div class="choices">
+							<div class="heading">
+								<label><input type="checkbox" name="selected_fields[{$field.name}]" onchange="FormsMailLib.setCriteriaActivity('{$field.name}', this.checked)" {if $params.selected_fields[$field.name]}checked="checked"{/if} />{$field.label}</label>
+							</div>
+							<div class="choices clearfix">
 								{html_checkboxes name=$field_name values=$field.choices output=$field.choices selected=$params.fields[$field.name]}
+							</div>
+							<div class="controller">
+								<input type="button" id="criteria_{$field.name}_checkall" onclick="FormsMailLib.setCriteriaStatus('{$field.name}', true)" value="全選択" class="button" />
+								<input type="button" id="criteria_{$field.name}_uncheckall" onclick="FormsMailLib.setCriteriaStatus('{$field.name}', false)" value="全解除" class="button" />
 							</div>
 						</div>
 					{/if}
@@ -68,6 +74,15 @@ document.observe('dom:loaded', function(){ldelim}
     format:'yyyy-mm-dd HH:MM',
     enableHourMinute:true
   {rdelim});
+
+{foreach from=$fields item='field'}
+  {if $field.choices}
+  FormsMailLib.setCriteriaActivity(
+    '{$field.name}',
+    {if $params.selected_fields[$field.name]}true{else}false{/if}
+  );
+  {/if}
+{/foreach}
 {rdelim});
 </script>
 

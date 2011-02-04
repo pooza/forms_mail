@@ -6,9 +6,34 @@
  */
 
 span.choice {
-	list-style-type: none;
 	float: left;
 	border: 1px solid #999;
 	background-color: #ccc;
 	margin: 1px 2px;
+}
+
+#criteria_container .heading {
+	background-color: #ddd;
+}
+
+#criteria_container .heading label {
+	font-family: sans-serif;
+}
+
+#criteria_container .choices {
+	margin-left: 10px;
+}
+
+#criteria_container .choices label {
+	float: left;
+	height: 18px;
+}
+
+#criteria_container input.button {
+	font-size: 9px;
+}
+
+#criteria_container .controller {
+	margin-left: 10px;
+	padding: 1px 4px;
 }
