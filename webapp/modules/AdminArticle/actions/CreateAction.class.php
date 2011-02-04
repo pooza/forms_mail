@@ -36,7 +36,9 @@ class CreateAction extends BSRecordAction {
 	}
 
 	public function getDefaultView () {
-		$this->request->setAttribute('connection', $this->getModule()->getConnection());
+		$connection = $this->getModule()->getConnection();
+		$this->request->setAttribute('connection', $connection);
+		$this->request->setAttribute('fields', $connection->getRemoteFields());
 		return BSView::INPUT;
 	}
 

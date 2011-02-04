@@ -32,6 +32,20 @@
 			</td>
 		</tr>
 		<tr>
+			<th>抽出</th>
+			<td>
+				{foreach from=$fields item='field'}
+					{if $field.choices}
+						{assign var='field_name' value='fields['|cat:$field.name|cat:']'}
+						<div class="common_block">
+							{$field.label}:<br/>
+							{html_checkboxes name=$field_name values=$field.choices output=$field.choices selected=$params.fields[$field.name]}
+						</div>
+					{/if}
+				{/foreach}
+			</td>
+		</tr>
+		<tr>
 			<th>発行日</th>
 			<td>
 				<input type="text" id="publish_date" name="publish_date" value="{$params.publish_date|date_format:'Y-m-d H:i'}" size="18" maxlength="18" class="english" />
