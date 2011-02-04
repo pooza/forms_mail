@@ -25,11 +25,13 @@ DROP TABLE IF EXISTS `article`;
 CREATE TABLE `article` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `connection_id` smallint(5) unsigned NOT NULL,
+  `title` varchar(128) NOT NULL,
   `body` text,
   `criteria` text,
+  `is_published` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `create_date` datetime NOT NULL,
   `update_date` datetime NOT NULL,
-  `sent_date` datetime NOT NULL,
+  `publish_date` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `connection_id` (`connection_id`),
   CONSTRAINT `article_ibfk_1` FOREIGN KEY (`connection_id`) REFERENCES `connection` (`id`) ON DELETE CASCADE
@@ -142,4 +144,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2011-02-03 20:34:45
+-- Dump completed on 2011-02-04 17:16:07

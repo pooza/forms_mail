@@ -1,6 +1,8 @@
 label,ja
 article,記事
 article_id,記事
+title,タイトル
 body,本文
 criteria,抽出条件
-sent_date,送信日
+is_published,発行済
+publish_date,発行日
