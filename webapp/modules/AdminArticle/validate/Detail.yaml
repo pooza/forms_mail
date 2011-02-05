@@ -1,0 +1,20 @@
+# フォーム登録画面バリデーション設定ファイル
+#
+# @package jp.co.commons.forms.mail
+# @subpackage AdminArticle
+# @author 小石達也 <tkoishi@b-shock.co.jp>
+
+methods:
+  - POST
+
+fields:
+  title:
+    required: yes
+  body:
+    validators:
+      - smarty
+      - longtext
+  publish_date:
+    required: yes
+    validators:
+      - date

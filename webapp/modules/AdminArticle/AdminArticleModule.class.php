@@ -5,7 +5,6 @@
  * @package jp.co.commons.forms.mail
  * @subpackage AdminArtile
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: AdminPageModule.class.php 4863 2010-07-20 03:58:46Z pooza $
  */
 class AdminArticleModule extends BSModule {
 
