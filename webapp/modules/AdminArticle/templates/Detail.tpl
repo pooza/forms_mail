@@ -36,7 +36,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th>抽出</th>
+			<th>セグメント</th>
 			<td id="criteria_container">
 				{foreach from=$fields item='field'}
 					{if $field.choices}
@@ -73,8 +73,8 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				<input type="submit" value="更新" />
-				<input type="button" value="この{$module.record_class|translate}を削除..." onclick="CarrotLib.confirmDelete('{$module.name}','Delete','{$module.record_class|translate}')" />
+				<input type="submit" value="更新" {if $article.is_published}disabled="disabled"{/if} />
+				<input type="button" value="この{$module.record_class|translate}を削除..." onclick="CarrotLib.confirmDelete('{$module.name}','Delete','{$module.record_class|translate}')" {if $article.is_published}disabled="disabled"{/if}/>
 			</td>
 		</tr>
 	</table>

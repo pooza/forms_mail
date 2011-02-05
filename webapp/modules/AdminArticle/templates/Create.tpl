@@ -32,7 +32,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th>抽出</th>
+			<th>セグメント</th>
 			<td id="criteria_container">
 				{foreach from=$fields item='field'}
 					{if $field.choices}

@@ -18,7 +18,7 @@ class Article extends BSRecord {
 	 * @return boolean 更新可能ならTrue
 	 */
 	protected function isUpdatable () {
-		return true;
+		return !$this->isPublished();
 	}
 
 	/**
@@ -28,7 +28,17 @@ class Article extends BSRecord {
 	 * @return boolean 削除可能ならTrue
 	 */
 	protected function isDeletable () {
-		return true;
+		return !$this->isPublished();
+	}
+
+	/**
+	 * 発行済みか？
+	 *
+	 * @access public
+	 * @public boolean 発行済みならTrue
+	 */
+	public function isPublished () {
+		return !$this['is_published'];
 	}
 
 	/**
