@@ -15,5 +15,6 @@ fields:
       - smarty
       - longtext
   publish_date:
+    required: yes
     validators:
       - date

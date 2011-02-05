@@ -15,10 +15,13 @@ class CreateAction extends BSRecordAction {
 	 * @return mixed[] フィールド値の連想配列
 	 */
 	protected function getRecordValues () {
+		$fields = new BSArray($this->request['fields']);
 		return array(
 			'title' => $this->request['title'],
 			'body' => $this->request['body'],
+			'criteria' => $this->getModule()->serializeCriteria($fields),
 			'publish_date' => $this->request['publish_date'],
+			'connection_id' => $this->getModule()->getConnection()->getID(),
 		);
 	}
 
@@ -36,6 +39,11 @@ class CreateAction extends BSRecordAction {
 	}
 
 	public function getDefaultView () {
+		if (!$this->request['submit']) {
+			$date = BSDate::getNow()->setAttribute('day', '+1');
+			$date->setHasTime(false);
+			$this->request['publish_date'] = $date->format('Y-m-d H:i');
+		}
 		$connection = $this->getModule()->getConnection();
 		$this->request->setAttribute('connection', $connection);
 		$this->request->setAttribute('fields', $connection->getRemoteFields());

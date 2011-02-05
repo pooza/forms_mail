@@ -24,6 +24,19 @@ class AdminArticleModule extends BSModule {
 		}
 		return $module->getRecord();
 	}
+
+	/**
+	 * 抽出条件をシリアライズ
+	 *
+	 * @access public
+	 * @param BSParameterHolder $params パラメータ配列
+	 * @return string シリアライズされた抽出条件
+	 */
+	public function serializeCriteria (BSParameterHolder $params) {
+		$serializer = new BSJSONSerializer;
+		$params = new BSArray($params);
+		return $serializer->encode($params->decode());
+	}
 }
 
 /* vim:set tabstop=4: */
