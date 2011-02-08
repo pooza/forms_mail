@@ -46,6 +46,19 @@ class ArticleHandler extends BSTableHandler {
 			'MailLog',
 		));
 	}
+
+	/**
+	 * 添付ファイル名を全てを返す
+	 *
+	 * @access public
+	 * @return BSArray 添付ファイル名
+	 * @static
+	 */
+	static public function getAttachmentNames () {
+		return new BSArray(array(
+			'mail_template',
+		));
+	}
 }
 
 /* vim:set tabstop=4 */

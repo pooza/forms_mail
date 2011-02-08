@@ -22,6 +22,28 @@ class Article extends BSRecord {
 	}
 
 	/**
+	 * 更新
+	 *
+	 * @access public
+	 * @param mixed $values 更新する値
+	 * @param integer $flags フラグのビット列
+	 *   BSDatabase::WITHOUT_LOGGING ログを残さない
+	 *   BSDatabase::WITHOUT_SERIALIZE シリアライズしない
+	 */
+	public function update ($values, $flags = null) {
+		parent::update($values, $flags);
+		if (BSString::isBlank($this['body'])) {
+			if ($file = $this->getAttachment('mail_template')) {
+				$file->delete();
+			}
+		} else {
+			$file = BSFileUtility::getTemporaryFile();
+			$file->setContents($this['body']);
+			$this->setAttachment($file, 'mail_template');
+		}
+	}
+
+	/**
 	 * 削除可能か？
 	 *
 	 * @access protected
@@ -38,7 +60,7 @@ class Article extends BSRecord {
 	 * @public boolean 発行済みならTrue
 	 */
 	public function isPublished () {
-		return !$this['is_published'];
+		return !!$this['is_published'];
 	}
 
 	/**
@@ -74,6 +96,18 @@ class Article extends BSRecord {
 	 */
 	final public function getMailLogs () {
 		return $this->getLogs();
+	}
+
+	/**
+	 * テンプレートファイルを返す
+	 *
+	 * @access public
+	 * @return BSTemplateFile テンプレートファイル
+	 */
+	public function getTemplate () {
+		if ($file = $this->getAttachment('mail_template')) {
+			return new BSTemplateFile($file->getPath());
+		}
 	}
 
 	/**
