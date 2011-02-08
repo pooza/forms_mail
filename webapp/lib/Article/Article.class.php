@@ -32,15 +32,10 @@ class Article extends BSRecord {
 	 */
 	public function update ($values, $flags = null) {
 		parent::update($values, $flags);
-		if (BSString::isBlank($this['body'])) {
-			if ($file = $this->getAttachment('mail_template')) {
-				$file->delete();
-			}
-		} else {
-			$file = BSFileUtility::getTemporaryFile();
-			$file->setContents($this['body']);
-			$this->setAttachment($file, 'mail_template');
-		}
+
+		$file = BSFileUtility::getTemporaryFile();
+		$file->setContents($this['body']);
+		$this->setAttachment($file, 'mail_template');
 	}
 
 	/**

@@ -32,7 +32,12 @@
 		<tr>
 			<th>本文</th>
 			<td>
-				<textarea name="body" cols="72" rows="8" />{$params.body}</textarea>
+				<textarea id="body" name="body" cols="72" rows="16" />{$params.body}</textarea>
+				<div class="tag_cloud">
+					{foreach from=$fields item='field'}
+						<a href="javascript:void(FormsMailLib.putTemplateField($('body'), '{$field.name}'))">{$field.label}</a>
+					{/foreach}
+				</div>
 			</td>
 		</tr>
 		<tr>
@@ -82,11 +87,13 @@
 
 <script type="text/javascript">
 document.observe('dom:loaded', function(){ldelim}
-  new InputCalendar('publish_date', {ldelim}
+{literal}
+  new InputCalendar('publish_date', {
     lang:'ja',
     format:'yyyy-mm-dd HH:MM',
     enableHourMinute:true
-  {rdelim});
+  });
+{/literal}
 
 {foreach from=$fields item='field'}
   {if $field.choices}

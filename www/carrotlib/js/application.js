@@ -31,5 +31,20 @@ var FormsMailLib = {
     }
   },
 
+  putTemplateField: function (field, name) {
+    var tag = '{$registration.' + name + '}';
+    if (Prototype.Browser.IE) {
+      field.focus();
+      field.document.selection.createRange().text = tag;
+    } else {
+      var position = field.selectionStart;
+      field.value = field.value.substr(0, position)
+        + tag
+        + field.value.substr(field.selectionEnd, field.value.length);
+      field.selectionStart = position + tag.length;
+      field.selectionEnd = field.selectionStart;
+    }
+  },
+
   initialized: true
 };
