@@ -5,7 +5,6 @@
 
 /**
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSTwitterSearchServiceTest.class.php 2460 2011-01-14 08:01:54Z pooza $
  * @abstract
  */
 class BSTwitterSearchServiceTest extends BSTest {

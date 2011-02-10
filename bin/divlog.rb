@@ -11,7 +11,6 @@
 #
 # @package org.carrot-framework
 # @author 小石達也 <tkoishi@b-shock.co.jp>
-# @version $Id: divlog.rb 2301 2010-08-24 09:18:49Z pooza $
 
 LOG_DIR = '/var/log/httpd/'
 

@@ -2,7 +2,6 @@
 #
 # @package org.carrot-framework
 # @author 小石達也 <tkoishi@b-shock.co.jp>
-# @version $Id: carrot.yaml 2231 2010-07-26 08:39:04Z pooza $
 
 carrot:
   files:

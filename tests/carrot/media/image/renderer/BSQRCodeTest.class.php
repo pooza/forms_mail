@@ -5,7 +5,6 @@
 
 /**
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSQRCodeTest.class.php 2462 2011-01-14 10:36:55Z pooza $
  * @abstract
  */
 class BSQRCodeTest extends BSTest {

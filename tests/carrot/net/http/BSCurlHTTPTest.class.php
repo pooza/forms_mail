@@ -5,7 +5,6 @@
 
 /**
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BSCurlHTTPTest.class.php 2463 2011-01-15 06:01:29Z pooza $
  * @abstract
  */
 class BSCurlHTTPTest extends BSTest {

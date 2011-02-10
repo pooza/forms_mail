@@ -2,9 +2,8 @@
 
 # carrotユーティリティタスク
 #
-# @package jo.co.commons.forms.mail
+# @package __PACKAGE__
 # @author 小石達也 <tkoishi@b-shock.co.jp>
-# @version $Id$
 
 $KCODE = 'u'
 

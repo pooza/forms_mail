@@ -2,11 +2,10 @@
 #
 # @package org.carrot-framework
 # @author 小石達也 <tkoishi@b-shock.co.jp>
-# @version $Id: carrot.yaml 2471 2011-01-25 12:18:26Z pooza $
 
 carrot:
   name: carrot Framework
-  ver: 2.4.49
+  ver: 2.4.50
 
 admin:
   email:
@@ -151,9 +150,9 @@ movie:
   flv:
     player:
       height: 0
-      href: /carrotlib/swf/flowplayer-3.2.1.swf
+      href: /carrotlib/swf/flowplayer-3.2.5.swf
       control_bar:
-        href: /carrotlib/swf/flowplayer.controls-3.2.0.swf
+        href: /carrotlib/swf/flowplayer.controls-3.2.3.swf
   wmv:
     player:
       clsid: 6BF52A52-394A-11d3-B153-00C04F79FAA6

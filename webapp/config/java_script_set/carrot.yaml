@@ -2,7 +2,6 @@
 #
 # @package org.carrot-framework
 # @author 小石達也 <tkoishi@b-shock.co.jp>
-# @version $Id: carrot.yaml 2231 2010-07-26 08:39:04Z pooza $
 
 carrot:
   files:
@@ -21,6 +20,6 @@ carrot:
     - yahoo.color
     - color_picker
     - jsProgressBarHandler
-    - flowplayer-3.2.0
+    - flowplayer-3.2.4
     - carrot
     - application
