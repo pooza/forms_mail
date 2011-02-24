@@ -4,7 +4,6 @@
 @package org.carrot-framework
 @subpackage AdminUtility
 @author 小石達也 <tkoishi@b-shock.co.jp>
-@version $Id: Backup.tpl 2160 2010-06-19 14:54:59Z pooza $
 *}
 {include file='AdminHeader'}
 
@@ -16,7 +15,7 @@
 
 {include file='ErrorMessages'}
 
-{form}
+{form onsubmit=''}
 	バックアップファイルをダウンロードします。<br/>
 	<input type="submit" value="実行" />
 {/form}
