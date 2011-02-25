@@ -5,7 +5,6 @@
  * @package org.carrot-framework
  * @subpackage AdminUtility
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: RestoreAction.class.php 2415 2010-10-30 09:49:00Z pooza $
  */
 class RestoreAction extends BSAction {
 	public function execute () {
@@ -23,11 +22,19 @@ class RestoreAction extends BSAction {
 	}
 
 	public function getDefaultView () {
+		$this->request->setAttribute(
+			'is_restoreable',
+			BSBackupManager::getInstance()->isRestoreable()
+		);
 		return BSView::INPUT;
 	}
 
 	public function handleError () {
 		return $this->getDefaultView();
+	}
+
+	public function validate () {
+		return parent::validate() && BSBackupManager::getInstance()->isRestoreable();
 	}
 }
 
