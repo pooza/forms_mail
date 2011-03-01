@@ -107,11 +107,13 @@ output:
   parent: var
 pictogram:
   parent: images
+pgsql:
+  constant: yes
+php:
+  constant: yes
 png2ico:
   constant: yes
 proctools:
-  constant: yes
-pgsql:
   constant: yes
 request:
   parent: var
@@ -119,6 +121,8 @@ request:
   purge:
     day: 7
 root:
+  constant: yes
+ruby:
   constant: yes
 sample:
   parent: share
@@ -132,6 +136,8 @@ sql:
   parent: share
   suffix: .sql
 sqlite3:
+  constant: yes
+sudo:
   constant: yes
 swf:
   parent: carrotlib
