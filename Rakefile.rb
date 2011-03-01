@@ -12,11 +12,15 @@ $LOAD_PATH.push(ROOT_DIR + '/lib/ruby')
 
 require 'yaml'
 require 'carrot/constants'
-require 'carrot/dsn'
+require 'carrot/environment'
 require 'webapp/config/Rakefile.local'
 
 desc 'インストールを実行'
-task :install => ['var:init', 'local:init']
+task :install => [
+  'var:init',
+  'environment:init',
+  'local:init',
+]
 
 desc 'テストを実行'
 task :test do
@@ -27,6 +31,23 @@ end
 namespace :database do
   desc 'データベースを初期化'
   task :init => ['local:database:init']
+end
+
+namespace :environment do
+  task :init => [
+    'file:init',
+  ]
+
+  namespace :file do
+    desc 'サーバ環境設定ファイルを初期化'
+    task :init => [
+      Environment.file_path,
+    ]
+
+    file Environment.file_path do
+      sh 'touch ' + Environment.file_path
+    end
+  end
 end
 
 namespace :var do
@@ -186,7 +207,7 @@ namespace :svn do
       end
       system 'find . ' + extension_arg + ' | xargs svn pdel svn:executable'
     end
-    ['pl', 'rb', 'cgi'].each do |extension|
+    ['pl', 'cgi'].each do |extension|
       extension_arg = '-name \'*.' + extension + '\''
       system 'find lib ' + extension_arg + ' | xargs svn pset svn:executable ON'
     end
