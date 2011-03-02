@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.1.54, for apple-darwin10.6.0 (i386)
+-- MySQL dump 10.13  Distrib 5.1.55, for apple-darwin10.6.0 (i386)
 --
 -- Host: localhost    Database: forms_mail
 -- ------------------------------------------------------
--- Server version	5.1.54
+-- Server version	5.1.55
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -59,8 +59,9 @@ CREATE TABLE `connection` (
   `name` varchar(64) NOT NULL,
   `fields_url` tinytext NOT NULL,
   `members_url` tinytext NOT NULL,
-  `basicauth_uid` varchar(32) NOT NULL,
-  `basicauth_password` varchar(128) NOT NULL,
+  `sender_email` varchar(64) NOT NULL,
+  `emptymail_email` varchar(64) DEFAULT NULL,
+  `emptymail_reply_body` text,
   `rank` smallint(5) unsigned NOT NULL,
   `create_date` datetime NOT NULL,
   `update_date` datetime NOT NULL,
@@ -144,4 +145,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2011-02-04 17:16:07
+-- Dump completed on 2011-03-02 17:31:33

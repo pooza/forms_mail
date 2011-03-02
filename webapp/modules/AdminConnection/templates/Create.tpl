@@ -37,15 +37,21 @@
 			</td>
 		</tr>
 		<tr>
-			<th>BASIC認証のユーザー名</th>
+			<th>送信時メールアドレス</th>
 			<td>
-				<input type="text" name="basicauth_uid" value="{$params.basicauth_uid}" size="24" maxlength="32" class="english"/>
+				<input type="text" name="sender_email" value="{$params.sender_email}" size="32" maxlength="64" class="english"/>
 			</td>
 		</tr>
 		<tr>
-			<th>BASIC認証のパスワード</th>
+			<th>空メール受信用<br/>メールアドレス</th>
 			<td>
-				<input type="password" name="basicauth_password" value="{$params.basicauth_password}" size="24" maxlength="32" class="english"/>
+				<input type="text" name="emptymail_receive_email" value="{$params.emptymail_receive_email}" size="32" maxlength="64" class="english"/>
+			</td>
+		</tr>
+		<tr>
+			<th>空メール受信時の<br/>返信文面</th>
+			<td>
+				<textarea name="emptymail_reply_body" cols="60" rows="8">{$params.emptymail_reply_body}</textarea>
 			</td>
 		</tr>
 		<tr>

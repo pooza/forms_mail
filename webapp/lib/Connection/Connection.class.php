@@ -24,23 +24,6 @@ class Connection extends BSSortableRecord {
 	}
 
 	/**
-	 * 更新
-	 *
-	 * @access public
-	 * @param mixed $values 更新する値
-	 * @param integer $flags フラグのビット列
-	 *   BSDatabase::WITHOUT_LOGGING ログを残さない
-	 *   BSDatabase::WITHOUT_SERIALIZE シリアライズしない
-	 */
-	public function update ($values, $flags = null) {
-		$values = new BSArray($values);
-		if (!BSString::isBlank($password = $values['basicauth_password'])) {
-			$values['basicauth_password'] = BSCrypt::getInstance()->encrypt($password);
-		}
-		parent::update($values, $flags);
-	}
-
-	/**
 	 * 削除可能か？
 	 *
 	 * @access protected
@@ -93,16 +76,6 @@ class Connection extends BSSortableRecord {
 			);
 		}
 		return $this->remoteFields;
-	}
-
-	/**
-	 * パスワードをプレーンテキストで返す
-	 *
-	 * @access public
-	 * @return string パスワード
-	 */
-	public function getPlainTextPassword () {
-		return BSCrypt::getInstance()->decrypt($this['basicauth_password']);
 	}
 
 	/**

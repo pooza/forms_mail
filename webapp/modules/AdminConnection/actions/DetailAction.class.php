@@ -19,8 +19,9 @@ class DetailAction extends BSRecordAction {
 			'name' => $this->request['name'],
 			'fields_url' => $this->request['fields_url'],
 			'members_url' => $this->request['members_url'],
-			'basicauth_uid' => $this->request['basicauth_uid'],
-			'basicauth_password' => $this->request['basicauth_password'],
+			'sender_email' => $this->request['sender_email'],
+			'emptymail_email' => $this->request['emptymail_email'],
+			'emptymail_reply_body' => $this->request['emptymail_reply_body'],
 		);
 	}
 
@@ -38,9 +39,6 @@ class DetailAction extends BSRecordAction {
 	}
 
 	public function getDefaultView () {
-		if (!$this->request['submit']) {
-			$this->request['basicauth_password'] = $this->getRecord()->getPlainTextPassword();
-		}
 		try {
 			$this->request->setAttribute('fields', $this->getRecord()->getRemoteFields());
 		} catch (BSHTTPException $e) {

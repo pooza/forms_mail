@@ -18,9 +18,13 @@ fields:
     required: yes
     validators:
       - url
-  basicauth_uid:
+  sender_email:
     required: yes
     validators:
-      - english
-  basicauth_password:
-    required: yes
+      - email
+  emptymail_email:
+    validators:
+      - email
+  emptymail_reply_body:
+    validators:
+      - longtext
