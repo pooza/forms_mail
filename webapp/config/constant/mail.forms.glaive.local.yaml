@@ -18,6 +18,9 @@ author:
   name: 有限会社 ビーショック
   email: info@b-shock.co.jp
 
+crypt:
+  salt: FSKJB7LYUW
+
 pdo:
   default:
     dsn: mysql:host=127.0.0.1;dbname=forms_mail

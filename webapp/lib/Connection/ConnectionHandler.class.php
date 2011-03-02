@@ -64,8 +64,8 @@ class ConnectionHandler extends BSSortableTableHandler {
 	static public function fetchRemoteFields (BSHTTPRedirector $url, $uid, $password) {
 		$fields = new BSArray;
 		$url = $url->getURL();
+		$url->setParameter('api_key', BSCrypt::getDigest(new BSArray(array($url['path']))));
 		$service = new BSCurlHTTP($url['host']);
-		$service->setAuth($uid, $password);
 		$response = $service->sendGET($url->getFullPath());
 		$serializer = new BSJSONSerializer;
 		$data = $serializer->decode($response->getRenderer()->getContents());
