@@ -46,6 +46,7 @@
 			<th>空メール受信用<br/>メールアドレス</th>
 			<td>
 				<input type="text" name="emptymail_email" value="{$params.emptymail_email}" size="32" maxlength="64" class="english"/>
+				<div class="alert">空欄の場合は、受信後の返信を行いません。</div>
 			</td>
 		</tr>
 		<tr>

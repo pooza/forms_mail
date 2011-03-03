@@ -68,7 +68,10 @@
 			<tr>
 				<th>空メール受信時の<br/>返信文面</th>
 				<td>
-					<textarea name="emptymail_reply_body" cols="60" rows="8">{$params.emptymail_reply_body}</textarea>
+					<div>
+						<textarea name="emptymail_reply_body" cols="60" rows="8">{$params.emptymail_reply_body}</textarea>
+					</div>
+					<div class="alert">空欄の場合は、受信後の返信を行いません。</div>
 				</td>
 			</tr>
 			<tr>

@@ -30,7 +30,7 @@ class Connection extends BSSortableRecord {
 	 * @return boolean 削除可能ならTrue
 	 */
 	protected function isDeletable () {
-		return true;
+		return !$this->getArticles()->count();
 	}
 
 	/**
@@ -39,7 +39,7 @@ class Connection extends BSSortableRecord {
 	 * @access public
 	 * @return ArticleHandler 記事
 	 */
-	public function getLogs () {
+	public function getArticles () {
 		if (!$this->articles) {
 			$this->articles = new ArticleHandler;
 			$this->articles->getCriteria()->register('connection_id', $this);
