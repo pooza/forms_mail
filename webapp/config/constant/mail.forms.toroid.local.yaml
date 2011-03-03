@@ -20,6 +20,11 @@ author:
   name: 有限会社 ビーショック
   email: info@b-shock.co.jp
 
+app:
+  name:
+    ja: 美食ツール
+    en: b-shock. tools
+
 crypt:
   salt: FSKJB7LYUW
 
