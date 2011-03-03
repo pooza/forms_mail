@@ -8,7 +8,7 @@
  */
 class ReceiveEmptyMailAction extends BSAction {
 	public function execute () {
-
+		throw new BSDatabaseException(1);
 	}
 }
 

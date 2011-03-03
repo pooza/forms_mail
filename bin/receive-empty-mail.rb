@@ -12,8 +12,25 @@ end
 ROOT_DIR = File.dirname(File.dirname(path))
 $LOAD_PATH.push(ROOT_DIR + '/lib/ruby')
 
-require 'carrot/batch_action'
+require 'digest/sha1'
+require 'uri'
+require 'mailparser'
+require 'carrot/constants'
 
-actions = BatchAction.new
-actions.register('ConsoleConnection', 'ReceiveEmptyMail')
-actions.execute
+params = []
+
+begin
+  mail = MailParser::Message.new(STDIN)
+  from = mail.from.addr_spec.to_s
+  to = mail.to[0].addr_spec.to_s
+rescue
+  raise 'Could not parse this email. '
+end
+
+path = '/AgentRecipient/Create'
+params.push('from=' + URI.encode(from))
+params.push('to=' + URI.encode(to))
+params.push('api_key=' + Digest::SHA1.hexdigest(path + Constants.new['BS_CRYPT_SALT']))
+href = path + '?' + params.join('&')
+
+raise href
