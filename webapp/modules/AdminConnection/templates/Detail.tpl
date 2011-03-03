@@ -42,6 +42,12 @@
 				</td>
 			</tr>
 			<tr>
+				<th>送信時メールアドレス</th>
+				<td>
+					<input type="text" name="sender_email" value="{$params.sender_email}" size="32" maxlength="64" class="english"/>
+				</td>
+			</tr>
+			<tr>
 				<th>フィールド取得APIのURL</th>
 				<td>
 					<input type="text" name="fields_url" value="{$params.fields_url}" size="64" maxlength="128" class="english"/>
@@ -51,12 +57,6 @@
 				<th>メンバー取得APIのURL</th>
 				<td>
 					<input type="text" name="members_url" value="{$params.members_url}" size="64" maxlength="128" class="english"/>
-				</td>
-			</tr>
-			<tr>
-				<th>送信時メールアドレス</th>
-				<td>
-					<input type="text" name="sender_email" value="{$params.sender_email}" size="32" maxlength="64" class="english"/>
 				</td>
 			</tr>
 			<tr>

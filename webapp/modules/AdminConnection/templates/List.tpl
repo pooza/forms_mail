@@ -58,7 +58,7 @@
 	</tr>
 {foreachelse}
 	<tr>
-		<td colspan="3" class="alert">登録されていません。</td>
+		<td colspan="5" class="alert">登録されていません。</td>
 	</tr>
 {/foreach}
 

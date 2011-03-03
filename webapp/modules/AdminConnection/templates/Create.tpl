@@ -25,6 +25,12 @@
 			</td>
 		</tr>
 		<tr>
+			<th>送信時メールアドレス</th>
+			<td>
+				<input type="text" name="sender_email" value="{$params.sender_email}" size="32" maxlength="64" class="english"/>
+			</td>
+		</tr>
+		<tr>
 			<th>フィールド取得APIのURL</th>
 			<td>
 				<input type="text" name="fields_url" value="{$params.fields_url}" size="64" maxlength="128" class="english"/>
@@ -37,22 +43,18 @@
 			</td>
 		</tr>
 		<tr>
-			<th>送信時メールアドレス</th>
-			<td>
-				<input type="text" name="sender_email" value="{$params.sender_email}" size="32" maxlength="64" class="english"/>
-			</td>
-		</tr>
-		<tr>
 			<th>空メール受信用<br/>メールアドレス</th>
 			<td>
 				<input type="text" name="emptymail_email" value="{$params.emptymail_email}" size="32" maxlength="64" class="english"/>
-				<div class="alert">空欄の場合は、受信後の返信を行いません。</div>
 			</td>
 		</tr>
 		<tr>
 			<th>空メール受信時の<br/>返信文面</th>
 			<td>
-				<textarea name="emptymail_reply_body" cols="60" rows="8">{$params.emptymail_reply_body}</textarea>
+				<div>
+					<textarea name="emptymail_reply_body" cols="60" rows="8">{$params.emptymail_reply_body}</textarea>
+				</div>
+				<div class="alert">空欄の場合は、受信後の返信を行いません。</div>
 			</td>
 		</tr>
 		<tr>

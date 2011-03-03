@@ -10,16 +10,16 @@ methods:
 fields:
   name:
     required: yes
+  sender_email:
+    required: yes
+    validators:
+      - email
   fields_url:
     validators:
       - url
   members_url:
     validators:
       - url
-  sender_email:
-    required: yes
-    validators:
-      - email
   emptymail_email:
     validators:
       - email
