@@ -1,14 +1,21 @@
 <?php
 /**
- * ReceiveEmptyMailアクション
+ * Createアクション
  *
  * @package jp.co.commons.forms.mail
- * @subpackage ConsoleConnection
+ * @subpackage AgentRecipient
  * @author 小石達也 <tkoishi@b-shock.co.jp>
  */
-class ReceiveEmptyMailAction extends BSAction {
+class CreateAction extends BSAction {
 	public function execute () {
-		throw new BSDatabaseException(1);
+		BSLogManager::getInstance()->put($this->request['from']);
+		BSLogManager::getInstance()->put($this->request['to']);
+		return BSView::SUCCESS;
+	}
+
+	public function handleError () {
+		BSLogManager::getInstance()->put('err');
+		return BSView::ERROR;
 	}
 }
 

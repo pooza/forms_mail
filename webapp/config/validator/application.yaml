@@ -2,4 +2,6 @@
 #
 # @package jo.co.commons.forms.mail
 # @author 小石達也 <tkoishi@b-shock.co.jp>
-# @version $Id$
+
+api_key:
+  class: MincAPIValidator

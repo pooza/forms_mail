@@ -1,0 +1,9 @@
+# モジュール設定ファイル
+#
+# @package jp.co.commons.forms.mail
+# @subpackage AgentRecipient
+# @author 小石達也 <tkoishi@b-shock.co.jp>
+
+actions:
+  Create:
+    view: BSJSONView

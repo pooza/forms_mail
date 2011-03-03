@@ -1,0 +1,19 @@
+# バリデーション設定ファイル
+#
+# @package jp.co.commons.forms.mail
+# @subpackage AgentRecipient
+# @author 小石達也 <tkoishi@b-shock.co.jp>
+
+fields:
+  from:
+    required: yes
+    validators:
+      - email
+  to:
+    required: yes
+    validators:
+      - email
+  api_key:
+    required: yes
+    validators:
+      - api_key
