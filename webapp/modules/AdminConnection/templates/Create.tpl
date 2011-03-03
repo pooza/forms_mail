@@ -45,7 +45,7 @@
 		<tr>
 			<th>空メール受信用<br/>メールアドレス</th>
 			<td>
-				<input type="text" name="emptymail_receive_email" value="{$params.emptymail_receive_email}" size="32" maxlength="64" class="english"/>
+				<input type="text" name="emptymail_email" value="{$params.emptymail_email}" size="32" maxlength="64" class="english"/>
 			</td>
 		</tr>
 		<tr>

@@ -68,12 +68,8 @@ class Connection extends BSSortableRecord {
 	 * @return BSArray リモートフィールドの配列を返す
 	 */
 	public function getRemoteFields () {
-		if (!$this->remoteFields) {
-			$this->remoteFields = ConnectionHandler::fetchRemoteFields(
-				BSURL::getInstance($this['fields_url']),
-				$this['basicauth_uid'],
-				$this['basicauth_password']
-			);
+		if (!$this->remoteFields && !BSString::isBlank($url = $this['fields_url'])) {
+			$this->remoteFields = ConnectionHandler::fetchRemoteFields(BSURL::getInstance($url));
 		}
 		return $this->remoteFields;
 	}

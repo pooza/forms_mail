@@ -11,11 +11,9 @@ fields:
   name:
     required: yes
   fields_url:
-    required: yes
     validators:
       - url
   members_url:
-    required: yes
     validators:
       - url
   sender_email:

@@ -18,7 +18,7 @@
 <div class="tabs10">
 	<ul id="Tabs">
 		<li><a href="#DetailForm"><span>{$module.record_class|translate}詳細</span></a></li>
-		<li><a href="#FieldList"><span>フィールド</span></a></li>
+		{if $connection.fields_url}<li><a href="#FieldList"><span>フィールド</span></a></li>{/if}
 		<li><a href="#ArticleList"><span>記事</span></a></li>
 		<li><a href="#RecipientList"><span>受取人</span></a></li>
 	</ul>
@@ -62,7 +62,7 @@
 			<tr>
 				<th>空メール受信用<br/>メールアドレス</th>
 				<td>
-					<input type="text" name="emptymail_receive_email" value="{$params.emptymail_receive_email}" size="32" maxlength="64" class="english"/>
+					<input type="text" name="emptymail_email" value="{$params.emptymail_email}" size="32" maxlength="64" class="english"/>
 				</td>
 			</tr>
 			<tr>
@@ -89,6 +89,7 @@
 	{/form}
 </div>
 
+{if $connection.fields_url}
 <div id="FieldList" class="panel">
 <h2>■ フィールド一覧</h2>
 <table>
@@ -116,6 +117,7 @@
 
 </table>
 </div>
+{/if}
 
 <div id="ArticleList" class="panel"></div>
 <div id="RecipientList" class="panel"></div>

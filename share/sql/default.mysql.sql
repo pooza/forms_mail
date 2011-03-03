@@ -57,8 +57,8 @@ DROP TABLE IF EXISTS `connection`;
 CREATE TABLE `connection` (
   `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
-  `fields_url` tinytext NOT NULL,
-  `members_url` tinytext NOT NULL,
+  `fields_url` tinytext,
+  `members_url` tinytext,
   `sender_email` varchar(64) NOT NULL,
   `emptymail_email` varchar(64) DEFAULT NULL,
   `emptymail_reply_body` text,
@@ -145,4 +145,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2011-03-02 17:31:33
+-- Dump completed on 2011-03-03 10:55:30

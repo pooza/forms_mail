@@ -16,22 +16,27 @@
 <h1>{$action.title}</h1>
 <table>
 	<tr>
-		<th width="120">名前</th>
-		<th width="420">APIのURL</th>
+		<th width="150">名前</th>
+		<th width="150">送信時メールアドレス</th>
+		<th width="60">フォーム</th>
+		<th width="60">空メール</th>
 		<th width="60"></th>
 	</tr>
 	<tr>
-		<td colspan="3">
+		<td colspan="5">
 			<a href="/{$module.name}/Create">新しい{$module.record_class|translate}を登録...</a>
 		</td>
 	</tr>
 
 {foreach from=$connections item='connection' name='connections'}
 	<tr class="{$connection.status}">
-		<td width="120"><a href="/{$module.name}/Detail/{$connection.id}">{$connection.name}</a></td>
-		<td width="420">
-			<code>{$connection.fields_url|truncate:64}</code><br/>
-			<code>{$connection.members_url|truncate:64}</code>
+		<td width="150"><a href="/{$module.name}/Detail/{$connection.id}">{$connection.name}</a></td>
+		<td width="150">{$connection.sender_email}</td>
+		<td width="60" align="center">
+			{if $connection.fields_url && $connection.members_url}○{/if}
+		</td>
+		<td width="60" align="center">
+			{if $connection.emptymail_email}○{/if}
 		</td>
 		<td width="60" align="center">
 		{if $smarty.foreach.connections.first}

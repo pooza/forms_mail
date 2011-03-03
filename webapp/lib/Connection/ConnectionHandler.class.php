@@ -21,23 +21,6 @@ class ConnectionHandler extends BSSortableTableHandler {
 	}
 
 	/**
-	 * レコード追加
-	 *
-	 * @access public
-	 * @param mixed $values 値
-	 * @param integer $flags フラグのビット列
-	 *   BSDatabase::WITH_LOGGING ログを残さない
-	 * @return string レコードの主キー
-	 */
-	public function createRecord ($values, $flags = null) {
-		$values = new BSArray($values);
-		if (!BSString::isBlank($password = $values['basicauth_password'])) {
-			$values['basicauth_password'] = BSCrypt::getInstance()->encrypt($password);
-		}
-		return parent::createRecord($values, $flags);
-	}
-
-	/**
 	 * 子クラスを返す
 	 *
 	 * @access public
@@ -56,12 +39,10 @@ class ConnectionHandler extends BSSortableTableHandler {
 	 *
 	 * @access public
 	 * @param BSHTTPRedirector $url 対象URL
-	 * @param string uid BASIC認証のUID
-	 * @param string password BSCryptで暗号化されたパスワード
 	 * @return BSArray フィールドの配列
 	 * @static
 	 */
-	static public function fetchRemoteFields (BSHTTPRedirector $url, $uid, $password) {
+	static public function fetchRemoteFields (BSHTTPRedirector $url) {
 		$fields = new BSArray;
 		$url = $url->getURL();
 		$url->setParameter('api_key', BSCrypt::getDigest(new BSArray(array($url['path']))));
