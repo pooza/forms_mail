@@ -1,12 +1,12 @@
 <?php
 /**
- * AdminArticleモジュール
+ * AdminRecipientモジュール
  *
  * @package jp.co.commons.forms.mail
- * @subpackage AdminArticle
+ * @subpackage AdminArtile
  * @author 小石達也 <tkoishi@b-shock.co.jp>
  */
-class AdminArticleModule extends BSModule {
+class AdminRecipientModule extends BSModule {
 
 	/**
 	 * 接続を返す
@@ -17,8 +17,8 @@ class AdminArticleModule extends BSModule {
 	public function getConnection () {
 		$module = BSModule::getInstance('AdminConnection');
 		if (!$module->getRecord()) {
-			if ($article = $this->getRecord()) {
-				$module->setRecordID($article->getConnection());
+			if ($recipient = $this->getRecord()) {
+				$module->setRecordID($recipient->getConnection());
 			}
 		}
 		return $module->getRecord();

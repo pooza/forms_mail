@@ -3,7 +3,7 @@
  * Listアクション
  *
  * @package jp.co.commons.forms.mail
- * @subpackage AdminArticle
+ * @subpackage AdminArtile
  * @author 小石達也 <tkoishi@b-shock.co.jp>
  */
 class ListAction extends BSTableAction {
@@ -16,7 +16,7 @@ class ListAction extends BSTableAction {
 	}
 
 	public function execute () {
-		$this->request->setAttribute('articles', $this->getRows());
+		$this->request->setAttribute('recipients', $this->getRows());
 		return BSView::INPUT;
 	}
 }

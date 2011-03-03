@@ -2,7 +2,7 @@
 一覧画面テンプレート
 
 @package jp.co.commons.forms.mail
-@subpackage AdminArtile
+@subpackage AdminArticle
 @author 小石達也 <tkoishi@b-shock.co.jp>
 *}
 

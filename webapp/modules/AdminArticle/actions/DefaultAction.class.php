@@ -3,7 +3,7 @@
  * Defaultアクション
  *
  * @package jp.co.commons.forms.mail
- * @subpackage AdminArtile
+ * @subpackage AdminArticle
  * @author 小石達也 <tkoishi@b-shock.co.jp>
  */
 class DefaultAction extends BSAction {

@@ -5,6 +5,13 @@
  * @author 小石達也 <tkoishi@b-shock.co.jp>
  */
 
+table tr.banned td {
+	background-color: gray;
+}
+table tr.inactive td {
+	background-color: gray;
+}
+
 span.choice {
 	float: left;
 	border: 1px solid #999;
