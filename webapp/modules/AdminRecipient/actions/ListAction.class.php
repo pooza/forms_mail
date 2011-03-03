@@ -6,7 +6,11 @@
  * @subpackage AdminArtile
  * @author 小石達也 <tkoishi@b-shock.co.jp>
  */
-class ListAction extends BSTableAction {
+class ListAction extends BSPaginateTableAction {
+	protected function getPageSize () {
+		return 20;
+	}
+
 	protected function getCriteria () {
 		if (!$this->criteria) {
 			$this->criteria = $this->createCriteriaSet();

@@ -26,6 +26,17 @@
 	</tr>
 {/foreach}
 
+	<tr>
+		<td colspan="2" style="text-align:center">
+{strip}
+			<span><a href="javascript:void({if 1<$page}new Ajax.Updater('RecipientList','/{$module.name}/{$action.name}?page=1'){/if})"><img src="/carrotlib/images/navigation_arrow/left3.gif" width="14" height="14" alt="|&lt;" /></a></span>&nbsp;
+			<span><a href="javascript:void({if 1<$page}new Ajax.Updater('RecipientList','/{$module.name}/{$action.name}?page={$page-1}'){/if})"><img src="/carrotlib/images/navigation_arrow/left1.gif" width="14" height="14" alt="&lt;" /></a></span>&nbsp;
+			[{$page}]&nbsp;
+			<span><a href="javascript:void({if $page<$lastpage}new Ajax.Updater('RecipientList','/{$module.name}/{$action.name}?page={$page+1}'){/if})"><img src="/carrotlib/images/navigation_arrow/right1.gif" width="14" height="14" alt="&gt;" /></a></span>&nbsp;
+			<span><a href="javascript:void({if $page<$lastpage}new Ajax.Updater('RecipientList','/{$module.name}/{$action.name}?page={$lastpage}'){/if})"><img src="/carrotlib/images/navigation_arrow/right3.gif" width="14" height="14" alt="&gt;|" /></a></span>
+{/strip}
+		</td>
+	</tr>
 </table>
 
 {* vim: set tabstop=4: *}
