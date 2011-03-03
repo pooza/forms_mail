@@ -1,3 +1,7 @@
 label,ja
 recipient,受取人
 recipient_id,受取人
+
+active,アクティブ
+inactive,非アクティブ
+banned,強制退会

@@ -7,6 +7,12 @@
 *}
 
 <h2>■ {$action.title}</h2>
+
+<div class="alert">
+	空メールによって登録された受取人のみです。
+	「メンバー取得API」による受取人を含みません。
+</div>
+
 <table>
 	<tr>
 		<th width="240">メールアドレス</th>
@@ -17,7 +23,7 @@
 	<tr class="{$recipient.status}">
 		<td width="240"><a href="/{$module.name}/Detail/{$recipient.id}">{$recipient.email}</a></td>
 		<td width="120" align="center">
-			{$recipient.create_date|date_format:'Y-m-d H:i'}
+			{$recipient.create_date|date_format:'Y-m-d(ww) H:i'}
 		</td>
 	</tr>
 {foreachelse}
