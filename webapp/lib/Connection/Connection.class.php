@@ -62,6 +62,36 @@ class Connection extends BSSortableRecord {
 	}
 
 	/**
+	 * 受取人を登録
+	 *
+	 * @access public
+	 * @param BSMailAddress $email メールアドレス
+	 */
+	public function registerRecipient (BSMailAddress $email) {
+		$values = new BSArray(array(
+			'connection_id' => $this->getID(),
+			'email' => $email->getContents(),
+		));
+		if ($recipient = $this->getRecipients()->getRecord($values)) {
+			$message = new BSStringFormat('%sは%sに登録済みです。');
+			$message[] = $email;
+			$message[] = $this;
+			BSLogManager::getInstance()->put($message, $this);
+			return;
+		}
+		$this->getRecipients()->createRecord($values);
+
+		if (!BSString::isBlank($body = $this['emptymail_reply_body'])) {
+			$mail = new BSMail;
+			$mail->setHeader('from', $this['sender_email']);
+			$mail->setHeader('to', $email->getContents());
+			$mail->setHeader('subject', BS_APP_NAME_JA . 'からのお知らせ');
+			$mail->setBody($body);
+			$mail->send();
+		}
+	}
+
+	/**
 	 * リモートフィールドを返す
 	 *
 	 * @access public
