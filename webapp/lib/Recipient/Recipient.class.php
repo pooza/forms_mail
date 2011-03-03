@@ -29,6 +29,17 @@ class Recipient extends BSRecord {
 	public function getParent () {
 		return $this->getConnection();
 	}
+
+	/**
+	 * ラベルを返す
+	 *
+	 * @access public
+	 * @param string $language 言語
+	 * @return string ラベル
+	 */
+	public function getLabel ($language = 'ja') {
+		return $this['email'];
+	}
 }
 
 /* vim:set tabstop=4 */
