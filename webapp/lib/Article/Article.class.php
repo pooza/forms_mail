@@ -94,6 +94,33 @@ class Article extends BSRecord {
 	}
 
 	/**
+	 * 送信ログを記録
+	 *
+	 * @access public
+	 * @param BSMailAddress $email 宛先
+	 */
+	public function putLog (BSMailAddress $email) {
+		$this->getLogs()->createRecord(array(
+			'article_id' => $this->getID(),
+			'email' => $email->getContents(),
+		));
+	}
+
+	/**
+	 * ユーザー宛てに送信済みか？
+	 *
+	 * @access public
+	 * @param BSMailAddress $email 宛先
+	 * @return boolean 送信済みならTrue
+	 */
+	public function isSentTo (BSMailAddress $email) {
+		return !!$this->getLogs()->getRecord(array(
+			'article_id' => $this->getID(),
+			'email' => $email->getContents(),
+		));
+	}
+
+	/**
 	 * テンプレートファイルを返す
 	 *
 	 * @access public
@@ -118,6 +145,8 @@ class Article extends BSRecord {
 		if ($connection['emptymail_email']) {
 			$this->publishToEmbeddedRecipients();
 		}
+		// $this->update(array('is_published' => 1));
+		BSLogManager::getInstance()->put($this . 'を配信しました。', $this);
 	}
 
 	/**
@@ -135,6 +164,30 @@ class Article extends BSRecord {
 	 * @access public
 	 */
 	private function publishToEmbeddedRecipients () {
+		$recipients = clone $this->getConnection()->getRecipients();
+		$recipients->getCriteria()->register('status', 'active');
+		foreach ($recipients as $recipient) {
+			$this->sendTo($recipient->getMailAddress());
+		}
+	}
+
+	/**
+	 * ユーザー宛てに送信
+	 *
+	 * @access public
+	 * @param BSMailAddress $email 宛先
+	 */
+	public function sendTo (BSMailAddress $email) {
+		try {
+			if ($this->isSentTo($email)) {
+				throw new Exception($this . 'は' . $email . 'に送信済みです。');
+			}
+
+			//送信処理
+			//$this->putLog($email);
+		} catch (Exception $e) {
+			BSLogManager::getInstance()->put($e->getMessage(), $this);
+		}
 	}
 
 	/**

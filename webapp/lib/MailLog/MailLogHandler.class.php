@@ -26,10 +26,10 @@ class MailLogHandler extends BSTableHandler {
 	 * @access public
 	 * @param mixed $values 値
 	 * @param integer $flags フラグのビット列
-	 *   BSDatabase::WITH_LOGGING ログを残さない
+	 *   BSDatabase::WITHOUT_LOGGING ログを残さない
 	 * @return string レコードの主キー
 	 */
-	public function createRecord ($values, $flags = BSDatabase::WITH_LOGGING) {
+	public function createRecord ($values, $flags = BSDatabase::WITHOUT_LOGGING) {
 		return parent::createRecord($values, $flags);
 	}
 }

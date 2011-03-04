@@ -31,6 +31,16 @@ class Recipient extends BSRecord {
 	}
 
 	/**
+	 * メールアドレスを返す
+	 *
+	 * @access public
+	 * @return BSMailAddress メールアドレス
+	 */
+	public function getMailAddress () {
+		return BSMailAddress::getInstance($this['email']);
+	}
+
+	/**
 	 * ラベルを返す
 	 *
 	 * @access public
