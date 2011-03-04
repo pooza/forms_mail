@@ -32,7 +32,6 @@ class Article extends BSRecord {
 	 */
 	public function update ($values, $flags = null) {
 		parent::update($values, $flags);
-
 		$file = BSFileUtility::getTemporaryFile();
 		$file->setContents($this['body']);
 		$this->setAttachment($file, 'mail_template');
@@ -149,7 +148,7 @@ class Article extends BSRecord {
 				$this->sendTo($recipient->getMailAddress());
 			}
 		}
-		// $this->update(array('is_published' => 1));
+		$this->update(array('is_published' => 1));
 		BSLogManager::getInstance()->put($this . 'を配信しました。', $this);
 	}
 
@@ -164,9 +163,14 @@ class Article extends BSRecord {
 			if ($this->isSentTo($email)) {
 				throw new Exception($this . 'は' . $email . 'に送信済みです。');
 			}
-
-			//送信処理
-			//$this->putLog($email);
+			$connection = $this->getConnection();
+			$mail = new BSMail;
+			$mail->setHeader('from', $connection['sender_email']);
+			$mail->setHeader('to', $email->getContents());
+			$mail->setHeader('subject', $this['title']);
+			$mail->setBody($this['body']);
+			$mail->send();
+			$this->putLog($email);
 		} catch (Exception $e) {
 			BSLogManager::getInstance()->put($e->getMessage(), $this);
 		}

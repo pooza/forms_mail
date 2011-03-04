@@ -35,6 +35,21 @@ class ArticleHandler extends BSTableHandler {
 	}
 
 	/**
+	 * レコード追加
+	 *
+	 * @access public
+	 * @param mixed $values 値
+	 * @param integer $flags フラグのビット列
+	 *   BSDatabase::WITH_LOGGING ログを残さない
+	 * @return string レコードの主キー
+	 */
+	public function createRecord ($values, $flags = null) {
+		$id = parent::createRecord($values, $flags);
+		$this->getRecord($id)->touch();
+		return $id;
+	}
+
+	/**
 	 * 子クラスを返す
 	 *
 	 * @access public
