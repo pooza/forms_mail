@@ -15,5 +15,5 @@ $LOAD_PATH.push(ROOT_DIR + '/lib/ruby')
 require 'carrot/batch_action'
 
 actions = BatchAction.new
-actions.register('ConsoleArticle', 'Send')
+actions.register('ConsoleArticle', 'Publish')
 actions.execute

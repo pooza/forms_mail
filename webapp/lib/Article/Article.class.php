@@ -106,6 +106,38 @@ class Article extends BSRecord {
 	}
 
 	/**
+	 * 配信
+	 *
+	 * @access public
+	 */
+	public function publish () {
+		$connection = $this->getConnection();
+		if ($connection['fields_url'] && $connection['members_url']) {
+			$this->publishToRemoteRecipients();
+		}
+		if ($connection['emptymail_email']) {
+			$this->publishToEmbeddedRecipients();
+		}
+	}
+
+	/**
+	 * formsで応募したユーザーに配信
+	 *
+	 * @access public
+	 */
+	private function publishRemoteRecipients () {
+		//未実装
+	}
+
+	/**
+	 * 空メールで応募したユーザーに配信
+	 *
+	 * @access public
+	 */
+	private function publishToEmbeddedRecipients () {
+	}
+
+	/**
 	 * シリアライズするか？
 	 *
 	 * @access public
