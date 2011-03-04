@@ -140,35 +140,17 @@ class Article extends BSRecord {
 	public function publish () {
 		$connection = $this->getConnection();
 		if ($connection['fields_url'] && $connection['members_url']) {
-			$this->publishToRemoteRecipients();
+			//未実装
 		}
 		if ($connection['emptymail_email']) {
-			$this->publishToEmbeddedRecipients();
+			$recipients = clone $this->getConnection()->getRecipients();
+			$recipients->getCriteria()->register('status', 'active');
+			foreach ($recipients as $recipient) {
+				$this->sendTo($recipient->getMailAddress());
+			}
 		}
 		// $this->update(array('is_published' => 1));
 		BSLogManager::getInstance()->put($this . 'を配信しました。', $this);
-	}
-
-	/**
-	 * formsで応募したユーザーに配信
-	 *
-	 * @access public
-	 */
-	private function publishRemoteRecipients () {
-		//未実装
-	}
-
-	/**
-	 * 空メールで応募したユーザーに配信
-	 *
-	 * @access public
-	 */
-	private function publishToEmbeddedRecipients () {
-		$recipients = clone $this->getConnection()->getRecipients();
-		$recipients->getCriteria()->register('status', 'active');
-		foreach ($recipients as $recipient) {
-			$this->sendTo($recipient->getMailAddress());
-		}
 	}
 
 	/**
