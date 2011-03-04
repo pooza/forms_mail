@@ -41,6 +41,19 @@ class Recipient extends BSRecord {
 	}
 
 	/**
+	 * アクティブ化
+	 *
+	 * @access public
+	 * @return BSMailAddress メールアドレス
+	 */
+	public function activate () {
+		if ($this['status'] == 'banned') {
+			throw new BSException('banned. ' . $this->getMailAddress()->getContents());
+		}
+		$this->update(array('status' => 'active'));
+	}
+
+	/**
 	 * ラベルを返す
 	 *
 	 * @access public

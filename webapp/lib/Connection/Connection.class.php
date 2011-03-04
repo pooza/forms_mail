@@ -73,14 +73,10 @@ class Connection extends BSSortableRecord {
 			'email' => $email->getContents(),
 		));
 		if ($recipient = $this->getRecipients()->getRecord($values)) {
-			$message = new BSStringFormat('%sは%sに登録済みです。');
-			$message[] = $email;
-			$message[] = $this;
-			BSLogManager::getInstance()->put($message, $this);
-			return;
+			$recipient->activate();
+		} else {
+			$this->getRecipients()->createRecord($values);
 		}
-		$this->getRecipients()->createRecord($values);
-
 		if (!BSString::isBlank($body = $this['emptymail_reply_body'])) {
 			$mail = new BSMail;
 			$mail->setHeader('from', $this['sender_email']);
