@@ -22,6 +22,19 @@ class BSImageElement extends BSXHTMLElement {
 	}
 
 	/**
+	 * 対象UserAgentを設定
+	 *
+	 * @access public
+	 * @param BSUserAgent $useragent 対象UserAgent
+	 */
+	public function setUserAgent (BSUserAgent $useragent) {
+		parent::setUserAgent($useragent);
+		if (!BS_IMAGE_STORABLE && $useragent->hasSupport('image_copyright')) {
+			$this->setAttribute('copyright', 'yes');
+		}
+	}
+
+	/**
 	 * 空要素か？
 	 *
 	 * @access public
@@ -69,6 +82,7 @@ class BSImageElement extends BSXHTMLElement {
 			case 'align':
 			case 'class':
 			case 'style':
+			case 'copyright':
 				return parent::setAttribute($name, $value);
 			case 'alt':
 				return $this->setAlt($value);
