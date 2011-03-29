@@ -18,7 +18,7 @@ class Article extends BSRecord {
 	 * @return boolean 更新可能ならTrue
 	 */
 	protected function isUpdatable () {
-		return !$this->isPublished();
+		return true;
 	}
 
 	/**
@@ -32,9 +32,11 @@ class Article extends BSRecord {
 	 */
 	public function update ($values, $flags = null) {
 		parent::update($values, $flags);
-		$file = BSFileUtility::getTemporaryFile();
-		$file->setContents($this['body']);
-		$this->setAttachment($file, 'mail_template');
+		foreach (array('body', 'body_mobile') as $field) {
+			$file = BSFileUtility::getTemporaryFile();
+			$file->setContents($this[$field]);
+			$this->setAttachment($file, $field . '_template');
+		}
 	}
 
 	/**
@@ -145,7 +147,7 @@ class Article extends BSRecord {
 			$recipients = clone $this->getConnection()->getRecipients();
 			$recipients->getCriteria()->register('status', 'active');
 			foreach ($recipients as $recipient) {
-				$this->sendTo($recipient->getMailAddress());
+				$this->sendTo($recipient);
 			}
 		}
 		$this->update(array('is_published' => 1));
@@ -156,23 +158,23 @@ class Article extends BSRecord {
 	 * ユーザー宛てに送信
 	 *
 	 * @access public
-	 * @param BSMailAddress $email 宛先
+	 * @param BSRecord $recipient 対象レコード
 	 */
-	public function sendTo (BSMailAddress $email) {
+	public function sendTo (BSRecord $recipient) {
 		try {
-			if ($this->isSentTo($email)) {
+			if ($this->isSentTo($email = $recipient->getMailAddress())) {
 				throw new Exception($this . 'は' . $email . 'に送信済みです。');
 			}
-			$connection = $this->getConnection();
-			$mail = new BSMail;
-			$mail->setHeader('from', $connection['sender_email']);
-			$mail->setHeader('to', $email->getContents());
-			$mail->setHeader('subject', $this['title']);
-			if ($email->isMobile() && BSString::isBlank($this['body_mobile'])) {
-				$mail->setBody($this['body_mobile']);
-			} else {
-				$mail->setBody($this['body']);
+
+			$mail = new BSSmartyMail;
+			$mail->getRenderer()->setTemplate('Article.mail');
+			$params = $this->getAssignValue();
+			if ($email->isMobile() && !BSString::isBlank($this['body_mobile'])) {
+				$params['body_template'] = $this->getAttachmentInfo('body_mobile_template');
 			}
+			$mail->getRenderer()->setAttribute('article', $params);
+			$mail->getRenderer()->setAttribute('connection', $this->getConnection());
+			$mail->getRenderer()->setAttribute('recipient', $recipient);
 			$mail->send();
 			$this->putLog($email);
 		} catch (Exception $e) {

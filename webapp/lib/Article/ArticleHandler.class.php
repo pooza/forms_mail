@@ -71,7 +71,8 @@ class ArticleHandler extends BSTableHandler {
 	 */
 	static public function getAttachmentNames () {
 		return new BSArray(array(
-			'mail_template',
+			'body_template',
+			'body_mobile_template',
 		));
 	}
 }
