@@ -21,6 +21,8 @@ app:
   name:
     ja: 美食メールマガジン
     en: b-shock. Mail Magazine
+  process:
+    uid: www
 
 crypt:
   salt: FSKJB7LYUW

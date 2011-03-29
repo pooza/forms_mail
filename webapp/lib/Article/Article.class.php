@@ -168,7 +168,11 @@ class Article extends BSRecord {
 			$mail->setHeader('from', $connection['sender_email']);
 			$mail->setHeader('to', $email->getContents());
 			$mail->setHeader('subject', $this['title']);
-			$mail->setBody($this['body']);
+			if ($email->isMobile() && BSString::isBlank($this['body_mobile'])) {
+				$mail->setBody($this['body_mobile']);
+			} else {
+				$mail->setBody($this['body']);
+			}
 			$mail->send();
 			$this->putLog($email);
 		} catch (Exception $e) {
