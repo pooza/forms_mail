@@ -80,22 +80,8 @@ class Connection extends BSSortableRecord {
 		if (!BSString::isBlank($body = $this['emptymail_reply_body'])) {
 			$mail = new BSSmartyMail;
 			$mail->getRenderer()->setTemplate('Recipient.register.mail');
-			$params = $this->getAssignValue();
-			if ($email->isMobile() && !BSString::isBlank($this['body_mobile'])) {
-				$params['body_template'] = $this->getAttachmentInfo('body_mobile_template');
-			}
-			$mail->getRenderer()->setAttribute('article', $params);
-			$mail->getRenderer()->setAttribute('connection', $this->getConnection());
-			$mail->getRenderer()->setAttribute('recipient', $recipient);
-			$mail->send();
-
-
-
-			$mail = new BSMail;
-			$mail->setHeader('from', $this['sender_email']);
-			$mail->setHeader('to', $email->getContents());
-			$mail->setHeader('subject', BS_APP_NAME_JA . 'からのお知らせ');
-			$mail->setBody($body);
+			$mail->getRenderer()->setAttribute('connection', $this);
+			$mail->getRenderer()->setAttribute('recipient', $values);
 			$mail->send();
 		}
 	}
