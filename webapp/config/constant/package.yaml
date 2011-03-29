@@ -2,11 +2,10 @@
 #
 # @package jo.co.commons.forms.mail
 # @author 小石達也 <tkoishi@b-shock.co.jp>
-# @version $Id$
 
 package:
   name: forms-mail
-  ver: 1.0.0-dev
+  ver: 1.0.0b1
 
 crypt:
   salt: I8BDT76KZX6Z6IIE

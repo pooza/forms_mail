@@ -2,7 +2,6 @@
 #
 # @package jo.co.commons.forms.mail
 # @author 小石達也 <tkoishi@b-shock.co.jp>
-# @version $Id$
 
 root_url: http://mail.forms.toroid.local/
 root_url_https: http://mail.forms.toroid.local/
