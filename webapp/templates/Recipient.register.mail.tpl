@@ -1,17 +1,14 @@
 {*
-記事メール
+登録時メール
 
 @package jo.co.commons.forms.mail
 @author 小石達也 <tkoishi@b-shock.co.jp>
 *}
 From: {$connection.sender_email}
 To: {$recipient.email}
-Subject: {$article.title}
+Subject: ご登録頂き、ありがとうございました。
 
-{include file=$article.body_template.path}
-
-今後、こうしたメールが不要でしたら、こちらまで。
-{$recipient.resign_url}
+{$connection.emptymail_reply_body}
 
 =====
 {const name='app_name_ja'}
