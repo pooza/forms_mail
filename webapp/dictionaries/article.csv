@@ -3,6 +3,7 @@ article,記事
 article_id,記事
 title,タイトル
 body,本文
+body_mobile,ケータイ向け本文
 criteria,抽出条件
 is_published,発行済
 publish_date,発行日

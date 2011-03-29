@@ -19,6 +19,7 @@ class DetailAction extends BSRecordAction {
 		return array(
 			'title' => $this->request['title'],
 			'body' => $this->request['body'],
+			'body_mobile' => $this->request['body_mobile'],
 			'criteria' => $this->getModule()->serializeCriteria($fields),
 			'publish_date' => $this->request['publish_date'],
 		);

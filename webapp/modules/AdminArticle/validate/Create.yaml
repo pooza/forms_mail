@@ -14,6 +14,10 @@ fields:
     validators:
       - smarty
       - longtext
+  body_mobile:
+    validators:
+      - smarty
+      - longtext
   publish_date:
     required: yes
     validators:
