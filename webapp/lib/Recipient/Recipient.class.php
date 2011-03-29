@@ -74,7 +74,7 @@ class Recipient extends BSRecord {
 		$values = parent::getAssignValue();
 		$url = BSURL::getInstance('/UserRecipient/Resign');
 		$url->setParameter('email', $this['email']);
-		$values['resign_url'] = $url->getContents();
+		$values['resign_url'] = $url->getShortURL()->getContents();
 		return $values;
 	}
 }
