@@ -87,6 +87,30 @@ class Connection extends BSSortableRecord {
 	}
 
 	/**
+	 * 受取人を登録
+	 *
+	 * @access public
+	 * @param BSMailAddress $email メールアドレス
+	 * @final
+	 */
+	final public function join (BSMailAddress $email) {
+		$this->registerRecipient($email);
+	}
+
+	/**
+	 * 受取人を返す
+	 *
+	 * @access public
+	 * @param BSMailAddress $email メールアドレス
+	 */
+	public function getRecipient (BSMailAddress $email) {
+		$recipients = clone $this->getRecipients();
+		$recipients->getCriteria()->register('email', $email->getContents());
+		$recipients->getCriteria()->register('status', 'banned', '<>');
+		return $recipients->getIterator()->getFirst();
+	}
+
+	/**
 	 * リモートフィールドを返す
 	 *
 	 * @access public

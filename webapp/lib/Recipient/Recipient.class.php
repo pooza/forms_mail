@@ -21,6 +21,16 @@ class Recipient extends BSRecord {
 	}
 
 	/**
+	 * 削除可能か？
+	 *
+	 * @access protected
+	 * @return boolean 削除可能ならTrue
+	 */
+	protected function isDeletable () {
+		return true;
+	}
+
+	/**
 	 * 親レコードを返す
 	 *
 	 * @access public
