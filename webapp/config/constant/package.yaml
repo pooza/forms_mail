@@ -10,6 +10,10 @@ package:
 crypt:
   salt: I8BDT76KZX6Z6IIE
 
+image:
+  qrcode:
+    size: 80
+
 module:
   prefixes:
     - Admin

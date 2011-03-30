@@ -42,6 +42,20 @@
 				</td>
 			</tr>
 			<tr>
+				<th>登録画面</th>
+				<td>
+					{$connection.join_url|url2link}
+					<div>{$connection.join_url|qrcode}</div>
+				</td>
+			</tr>
+			<tr>
+				<th>解除画面</th>
+				<td>
+					{$connection.resign_url|url2link}
+					<div>{$connection.resign_url|qrcode}</div>
+				</td>
+			</tr>
+			<tr>
 				<th>送信時メールアドレス</th>
 				<td>
 					<input type="text" name="sender_email" value="{$params.sender_email}" size="32" maxlength="64" class="english"/>

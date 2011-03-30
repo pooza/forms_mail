@@ -108,6 +108,24 @@ class Connection extends BSSortableRecord {
 	public function isSerializable () {
 		return true;
 	}
+
+	/**
+	 * 全てのファイル属性
+	 *
+	 * @access protected
+	 * @return BSArray ファイル属性の配列
+	 */
+	protected function getFullAttributes () {
+		$values = parent::getFullAttributes();
+		foreach (array('join', 'resign') as $action) {
+			$url = BSURL::getInstance(null, 'carrot');
+			$url['module'] = 'UserConnection';
+			$url['action'] = BSString::pascalize($action);
+			$url['record'] = $this;
+			$values[$action . '_url'] = $url->getContents();
+		}
+		return $values;
+	}
 }
 
 /* vim:set tabstop=4 */
