@@ -10,6 +10,7 @@ Subject: {$article.title}
 
 {include file=$article.body_template.path}
 
+
 今後、こうしたメールが不要でしたら、こちらまで。
 {$recipient.resign_url}
 
