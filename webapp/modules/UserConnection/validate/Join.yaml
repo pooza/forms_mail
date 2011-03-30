@@ -1,0 +1,14 @@
+# フォーム登録画面バリデーション設定ファイル
+#
+# @package jp.co.commons.forms.mail
+# @subpackage UserConnection
+# @author 小石達也 <tkoishi@b-shock.co.jp>
+
+methods:
+  - POST
+
+fields:
+  email:
+    required: yes
+    validators:
+      - email
