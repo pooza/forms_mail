@@ -17,7 +17,7 @@ class BSAndroidUserAgent extends BSWebKitUserAgent {
 	 */
 	protected function __construct ($name = null) {
 		parent::__construct($name);
-		$this->attributes['is_tablet'] = $this->isTablet();
+		$this['is_web_kit'] = true;
 	}
 
 	/**
@@ -48,7 +48,7 @@ class BSAndroidUserAgent extends BSWebKitUserAgent {
 	 */
 	public function getDisplayInfo () {
 		$info = new BSArray;
-		if (!$this->isTablet()) {
+		if ($this->isSmartPhone()) {
 			$info['width'] = 480;
 		}
 		return $info;

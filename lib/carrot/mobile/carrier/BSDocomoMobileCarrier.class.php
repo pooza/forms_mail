@@ -30,7 +30,7 @@ class BSDocomoMobileCarrier extends BSMobileCarrier {
 			$agents->sort(BSArray::SORT_KEY_DESC);
 			BSController::getInstance()->setAttribute($file, $agents);
 		}
-		$this->attributes['display_infos'] = $file->getSerialized();
+		$this['display_infos'] = $file->getSerialized();
 	}
 
 	/**
@@ -41,30 +41,6 @@ class BSDocomoMobileCarrier extends BSMobileCarrier {
 	 */
 	public function getDomainSuffix () {
 		return 'docomo.ne.jp';
-	}
-
-	/**
-	 * キャリア名の別名を返す
-	 *
-	 * @access public
-	 * @return BSArray 別名の配列
-	 */
-	public function getAlternativeNames () {
-		return new BSArray(array(
-			'imode',
-			'foma',
-			'mova',
-		));
-	}
-
-	/**
-	 * MPC向けキャリア名を返す
-	 *
-	 * @access public
-	 * @return string キャリア名
-	 */
-	public function getMPCCode () {
-		return 'FOMA';
 	}
 
 	/**
@@ -84,16 +60,6 @@ class BSDocomoMobileCarrier extends BSMobileCarrier {
 		$element->setBody($label);
 		$element->setAttribute('lcs', 'lcs');
 		return $element;
-	}
-
-	/**
-	 * 絵文字ディレクトリの名前を返す
-	 *
-	 * @access protected
-	 * @return string 絵文字ディレクトリの名前
-	 */
-	protected function getPictogramDirectoryName () {
-		return 'i';
 	}
 }
 

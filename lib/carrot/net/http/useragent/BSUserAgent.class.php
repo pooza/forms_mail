@@ -10,13 +10,10 @@
  * @author 小石達也 <tkoishi@b-shock.co.jp>
  * @abstract
  */
-abstract class BSUserAgent implements ArrayAccess, BSAssignable {
-	private $type;
-	protected $attributes;
+abstract class BSUserAgent extends BSParameterHolder {
 	protected $bugs;
 	protected $supports;
 	protected $renderDigest;
-	static private $denied;
 	const ACCESSOR = 'ua';
 	const DEFAULT_NAME = 'Mozilla/4.0';
 
@@ -25,36 +22,37 @@ abstract class BSUserAgent implements ArrayAccess, BSAssignable {
 	 * @param string $name ユーザーエージェント名
 	 */
 	protected function __construct ($name = null) {
-		$this->attributes = new BSArray;
-		$this->attributes['name'] = $name;
-		$this->attributes['type'] = $this->getType();
-		$this->attributes['type_lower'] = BSString::toLower($this->getType());
-		$this->attributes['is_' . BSString::underscorize($this->getType())] = true;
-		$this->attributes['is_mobile'] = $this->isMobile();
-		$this->attributes['is_smartphone'] = $this->isSmartPhone();
-		$this->attributes['is_legacy'] = $this->isLegacy();
-		$this->attributes['is_denied'] = $this->isDenied();
-		$this->attributes['is_attachable'] = $this->isAttachable();
-		$this->attributes['is_html5_supported'] = $this->isHTML5Supported();
 		$this->bugs = new BSArray;
 		$this->supports = new BSArray;
+		$this['name'] = $name;
+
+		mb_ereg('^BS([[:alnum:]]+)UserAgent$', get_class($this), $matches);
+		$this['type'] = $matches[1];
+		$this['type_lower'] = BSString::toLower($this->getType());
+		$this['is_' . BSString::underscorize($this->getType())] = true;
+
+		$this['is_mobile'] = $this->isMobile();
+		$this['is_smartphone'] = $this->isSmartPhone();
+		$this['is_tablet'] = $this->isTablet();
+		$this['is_legacy'] = $this->isLegacy();
+		$this['is_attachable'] = $this->isAttachable();
 	}
 
 	/**
 	 * インスタンスを生成して返す
 	 *
 	 * @access public
-	 * @param string $useragent UserAgent名
+	 * @param string $name UserAgent名
 	 * @param string $type タイプ名
 	 * @return BSUserAgent インスタンス
 	 * @static
 	 */
-	static public function getInstance ($useragent, $type = null) {
+	static public function getInstance ($name, $type = null) {
 		if (!$type) {
-			$type = self::getDefaultType($useragent);
+			$type = self::getDefaultType($name);
 		}
 		$class = BSClassLoader::getInstance()->getClass($type, 'UserAgent');
-		return new $class($useragent);
+		return new $class($name);
 	}
 
 	/**
@@ -87,41 +85,16 @@ abstract class BSUserAgent implements ArrayAccess, BSAssignable {
 	}
 
 	/**
-	 * 非対応のUserAgentか？
+	 * レガシー環境/旧機種か？
+	 *
+	 * isLecagyのエイリアス
 	 *
 	 * @access public
-	 * @return boolean 非対応のUserAgentならTrue
+	 * @return boolean レガシーならばTrue
+	 * final
 	 */
-	public function isDenied () {
-		if ($type = self::getDeniedTypes()->getParameter($this->getType())) {
-			$values = new BSArray($type);
-			if ($values['denied']) {
-				return true;
-			}
-			if ($values['legacy_denied'] && $this->isLegacy()) {
-				return true;
-			}
-
-			// $patterns変数への代入は、PHP5.1対応。
-			if (BSArray::isArray($patterns = $values['denied_patterns'])) {
-				foreach ($patterns as $pattern) {
-					if (BSString::isContain($pattern, $this->getName())) {
-						return true;
-					}
-				}
-			}
-		}
-		return false;
-	}
-
-	/**
-	 * HTML5対応か？
-	 *
-	 * @access public
-	 * @return boolean HTML5対応ならTrue
-	 */
-	public function isHTML5Supported () {
-		return false;
+	final public function isDenied () {
+		return $this->isLegacy();
 	}
 
 	/**
@@ -211,7 +184,7 @@ abstract class BSUserAgent implements ArrayAccess, BSAssignable {
 	 * @return string ユーザーエージェント名
 	 */
 	public function getName () {
-		return $this->attributes['name'];
+		return $this['name'];
 	}
 
 	/**
@@ -221,7 +194,7 @@ abstract class BSUserAgent implements ArrayAccess, BSAssignable {
 	 * @param string $name ユーザーエージェント名
 	 */
 	public function setName ($name) {
-		return $this->attributes['name'];
+		$this['name'] = $name;
 	}
 
 	/**
@@ -247,40 +220,19 @@ abstract class BSUserAgent implements ArrayAccess, BSAssignable {
 	}
 
 	/**
-	 * 属性を返す
-	 *
-	 * @access public
-	 * @param string $name 属性名
-	 * @return string 属性値
-	 */
-	public function getAttribute ($name) {
-		return $this->attributes[$name];
-	}
-
-	/**
-	 * 全ての基本属性を返す
-	 *
-	 * @access public
-	 * @return BSArray 属性の配列
-	 */
-	public function getAttributes () {
-		return $this->attributes;
-	}
-
-	/**
 	 * プラットホームを返す
 	 *
 	 * @access public
 	 * @return string プラットホーム
 	 */
 	public function getPlatform () {
-		if (!$this->attributes['platform']) {
+		if (!$this['platform']) {
 			$pattern = '^Mozilla/[[:digit:]]\\.[[:digit:]]+ \(([^;]+);';
 			if (mb_ereg($pattern, $this->getName(), $matches)) {
-				$this->attributes['platform'] = $matches[1];
+				$this['platform'] = $matches[1];
 			}
 		}
-		return $this->attributes['platform'];
+		return $this['platform'];
 	}
 
 	/**
@@ -331,16 +283,6 @@ abstract class BSUserAgent implements ArrayAccess, BSAssignable {
 			)));
 		}
 		return $this->renderDigest;
-	}
-
-	/**
-	 * アップロードボタンのラベルを返す
-	 *
-	 * @access public
-	 * @return string アップロードボタンのラベル
-	 */
-	public function getUploadButtonLabel () {
-		return '参照...';
 	}
 
 	/**
@@ -413,11 +355,7 @@ abstract class BSUserAgent implements ArrayAccess, BSAssignable {
 	 * @return string タイプ
 	 */
 	public function getType () {
-		if (!$this->type) {
-			mb_ereg('^BS([[:alnum:]]+)UserAgent$', get_class($this), $matches);
-			$this->type = $matches[1];
-		}
-		return $this->type;
+		return $this['type'];
 	}
 
 	/**
@@ -431,68 +369,6 @@ abstract class BSUserAgent implements ArrayAccess, BSAssignable {
 	}
 
 	/**
-	 * @access public
-	 * @param string $key 添え字
-	 * @return boolean 要素が存在すればTrue
-	 */
-	public function offsetExists ($key) {
-		return $this->attributes->hasParameter($key);
-	}
-
-	/**
-	 * @access public
-	 * @param string $key 添え字
-	 * @return mixed 要素
-	 */
-	public function offsetGet ($key) {
-		return $this->attributes[$key];
-	}
-
-	/**
-	 * @access public
-	 * @param string $key 添え字
-	 * @param mixed 要素
-	 */
-	public function offsetSet ($key, $value) {
-		throw new BSUserAgentException('属性を更新できません。');
-	}
-
-	/**
-	 * @access public
-	 * @param string $key 添え字
-	 */
-	public function offsetUnset ($key) {
-		throw new BSUserAgentException('属性を削除できません。');
-	}
-
-	/**
-	 * アサインすべき値を返す
-	 *
-	 * @access public
-	 * @return mixed アサインすべき値
-	 */
-	public function getAssignValue () {
-		return $this->attributes;
-	}
-
-	/**
-	 * 全てのタイプ情報を返す
-	 *
-	 * @access protected
-	 * @return BSArray 全てのタイプ情報
-	 * @static
-	 */
-	static protected function getDeniedTypes () {
-		if (!self::$denied) {
-			self::$denied = new BSArray;
-			$configure = BSConfigManager::getInstance();
-			self::$denied->setParameters($configure->compile('useragent/carrot'));
-			self::$denied->setParameters($configure->compile('useragent/application'));
-		}
-		return self::$denied;
-	}
-
-	/**
 	 * 登録済みのタイプを配列で返す
 	 *
 	 * @access private
@@ -503,9 +379,8 @@ abstract class BSUserAgent implements ArrayAccess, BSAssignable {
 		return new BSArray(array(
 			'Trident',
 			'Gecko',
-			'iPhone',
 			'Android',
-			'iPad',
+			'iOS',
 			'WebKit',
 			'Opera',
 			'Tasman',

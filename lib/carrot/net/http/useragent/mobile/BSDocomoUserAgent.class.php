@@ -21,7 +21,7 @@ class BSDocomoUserAgent extends BSMobileUserAgent {
 			$name = self::DEFAULT_NAME;
 		}
 		parent::__construct($name);
-		$this->attributes['is_foma'] = $this->isFOMA();
+		$this['is_foma'] = $this->isFOMA();
 	}
 
 	/**
@@ -86,7 +86,8 @@ class BSDocomoUserAgent extends BSMobileUserAgent {
 	 * @return BSArray 画面情報
 	 */
 	public function getDisplayInfo () {
-		foreach ($this->getCarrier()->getAttribute('display_infos') as $pattern => $values) {
+		$carrier = $this->getCarrier();
+		foreach ($carrier['display_infos'] as $pattern => $values) {
 			if (BSString::isContain($pattern, $this->getName(), true)) {
 				return new BSArray($values);
 			}

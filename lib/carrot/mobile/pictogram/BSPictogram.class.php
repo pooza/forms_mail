@@ -121,22 +121,9 @@ class BSPictogram implements BSAssignable, BSImageContainer {
 		if ($useragent->isMobile()) {
 			return $this->getNumericReference();
 		} else {
-			$images = new BSImageManager;
+			$images = $useragent->createImageManager();
 			return $images->getElement($this->getImageInfo())->getContents();
 		}
-	}
-
-	/**
-	 * 素の絵文字バイナリを返す
-	 *
-	 * @access public
-	 * @return string 素の絵文字
-	 */
-	public function getRaw () {
-		$mpc = $this->getCarrier()->getMPC();
-		$mpc->setTo($this->getCarrier()->getMPCCode());
-		$mpc->setOption(BSMobileCarrier::MPC_RAW);
-		return $mpc->encoder((int)$this->getID());
 	}
 
 	/**
@@ -152,10 +139,10 @@ class BSPictogram implements BSAssignable, BSImageContainer {
 	/**
 	 * 数値文字参照を返す
 	 *
-	 * @access private
+	 * @access public
 	 * @return string 数値文字参照
 	 */
-	private function getNumericReference () {
+	public function getNumericReference () {
 		$carrier = $this->getCarrier()->getName();
 		if (BSRequest::getInstance()->isMobile()) {
 			$carrier = BSRequest::getInstance()->getUserAgent()->getCarrier()->getName();

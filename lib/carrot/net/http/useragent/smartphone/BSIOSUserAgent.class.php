@@ -5,11 +5,20 @@
  */
 
 /**
- * iPhoneユーザーエージェント
+ * OSユーザーエージェント
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
  */
-class BSIPhoneUserAgent extends BSWebKitUserAgent {
+class BSIOSUserAgent extends BSWebKitUserAgent {
+
+	/**
+	 * @access protected
+	 * @param string $name ユーザーエージェント名
+	 */
+	protected function __construct ($name = null) {
+		parent::__construct($name);
+		$this['is_web_kit'] = true;
+	}
 
 	/**
 	 * スマートフォンか？
@@ -18,7 +27,17 @@ class BSIPhoneUserAgent extends BSWebKitUserAgent {
 	 * @return boolean スマートフォンならTrue
 	 */
 	public function isSmartPhone () {
-		return true;
+		return !$this->isTablet();
+	}
+
+	/**
+	 * タブレット型か？
+	 *
+	 * @access public
+	 * @return boolean タブレット型ならTrue
+	 */
+	public function isTablet () {
+		return BSString::isContain('iPad', $this->getName());
 	}
 
 	/**
@@ -28,9 +47,11 @@ class BSIPhoneUserAgent extends BSWebKitUserAgent {
 	 * @return BSArray 画面情報
 	 */
 	public function getDisplayInfo () {
-		return new BSArray(array(
-			'width' => 480,
-		));
+		$info = new BSArray;
+		if ($this->isSmartPhone()) {
+			$info['width'] = 480;
+		}
+		return $info;
 	}
 
 	/**
@@ -43,6 +64,7 @@ class BSIPhoneUserAgent extends BSWebKitUserAgent {
 		if (!$this->renderDigest) {
 			$this->renderDigest = BSCrypt::getDigest(new BSArray(array(
 				__CLASS__,
+				$this->isTablet(),
 			)));
 		}
 		return $this->renderDigest;
@@ -55,7 +77,7 @@ class BSIPhoneUserAgent extends BSWebKitUserAgent {
 	 * @return string パターン
 	 */
 	public function getPattern () {
-		return 'i(Phone|Pod);';
+		return 'i(Phone|Pod|Pad);';
 	}
 }
 
