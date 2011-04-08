@@ -9,7 +9,7 @@
  */
 class LoginAction extends BSAction {
 	public function execute () {
-		$url = BSURL::getInstance($this->controller->getAttribute('ROOT_URL_HTTPS'));
+		$url = BSURL::create($this->controller->getAttribute('ROOT_URL_HTTPS'));
 		$url['path'] = '/AdminConnection/';
 		return $url->redirect();
 	}
@@ -27,7 +27,7 @@ class LoginAction extends BSAction {
 
 	public function validate () {
 		$role = BSAdministratorRole::getInstance();
-		$email = BSMailAddress::getInstance($this->request['email']);
+		$email = BSMailAddress::create($this->request['email']);
 		if ($email->getContents() != $role->getMailAddress()->getContents()) {
 			$this->request->setError('email', 'ユーザー又はパスワードが違います。');
 		} else if (!$this->user->login($role, $this->request['password'])) {

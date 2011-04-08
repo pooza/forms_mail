@@ -11,7 +11,7 @@ class JoinAction extends BSRecordAction {
 		try {
 			$this->database->beginTransaction();
 			$this->getRecord()->registerRecipient(
-				BSMailAddress::getInstance($this->request['email'])
+				BSMailAddress::create($this->request['email'])
 			);
 			$this->database->commit();
 		} catch (Exception $e) {

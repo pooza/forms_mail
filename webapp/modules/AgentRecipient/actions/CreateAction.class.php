@@ -26,7 +26,7 @@ class CreateAction extends BSRecordAction {
 				throw new RuntimeException('該当する接続がありません。');
 			}
 			$connection->registerRecipient(
-				BSMailAddress::getInstance($this->request['from'])
+				BSMailAddress::create($this->request['from'])
 			);
 			$this->database->commit();
 		} catch (Exception $e) {

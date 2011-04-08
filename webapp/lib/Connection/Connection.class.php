@@ -118,7 +118,7 @@ class Connection extends BSSortableRecord {
 	 */
 	public function getRemoteFields () {
 		if (!$this->remoteFields && !BSString::isBlank($url = $this['fields_url'])) {
-			$this->remoteFields = ConnectionHandler::fetchRemoteFields(BSURL::getInstance($url));
+			$this->remoteFields = ConnectionHandler::fetchRemoteFields(BSURL::create($url));
 		}
 		return $this->remoteFields;
 	}
@@ -142,7 +142,7 @@ class Connection extends BSSortableRecord {
 	protected function getFullAttributes () {
 		$values = parent::getFullAttributes();
 		foreach (array('join', 'resign') as $action) {
-			$url = BSURL::getInstance(null, 'carrot');
+			$url = BSURL::create(null, 'carrot');
 			$url['module'] = 'UserConnection';
 			$url['action'] = BSString::pascalize($action);
 			$url['record'] = $this;

@@ -20,12 +20,8 @@ class BSDateRequestFilter extends BSRequestFilter {
 	 * @return mixed 変換後
 	 */
 	protected function convert ($key, $value) {
-		if (!!$value
-			&& !BSArray::isArray($value)
-			&& mb_ereg('(day|date)$', $key)
-			&& !in_array($key, array('weekday'))
-		) {
-			if ($date = BSDate::getInstance($value)) {
+		if (mb_ereg('(day|date)$', $key) && !in_array($key, array('weekday'))) {
+			if ($date = BSDate::create($value)) {
 				if ($date['hour'] || $date['minute'] || $date['second']) {
 					$value = $date->format('Y-m-d H:i:s');
 				} else {

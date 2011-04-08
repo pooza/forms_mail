@@ -5,14 +5,13 @@
  * @package org.carrot-framework
  * @subpackage Console
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: PurgeAction.class.php 1832 2010-02-07 08:20:32Z pooza $
  */
 class PurgeAction extends BSAction {
 	public function execute () {
 		$dirs = BSDirectoryLayout::getInstance();
 		foreach ($dirs as $name => $values) {
 			if ($values['purge']) {
-				$date = BSDate::getInstance();
+				$date = BSDate::create();
 				foreach ($values['purge'] as $key => $value) {
 					$date[$key] = '-' . $value;
 				}

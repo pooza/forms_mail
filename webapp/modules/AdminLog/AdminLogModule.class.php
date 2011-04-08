@@ -5,7 +5,6 @@
  * @package org.carrot-framework
  * @subpackage AdminLog
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: AdminLogModule.class.php 1812 2010-02-03 15:15:09Z pooza $
  */
 class AdminLogModule extends BSModule {
 	private $logger;
@@ -31,7 +30,7 @@ class AdminLogModule extends BSModule {
 	 */
 	public function getDate () {
 		if ($this->request['date']) {
-			return BSDate::getInstance($this->request['date']);
+			return BSDate::create($this->request['date']);
 		} else {
 			return $this->getLogger()->getLastDate();
 		}

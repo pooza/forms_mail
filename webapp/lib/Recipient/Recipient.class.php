@@ -47,7 +47,7 @@ class Recipient extends BSRecord {
 	 * @return BSMailAddress メールアドレス
 	 */
 	public function getMailAddress () {
-		return BSMailAddress::getInstance($this['email']);
+		return BSMailAddress::create($this['email']);
 	}
 
 	/**
@@ -82,7 +82,7 @@ class Recipient extends BSRecord {
 	 */
 	public function getAssignValue () {
 		$values = parent::getAssignValue();
-		$url = BSURL::getInstance(null, 'carrot');
+		$url = BSURL::create(null, 'carrot');
 		$url['module'] = 'UserConnection';
 		$url['action'] = 'Resign';
 		$url['record'] = $this->getConnection();

@@ -5,7 +5,6 @@
  * @package org.carrot-framework
  * @subpackage AdminFeed
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: FeedView.class.php 2250 2010-08-05 03:02:42Z pooza $
  */
 class FeedView extends BSView {
 	public function initialize () {
@@ -21,7 +20,7 @@ class FeedView extends BSView {
 		foreach ($this->request->getAttribute('entries') as $log) {
 			$entry = $this->renderer->createEntry();
 			$entry->setTitle($log['message']);
-			$entry->setDate(BSDate::getInstance($log['date']));
+			$entry->setDate(BSDate::create($log['date']));
 			$message = array(
 				'date' => $log['date'],
 				'remote_host' => $log['remote_host'],

@@ -12,7 +12,7 @@ class ResignAction extends BSRecordAction {
 	private function getRecipient () {
 		if (!$this->recipient) {
 			$this->recipient = $this->getRecord()->getRecipient(
-				BSMailAddress::getInstance($this->request['email'])
+				BSMailAddress::create($this->request['email'])
 			);
 		}
 		return $this->recipient;
