@@ -30,7 +30,7 @@
 
 		{include file='ErrorMessages'}
 
-		<table class="Detail">
+		<table class="detail">
 			<tr>
 				<th>{$module.record_class|translate}ID</th>
 				<td>{$connection.id}</td>

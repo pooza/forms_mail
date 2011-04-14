@@ -2,7 +2,9 @@
 #
 # @package __PACKAGE__
 # @author 小石達也 <tkoishi@b-shock.co.jp>
-# @version $Id: .htaccess 1534 2009-10-02 17:41:45Z pooza $
+
+# mod_authz_host
+Deny from none
 
 # mod_rewrite
 RewriteEngine on

@@ -5,7 +5,7 @@
 
 carrot:
   name: carrot Framework
-  ver: 2.4.67
+  ver: 2.4.68
 
 admin:
   email:
@@ -78,8 +78,6 @@ flash:
   player_ver: 9.0.0
   installer:
     href: /carrotlib/swf/expressInstall.swf
-home:
-  href: /index.html
 image:
   storable: yes
   mobile:

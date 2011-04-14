@@ -15,7 +15,7 @@
 
 	{include file='ErrorMessages' hide_error_code=true}
 
-	<table class="LoginPane">
+	<table>
 		<tr>
 			<th>メールアドレス</th>
 			<td>
@@ -29,7 +29,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2" class="BottomCell">
+			<td colspan="2" class="bottom">
 				<input type="submit" value="ログイン" />
 			</td>
 		</tr>

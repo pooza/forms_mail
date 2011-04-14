@@ -18,7 +18,7 @@
 {include file='ErrorMessages'}
 
 {form}
-	<table class="Detail">
+	<table class="detail">
 		<tr>
 			<th>{$module.record_class|translate}ID</th>
 			<td>{$recipient.id}</td>
