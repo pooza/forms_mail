@@ -39,7 +39,7 @@ class CreateAction extends BSRecordAction {
 
 	public function handleError () {
 		BSLogManager::getInstance()->put(
-			BSString::toString($this->request->getErrors(), '/', ':'),
+			$this->request->getErrors()->join(':', '/'),
 			$this->getModule()->getName()
 		);
 		return BSView::ERROR;
