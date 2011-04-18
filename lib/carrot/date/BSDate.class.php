@@ -38,7 +38,7 @@ class BSDate implements ArrayAccess, BSAssignable {
 		if ($flags & self::NO_INITIALIZE){
 			// 何もしない
 		} else if (BSString::isBlank($date)) {
-			$this->setNow();
+			$this->setTimestamp($_SERVER['REQUEST_TIME']);
 		} else if ($flags & self::TIMESTAMP){
 			$this->setTimestamp($date);
 		} else {
@@ -142,15 +142,6 @@ class BSDate implements ArrayAccess, BSAssignable {
 		} else {
 			throw new BSDateException($timestamp . 'は正しくないタイムスタンプです。');
 		}
-	}
-
-	/**
-	 * 現在日付に設定
-	 *
-	 * @access public
-	 */
-	public function setNow () {
-		$this->setTimestamp($_SERVER['REQUEST_TIME']);
 	}
 
 	/**
@@ -299,10 +290,9 @@ class BSDate implements ArrayAccess, BSAssignable {
 		if (!$this->validate()) {
 			throw new BSDateException('日付が初期化されていません。');
 		}
-
 		if ($date === null) {
 			$date = self::getNow();
-		} else if (BSArray::isArray($date)) {
+		} else if (is_array($date) || ($date instanceof BSArray)) {
 			$date = self::getNewest(new BSArray($date));
 		} else if (!($date instanceof BSDate)) {
 			if (!$date = self::create($date)) {

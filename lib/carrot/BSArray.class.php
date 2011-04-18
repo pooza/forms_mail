@@ -175,7 +175,7 @@ class BSArray extends BSParameterHolder {
 	}
 	static private function getFlatContents ($prefix, $arg, $glue) {
 		$contents = array();
-		if (BSArray::isArray($arg)) {
+		if (is_array($arg) || ($arg instanceof BSParameterHolder)) {
 			foreach ($arg as $key => $value) {
 				if (!BSString::isBlank($prefix)) {
 					$key = $prefix . $glue . $key;
@@ -204,14 +204,23 @@ class BSArray extends BSParameterHolder {
 	}
 
 	/**
-	 * セパレータで結合した文字列を返す
+	 * デリミタで結合した文字列を返す
 	 *
 	 * @access public
-	 * @param string $separator セパレータ
+	 * @param string $recordGlue レコードデリミタ
+	 * @param string $fieldGlue フィールドデリミタ
 	 * @return string 結果文字列
 	 */
-	public function join ($separator = null) {
-		return implode($separator, $this->getParameters());
+	public function join ($recordGlue = null, $fieldGlue = null) {
+		if (BSString::isBlank($fieldGlue)) {
+			return implode($recordGlue, $this->getParameters());
+		} else {
+			$records = new BSArray;
+			foreach ($this as $key => $value) {
+				$records[] = $key . $fieldGlue . $value;
+			}
+			return $records->join($recordGlue);
+		}
 	}
 
 	/**
@@ -260,18 +269,6 @@ class BSArray extends BSParameterHolder {
 			}
 		}
 		return $values;
-	}
-
-	/**
-	 * 配列か？
-	 *
-	 * @access public
-	 * @param mixed $value 対象
-	 * @return boolean 配列ならTrue
-	 * @static
-	 */
-	static public function isArray ($value) {
-		return is_array($value) || ($value instanceof BSArray);
 	}
 }
 
