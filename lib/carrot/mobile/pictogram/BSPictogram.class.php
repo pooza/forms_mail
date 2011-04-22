@@ -62,7 +62,7 @@ class BSPictogram implements BSAssignable, BSImageContainer {
 	 * @return string 名前
 	 */
 	public function getName () {
-		return $this->getNames()->getParameter(0);
+		return $this->getNames()->getIterator()->getFirst();
 	}
 
 	/**
@@ -192,7 +192,7 @@ class BSPictogram implements BSAssignable, BSImageContainer {
 	 */
 	public function getURL () {
 		$url = BSFileUtility::getURL('pictogram');
-		$url['path'] .= 'i/' . $this->getImageFile()->getName();
+		$url['path'] .= $this->getImageFile()->getName();
 		return $url;
 	}
 
@@ -205,7 +205,7 @@ class BSPictogram implements BSAssignable, BSImageContainer {
 	 */
 	public function getImageFile ($size = null) {
 		if (!$this->imagefile) {
-			$dir = BSMobileCarrier::getInstance()->getPictogramDirectory();
+			$dir = BSFileUtility::getDirectory('pictogram');
 			$this->imagefile = $dir->getEntry($this->getImageFileBaseName($size), 'BSImageFile');
 		}
 		return $this->imagefile;
