@@ -17,13 +17,9 @@ class BSMIMEHeader extends BSParameterHolder {
 	const WITHOUT_CRLF = 1;
 
 	/**
-	 * @access public
-	 * @param BSMIMEDocument $part メールパート
+	 * @access protected
 	 */
-	public function __construct (BSMIMEDocument $part = null) {
-		if ($part) {
-			$this->setPart($part);
-		}
+	protected function __construct () {
 	}
 
 	/**
@@ -53,16 +49,15 @@ class BSMIMEHeader extends BSParameterHolder {
 	 * @param string $name ヘッダ名
 	 * @return BSMIMEHeader ヘッダ
 	 */
-	static public function getInstance ($name) {
+	static public function create ($name) {
 		$name = self::capitalize($name);
-
 		try {
-			$class = str_replace('-', '', $name);
-			$header = BSClassLoader::getInstance()->getObject($class, 'MIMEHeader');
+			$loader = BSClassLoader::getInstance();
+			$class = $loader->getClass(str_replace('-', '', $name), 'MIMEHeader');
 		} catch (Exception $e) {
-			$header = new self;
+			$class = 'BSMIMEHeader';
 		}
-
+		$header = new $class;
 		$header->setName($name);
 		return $header;
 	}

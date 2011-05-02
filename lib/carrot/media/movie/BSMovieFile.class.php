@@ -168,7 +168,6 @@ class BSMovieFile extends BSMediaFile {
 			$info = new BSArray($info);
 			$image = new BSImageElement;
 			$image->setAttributes($info);
-			$image->registerStyleClass('deny_take_out');
 			$container->addElement($image);
 		} else {
 			$container->setBody($params['label']);
@@ -212,9 +211,7 @@ class BSMovieFile extends BSMediaFile {
 		if (!parent::validate()) {
 			return false;
 		}
-		$header = new BSContentTypeMIMEHeader;
-		$header->setContents($this->analyzeType());
-		return ($header['main_type'] == 'video');
+		return (BSMIMEUtility::getMainType($this->analyzeType()) == 'video');
 	}
 
 	/**
