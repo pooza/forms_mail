@@ -19,13 +19,9 @@ class BSHTTP extends BSSocket {
 	 * @return BSHTTPResponse レスポンス
 	 */
 	public function sendHEAD ($path = '/') {
-		$url = BSURL::create();
-		$url['host'] = $this->getHost();
-		$url['path'] = $path;
-
 		$request = new BSHTTPRequest;
 		$request->setMethod('HEAD');
-		$request->setURL($url);
+		$request->setURL($this->createRequestURL($path));
 		return $this->send($request);
 	}
 
@@ -37,13 +33,9 @@ class BSHTTP extends BSSocket {
 	 * @return BSHTTPResponse レスポンス
 	 */
 	public function sendGET ($path = '/') {
-		$url = BSURL::create();
-		$url['host'] = $this->getHost();
-		$url['path'] = $path;
-
 		$request = new BSHTTPRequest;
 		$request->setMethod('GET');
-		$request->setURL($url);
+		$request->setURL($this->createRequestURL($path));
 		return $this->send($request);
 	}
 
@@ -56,17 +48,32 @@ class BSHTTP extends BSSocket {
 	 * @return BSHTTPResponse レスポンス
 	 */
 	public function sendPOST ($path = '/', BSParameterHolder $params = null) {
-		$url = BSURL::create();
-		$url['host'] = $this->getHost();
-		$url['path'] = $path;
-
 		$request = new BSHTTPRequest;
 		$request->setMethod('POST');
 		$request->setRenderer(new BSWWWFormRenderer);
 		$request->getRenderer()->setParameters($params);
 		$request->removeHeader('Content-Transfer-Encoding');
-		$request->setURL($url);
+		$request->setURL($this->createRequestURL($path));
 		return $this->send($request);
+	}
+
+	/**
+	 * パスからリクエストURLを生成して返す
+	 *
+	 * @access protected
+	 * @param string $href パス
+	 * @return BSHTTPURL リクエストURL
+	 */
+	protected function createRequestURL ($href) {
+		$url = BSURL::create();
+		$url['host'] = $this->getHost();
+		$url['path'] = '/' . ltrim($href, '/');
+		if ($this->isSSL()) {
+			$url['scheme'] = 'https';
+		} else {
+			$url['scheme'] = 'http';
+		}
+		return $url;
 	}
 
 	/**
@@ -98,6 +105,18 @@ class BSHTTP extends BSSocket {
 			throw $exception;
 		}
 		return $response;
+	}
+
+	/**
+	 * SSLモードか？
+	 *
+	 * SSLはサポートしない。必要ならば、BSCurlHTTPを使用すること。
+	 *
+	 * @access public
+	 * @return boolean SSLモードならTrue
+	 */
+	public function isSSL () {
+		return false;
 	}
 
 	/**
