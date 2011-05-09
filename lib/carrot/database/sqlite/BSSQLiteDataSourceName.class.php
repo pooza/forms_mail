@@ -27,8 +27,11 @@ class BSSQLiteDataSourceName extends BSDataSourceName {
 	 * @access public
 	 * @return BSDatabase データベース
 	 */
-	public function getDatabase () {
-		return new BSSQLiteDatabase($this->getContents());
+	public function connect () {
+		$db = new BSSQLiteDatabase($this->getContents());
+		$db->setDSN($this);
+		$this['version'] = $db->getVersion();
+		return $db;
 	}
 }
 

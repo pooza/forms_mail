@@ -13,6 +13,8 @@
 abstract class BSDatabase extends PDO implements ArrayAccess, BSAssignable {
 	protected $tables;
 	protected $dsn;
+	protected $version;
+	protected $profiles;
 	static private $instances;
 	const WITHOUT_LOGGING = 1;
 	const WITHOUT_SERIALIZE = 2;
@@ -33,8 +35,10 @@ abstract class BSDatabase extends PDO implements ArrayAccess, BSAssignable {
 			$dsn = BSConstantHandler::getInstance()->getParameter('PDO_' . $name . '_DSN');
 			if (mb_ereg('^([[:alnum:]]+):', $dsn, $matches)) {
 				$class = BSClassLoader::getInstance()->getClass($matches[1], 'DataSourceName');
-				if (($dsn = new $class($dsn, $name)) && ($db = $dsn->getDatabase())) {
-					$db->setDSN($dsn);
+				if (($dsn = new $class($dsn, $name)) && ($db = $dsn->connect())) {
+					if ($db->isLegacy()) {
+						throw new BSDatabaseException($db . 'は旧式です。');
+					}
 					return self::$instances[$name] = $db;
 				}
 			}
@@ -62,19 +66,6 @@ abstract class BSDatabase extends PDO implements ArrayAccess, BSAssignable {
 	abstract public function getTableNames ();
 
 	/**
-	 * DSNを設定
-	 *
-	 * @access public
-	 * @param BSDataSourceName $dsn DSN
-	 */
-	public function setDSN (BSDataSourceName $dsn) {
-		$this->dsn = $dsn;
-		$this->dsn['dbms'] = $this->getDBMS();
-		$this->dsn['version'] = $this->getVersion();
-		$this->dsn['encoding'] = $this->getEncoding();
-	}
-
-	/**
 	 * 属性値を返す
 	 *
 	 * @access public
@@ -96,23 +87,22 @@ abstract class BSDatabase extends PDO implements ArrayAccess, BSAssignable {
 	}
 
 	/**
-	 * DSNを返す
+	 * DSNを設定
 	 *
 	 * @access public
-	 * @return string DSN
-	 * @final
+	 * @param BSDataSourceName $dsn DSN
 	 */
-	final public function getDSN () {
-		return $this->getAttributes();
+	public function setDSN (BSDataSourceName $dsn) {
+		$this->dsn = $dsn;
 	}
 
 	/**
 	 * バージョンを返す
 	 *
-	 * @access protected
+	 * @access public
 	 * @return float バージョン
 	 */
-	protected function getVersion () {
+	public function getVersion () {
 	}
 
 	/**
@@ -123,7 +113,7 @@ abstract class BSDatabase extends PDO implements ArrayAccess, BSAssignable {
 	 * @param string $query クエリー文字列
 	 */
 	public function query ($query) {
-		if (!$rs = parent::query($this->encodeQuery($query))) {
+		if (!$rs = parent::query($query)) {
 			$message = new BSStringFormat('実行不能なクエリーです。(%s) [%s]');
 			$message[] = $this->getError();
 			$message[] = $query;
@@ -141,25 +131,13 @@ abstract class BSDatabase extends PDO implements ArrayAccess, BSAssignable {
 	 * @param string $query クエリー文字列
 	 */
 	public function exec ($query) {
-		$r = parent::exec($this->encodeQuery($query));
-		if ($r === false) {
+		if (($r = parent::exec($query)) === false) {
 			$message = new BSStringFormat('実行不能なクエリーです。(%s) [%s]');
 			$message[] = $this->getError();
 			$message[] = $query;
 			throw new BSDatabaseException($message);
 		}
 		return $r;
-	}
-
-	/**
-	 * クエリーをエンコード
-	 *
-	 * @access protected
-	 * @param string $query クエリー文字列
-	 * @return string エンコードされたクエリー
-	 */
-	protected function encodeQuery ($query) {
-		return BSString::convertEncoding($query, $this['encoding'], 'utf-8');
 	}
 
 	/**
@@ -177,12 +155,21 @@ abstract class BSDatabase extends PDO implements ArrayAccess, BSAssignable {
 	 * テーブルのプロフィールを返す
 	 *
 	 * @access public
-	 * @param string $table テーブルの名前
+	 * @param string $name テーブルの名前
 	 * @return BSTableProfile テーブルのプロフィール
 	 */
-	public function getTableProfile ($table) {
-		$class = BSClassLoader::getInstance()->getClass($this['dbms'], 'TableProfile');
-		return new $class($table, $this);
+	public function getTableProfile ($name) {
+		if (!$this->profiles) {
+			$this->profiles = new BSArray;
+		}
+		if (!$this->profiles[$name]) {
+			if (!mb_ereg('^(BS)?(.+)Database$', get_class($this), $matches)) {
+				throw new BSDatabaseException($this . 'のクラス名が正しくありません。');
+			}
+			$class = BSClassLoader::getInstance()->getClass($matches[2], 'TableProfile');
+			$this->profiles[$name] = new $class($name, $this);
+		}
+		return $this->profiles[$name];
 	}
 
 	/**
@@ -249,6 +236,16 @@ abstract class BSDatabase extends PDO implements ArrayAccess, BSAssignable {
 	 */
 	protected function isLoggable () {
 		return !!$this->getAttribute('loggable');
+	}
+
+	/**
+	 * 旧式か
+	 *
+	 * @access public
+	 * @return boolean 旧式ならTrue
+	 */
+	public function isLegacy () {
+		return false;
 	}
 
 	/**
@@ -362,29 +359,6 @@ abstract class BSDatabase extends PDO implements ArrayAccess, BSAssignable {
 	 */
 	final public function vacuum () {
 		return $this->optimize();
-	}
-
-	/**
-	 * DBMSを返す
-	 *
-	 * @access protected
-	 * @return string DBMS名
-	 */
-	protected function getDBMS () {
-		if (!mb_ereg('^BS([[:alpha:]]+)Database$', get_class($this), $matches)) {
-			throw new BSDatabaseException(get_class($this) . 'のDBMS名が正しくありません。');
-		}
-		return $matches[1];
-	}
-
-	/**
-	 * エンコードを返す
-	 *
-	 * @access public
-	 * @return string PHPのエンコード
-	 */
-	public function getEncoding () {
-		return 'utf-8';
 	}
 
 	/**

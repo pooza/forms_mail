@@ -60,11 +60,11 @@ class BSSQLiteDatabase extends BSDatabase {
 	/**
 	 * コマンドラインを返す
 	 *
-	 * @access private
+	 * @access protected
 	 * @param string $command コマンド名
 	 * @return BSCommandLine コマンドライン
 	 */
-	private function getCommandLine ($command = 'sqlite3') {
+	protected function getCommandLine ($command = 'sqlite3') {
 		$command = new BSCommandLine('bin/' . $command);
 		$command->setDirectory(BSFileUtility::getDirectory('sqlite3'));
 		$command->push($this['file']->getPath());
@@ -123,16 +123,15 @@ class BSSQLiteDatabase extends BSDatabase {
 	/**
 	 * バージョンを返す
 	 *
-	 * @access protected
+	 * @access public
 	 * @return float バージョン
 	 */
-	protected function getVersion () {
-		if (version_compare(PHP_VERSION, '5.3', '>=') && extension_loaded('sqlite3')) {
+	public function getVersion () {
+		if (!$this->version && extension_loaded('sqlite3')) {
 			$ver = SQLite3::version();
-			return $ver['versionString'];
-		} else {
-			return '3.x';
+			$this->version = $ver['versionString'];
 		}
+		return $this->version;
 	}
 }
 

@@ -61,11 +61,11 @@ class BSPostgreSQLDatabase extends BSDatabase {
 	/**
 	 * コマンドラインを返す
 	 *
-	 * @access private
+	 * @access protected
 	 * @param string $command コマンド名
 	 * @return BSCommandLine コマンドライン
 	 */
-	private function getCommandLine ($command = 'psql') {
+	protected function getCommandLine ($command = 'psql') {
 		$command = new BSCommandLine('bin/' . $command);
 		$command->setDirectory(BSFileUtility::getDirectory('pgsql'));
 		$command->push('--host=' . $this['host']->getAddress());
@@ -87,12 +87,15 @@ class BSPostgreSQLDatabase extends BSDatabase {
 	/**
 	 * バージョンを返す
 	 *
-	 * @access protected
+	 * @access public
 	 * @return float バージョン
 	 */
-	protected function getVersion () {
-		$result = PDO::query('SELECT version() AS ver')->fetch();
-		return $result['ver'];
+	public function getVersion () {
+		if (!$this->version) {
+			$result = PDO::query('SELECT version() AS ver')->fetch();
+			$this->version = $result['ver'];
+		}
+		return $this->version;
 	}
 }
 
