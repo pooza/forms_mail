@@ -4,3 +4,4 @@
 # @author 小石達也 <tkoishi@b-shock.co.jp>
 
 Deny from all
+Options -Indexes -ExecCGI

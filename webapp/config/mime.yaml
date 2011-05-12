@@ -22,7 +22,6 @@ types:
   flv: video/x-flv
   gif: image/gif
   gz: application/x-gzip
-  h264: video/quicktime
   hmt: application/x-htmlmail-template
   htm: text/html
   html: text/html
@@ -63,6 +62,7 @@ types:
   txt: text/plain
   wma: audio/x-ms-wma
   wav: audio/x-wav
+  webm: video/webm
   wmv: video/x-ms-wmv
   yaml: text/yaml
   yml: text/yaml
