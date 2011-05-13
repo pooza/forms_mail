@@ -84,10 +84,13 @@ class BSMovieFile extends BSMediaFile {
 	 * FLVに変換して返す
 	 *
 	 * @access public
+	 * @param BSMediaConvertor $convertor コンバータ
 	 * @return BSMovieFile 変換後ファイル
 	 */
-	public function convert () {
-		$convertor = new BSFLVMediaConvertor;
+	public function convert (BSMediaConvertor $convertor = null) {
+		if (!$convertor) {
+			$convertor = new BSFLVMediaConvertor;
+		}
 		return $convertor->execute($this);
 	}
 
@@ -165,7 +168,7 @@ class BSMovieFile extends BSMediaFile {
 		$container = new BSShadowboxAnchorElement;
 		$container->setWidth($params['width_movie']);
 		$container->setHeight($params['height_movie']);
-		$container->setURL($this->getMediaURL($params));
+		$container->setURL($this->createURL($params));
 		if ($info = $params['thumbnail']) {
 			$info = new BSArray($info);
 			$image = new BSImageElement;
@@ -178,19 +181,25 @@ class BSMovieFile extends BSMediaFile {
 	}
 
 	/**
-	 * flowplayerの設定を返す
+	 * video要素を返す
 	 *
-	 * @access private
+	 * @access public
 	 * @param BSParameterHolder $params パラメータ配列
-	 * @return string JSONシリアライズされた設定
+	 * @return BSVideoElement 要素
 	 */
+	public function getVideoElement (BSParameterHolder $params) {
+		$element = new BSVideoElement;
+		$element->registerSource($this->createURL($params));
+		return $element;
+	}
+
 	private function getPlayerConfig (BSParameterHolder $params) {
 		$config = array(
 			'clip' => array(
 				'scaling' => 'fit',
 				'autoPlay' => false,
 				'autoBuffering' => true,
-				'url' => $this->getMediaURL($params)->getContents(),
+				'url' => $this->createURL($params)->getContents(),
 			),
 			'plugins' => array(
 				'controls' => array(

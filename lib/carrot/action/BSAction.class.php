@@ -17,7 +17,7 @@ abstract class BSAction implements BSHTTPRedirector, BSAssignable, BSValidatorCo
 	protected $module;
 	protected $methods;
 	protected $renderResource;
-	protected $renderDigest;
+	protected $digest;
 
 	/**
 	 * @access public
@@ -114,18 +114,16 @@ abstract class BSAction implements BSHTTPRedirector, BSAssignable, BSValidatorCo
 	}
 
 	/**
-	 * レンダーダイジェストを返す
+	 * レンダリング用ダイジェストを返す
 	 *
 	 * @access public
-	 * @return string レンダーダイジェスト
+	 * @return string ダイジェスト
 	 */
-	public function getRenderDigest () {
-		if (!$this->renderDigest) {
-			$this->renderDigest = BSCrypt::getDigest(new BSArray(array(
-				$this->getName(),
-			)));
+	public function digest () {
+		if (!$this->digest) {
+			$this->digest = BSCrypt::digest($this->getName());
 		}
-		return $this->renderDigest;
+		return $this->digest;
 	}
 
 	/**

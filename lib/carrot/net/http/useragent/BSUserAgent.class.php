@@ -13,7 +13,7 @@
 abstract class BSUserAgent extends BSParameterHolder {
 	protected $bugs;
 	protected $supports;
-	protected $renderDigest;
+	protected $digest;
 	const ACCESSOR = 'ua';
 	const DEFAULT_NAME = 'Mozilla/4.0';
 
@@ -266,23 +266,23 @@ abstract class BSUserAgent extends BSParameterHolder {
 	}
 
 	/**
-	 * レンダーダイジェストを返す
+	 * レンダリング用ダイジェストを返す
 	 *
 	 * @access public
-	 * @return string レンダーダイジェスト
+	 * @return string ダイジェスト
 	 */
-	public function getRenderDigest () {
-		if (!$this->renderDigest) {
-			$this->renderDigest = BSCrypt::getDigest(new BSArray(array(
+	public function digest () {
+		if (!$this->digest) {
+			$this->digest = BSCrypt::digest(array(
 				__CLASS__,
 				(int)$this->hasSupport('html5_video_webm'),
 				(int)$this->hasSupport('html5_video_h264'),
 				(int)$this->hasSupport('html5_audio_aac'),
 				(int)$this->hasSupport('html5_audio_mp3'),
 				(int)$this->hasSupport('html5_audio_ogg'),
-			)));
+			));
 		}
-		return $this->renderDigest;
+		return $this->digest;
 	}
 
 	/**
@@ -368,13 +368,6 @@ abstract class BSUserAgent extends BSParameterHolder {
 		return BS_IMAGE_THUMBNAIL_TYPE;
 	}
 
-	/**
-	 * 登録済みのタイプを配列で返す
-	 *
-	 * @access private
-	 * @return BSArray タイプリスト
-	 * @static
-	 */
 	static private function getTypes () {
 		return new BSArray(array(
 			'Trident',

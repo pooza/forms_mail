@@ -59,10 +59,13 @@ class BSMusicFile extends BSMediaFile {
 	 * mp3に変換して返す
 	 *
 	 * @access public
-	 * @return BSMusicFile 変換後ファイル
+	 * @param BSMediaConvertor $convertor コンバータ
+	 * @return BSMovieFile 変換後ファイル
 	 */
-	public function convert () {
-		$convertor = new BSMP3MediaConvertor;
+	public function convert (BSMediaConvertor $convertor = null) {
+		if (!$convertor) {
+			$convertor = new BSMP3MediaConvertor;
+		}
 		return $convertor->execute($this);
 	}
 
@@ -110,7 +113,7 @@ class BSMusicFile extends BSMediaFile {
 		$element->setURL(BSURL::create()->setAttribute('path', BS_MUSIC_MP3_PLAYER_HREF));
 		$element->setAttribute('width', $this['width']);
 		$element->setAttribute('height', $this['height']);
-		$element->setFlashVar('mp3', $this->getMediaURL($params)->getContents());
+		$element->setFlashVar('mp3', $this->createURL($params)->getContents());
 		$element->setFlashVar('autoload', 1);
 		$element->setFlashVar('showstop', 1);
 		$element->setFlashVar('showvolume', 1);
@@ -123,11 +126,11 @@ class BSMusicFile extends BSMediaFile {
 	 *
 	 * @access public
 	 * @param BSParameterHolder $params パラメータ配列
-	 * @return BSObjectElement 要素
+	 * @return BSAudioElement 要素
 	 */
 	public function getAudioElement (BSParameterHolder $params) {
 		$element = new BSAudioElement;
-		$element->registerSource($this->getMediaURL($params));
+		$element->registerSource($this->createURL($params));
 		return $element;
 	}
 

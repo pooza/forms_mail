@@ -36,15 +36,9 @@ class BSCookieFilter extends BSFilter {
 		}
 	}
 
-	/**
-	 * テスト用Cookieの名前を返す
-	 *
-	 * @access private
-	 * @return string テスト用Cookieの名前
-	 */
 	private function getCookieName () {
 		if (!$this->cookieName) {
-			$this->cookieName = BSCrypt::getDigest($this->controller->getName('en'));
+			$this->cookieName = BSCrypt::digest($this->controller->getName('en'));
 		}
 		return $this->cookieName;
 	}

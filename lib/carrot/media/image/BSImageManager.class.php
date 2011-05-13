@@ -390,10 +390,10 @@ class BSImageManager {
 	 * @return string サムネイル名
 	 */
 	protected function getEntryName (BSImageContainer $record, $size) {
-		return BSCrypt::getDigest(array(
+		return BSCrypt::digest(array(
 			get_class($record),
 			$record->getID(),
-			$size
+			$size,
 		));
 	}
 
@@ -444,7 +444,7 @@ class BSImageManager {
 	/**
 	 * パラメータ配列から画像コンテナを返す
 	 *
-	 * @access private
+	 * @access public
 	 * @param BSParameterHolder $params パラメータ配列
 	 * @return BSImageContainer 画像コンテナ
 	 */
