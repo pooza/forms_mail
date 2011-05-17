@@ -5,7 +5,7 @@
 
 carrot:
   name: carrot Framework
-  ver: 2.4.78
+  ver: 2.4.79
 
 admin:
   email:
@@ -251,11 +251,6 @@ smtp:
   check_addresses: no
 sqlite3:
   dir: /usr/local
-string:
-  mobile:
-    force_convert: no
-    softbank:
-      raw_output: no
 sudo:
   dir: /usr
 unzip:

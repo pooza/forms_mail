@@ -26,7 +26,7 @@ class BSExecutionFilter extends BSFilter {
 		} else {
 			$this->doView($this->doAction());
 		}
-		return true;
+		return BSController::COMPLETED;
 	}
 
 	private function doAction () {

@@ -52,7 +52,7 @@ class BSArray extends BSParameterHolder {
 	 * @param boolean $position 先頭ならTrue
 	 */
 	public function setParameter ($name, $value, $position = self::POSITION_BOTTOM) {
-		if ($name === null) {
+		if (BSString::isBlank($name)) {
 			if ($position == self::POSITION_TOP) {
 				$this->unshift($value);
 			} else {
@@ -239,7 +239,7 @@ class BSArray extends BSParameterHolder {
 	 * @access public
 	 * @return BSArray 反転した配列
 	 */
-	public function getFlipped () {
+	public function createFlipped () {
 		return new BSArray(array_flip($this->getParameters()));
 	}
 
