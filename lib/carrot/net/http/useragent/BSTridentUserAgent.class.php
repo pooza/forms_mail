@@ -7,13 +7,11 @@
 /**
  * Tridentユーザーエージェント
  *
- * Windows版 InternetExplorer 4.x以降
- *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
  */
 class BSTridentUserAgent extends BSUserAgent {
 	const DEFAULT_NAME = 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0)';
-	const FORCE_MODE_ACCESSOR = 'force_trident';
+	const ACCESSOR = 'force_trident';
 
 	/**
 	 * @access protected

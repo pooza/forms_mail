@@ -9,7 +9,7 @@
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
  */
-class BSDeniedUserAgentFilter extends BSFilter {
+class BSLegacyUserAgentFilter extends BSFilter {
 	public function initialize ($params = array()) {
 		$this['module'] = 'Default';
 		$this['action'] = 'DeniedUserAgent';

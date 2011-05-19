@@ -13,11 +13,3 @@ crypt:
 image:
   qrcode:
     size: 80
-
-module:
-  prefixes:
-    - Admin
-    - User
-    - Develop
-    - Console
-    - Agent
