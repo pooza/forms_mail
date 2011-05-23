@@ -4,6 +4,8 @@
 # @author 小石達也 <tkoishi@b-shock.co.jp>
 # @version $Id$
 
+- class: BSFakeUserAgentFilter
+- class: BSLegacyUserAgentFilter
 - class: BSPictogramRequestFilter
 - class: BSEncodingRequestFilter
 - class: BSNewLineRequestFilter
