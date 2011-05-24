@@ -123,15 +123,16 @@ class BSMovieFile extends BSMediaFile {
 	 * @return BSScriptElement 要素
 	 */
 	public function getScriptElement (BSParameterHolder $params) {
+		$serializer = new BSJSONSerializer;
 		$element = new BSScriptElement;
-		$body = new BSStringFormat('flowplayer(%s, %s, %s);');
-		$body[] = BSJavaScriptUtility::quote($params['container_id']);
-		$body[] = BSJavaScriptUtility::quote(array(
+		$statement = new BSStringFormat('flowplayer(%s, %s, %s);');
+		$statement[] = $serializer->encode($params['container_id']);
+		$statement[] = $serializer->encode(array(
 			'src' => BS_MOVIE_FLV_PLAYER_HREF,
 			'wmode' => 'transparent',
 		));
-		$body[] = $this->getPlayerConfig($params);
-		$element->setBody($body->getContents());
+		$statement[] = $serializer->encode($this->getPlayerConfig($params));
+		$element->setBody($statement);
 		return $element;
 	}
 
@@ -143,9 +144,10 @@ class BSMovieFile extends BSMediaFile {
 	 * @return BSObjectElement 要素
 	 */
 	public function getObjectElement (BSParameterHolder $params) {
+		$serializer = new BSJSONSerializer;
 		$element = new BSFlashObjectElement;
 		$element->setURL(BSURL::create()->setAttribute('path', BS_MOVIE_FLV_PLAYER_HREF));
-		$element->setFlashVar('config', $this->getPlayerConfig($params));
+		$element->setFlashVar('config', $serializer->encode($this->getPlayerConfig($params)));
 		return $element;
 	}
 
@@ -193,8 +195,15 @@ class BSMovieFile extends BSMediaFile {
 		return $element;
 	}
 
-	private function getPlayerConfig (BSParameterHolder $params) {
-		$config = array(
+	/**
+	 * flowplayerの設定値をPHP配列で返す
+	 *
+	 * @access protected
+	 * @param BSParameterHolder $params パラメータ配列
+	 * @return mixed[] 設定値
+	 */
+	protected function getPlayerConfig (BSParameterHolder $params) {
+		return array(
 			'clip' => array(
 				'scaling' => 'fit',
 				'autoPlay' => false,
@@ -204,12 +213,11 @@ class BSMovieFile extends BSMediaFile {
 			'plugins' => array(
 				'controls' => array(
 					'url' => BS_MOVIE_FLV_PLAYER_CONTROL_BAR_HREF,
-					'opacity' => 0.9,
+					'opacity' => BS_MOVIE_FLV_PLAYER_OPACITY,
 					'fullscreen' => ($params['mode'] != 'noscript'),
 				),
 			),
 		);
-		return BSJavaScriptUtility::quote($config);
 	}
 
 	/**

@@ -93,12 +93,13 @@ class BSGoogleMapsService extends BSCurlHTTP {
 		$inner->setStyle('height', $params['height']);
 		$inner->setBody('Loading...');
 
+		$serializer = new BSJSONSerializer;
 		$statement = new BSStringFormat('CarrotMapsLib.handleMap($(%s), %f, %f, %d);');
-		$statement[] = BSJavaScriptUtility::quote($inner->getID());
+		$statement[] = $serializer->encode($inner->getID());
 		$statement[] = $geocode['lat'];
 		$statement[] = $geocode['lng'];
 		$statement[] = $params['zoom'];
-		$script->setBody($statement->getContents());
+		$script->setBody($statement);
 
 		if ($params['align']) {
 			$container->setStyle('width', $params['width']);

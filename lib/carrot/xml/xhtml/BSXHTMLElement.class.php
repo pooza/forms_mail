@@ -23,9 +23,7 @@ class BSXHTMLElement extends BSXMLElement {
 	 */
 	public function __construct ($name = null, BSUserAgent $useragent = null) {
 		if (BSString::isBlank($name)) {
-			if (BSString::isBlank($name = $this->getTag())) {
-				throw new BSXMLException('XHTMLのエレメント名が正しくありません。');
-			}
+			$name = $this->getTag();
 		}
 
 		$this->styles = new BSCSSSelector;
@@ -171,26 +169,91 @@ class BSXHTMLElement extends BSXMLElement {
 	 *
 	 * @access protected
 	 * @param string $value 配置
-	 * @return BSXHTMLElement ラッパー要素
+	 * @return BSDivisionElement ラッパー要素
 	 */
 	public function setAlignment ($value) {
+		$wrapper = $this->createWrapper();
 		if ($this->getUserAgent()->isMobile()) {
-			if ($container instanceof BSDivisionElement) {
-				$container = $this;
-			} else {
-				$container = $this->wrap(new BSDivisionElement);
-			}
-			$container->setAttribute('align', $value);
+			$wrapper->setAttribute('align', $value);
 		} else {
 			if ($value == 'center') {
-				$container = $this->wrap(new BSDivisionElement);
-				$container->setStyle('width', '100%');
-			} else {
-				$container = $this;
+				$wrapper->setStyle('width', '100%');
 			}
-			$container->registerStyleClass($value);
+			$wrapper->registerStyleClass($value);
 		}
-		return $container;
+		return $wrapper;
+	}
+
+	/**
+	 * コンテナのキャプションを設定
+	 *
+	 * @access public
+	 * @param string $value キャプション
+	 * @param integer $height 高さ
+	 * @return BSDivisionElement ラッパー要素
+	 */
+	public function setCaption ($value, $height = 32) {
+		$wrapper = $this->createWrapper();
+		$element = $wrapper->addElement(new BSDivisionElement);
+		if ($this->getUserAgent()->isMobile()) {
+			$element->setAttribute('align', 'center');
+			$element = $element->createElement('font');
+			$element->setAttribute('size', '-1');
+			$element->setAttribute('color', '#888888');
+			$value .= '<br/><br/>';
+		} else {
+			$element->registerStyleClass('caption');
+			if ($wrapper->getStyle('height')) {
+				$wrapper->setStyle('height', $wrapper->getStyle('height') + $height);
+			}
+		}
+		$element->setBody($value);
+		return $wrapper;
+	}
+
+	/**
+	 * コンテナの説明文を設定
+	 *
+	 * @access public
+	 * @param string $value 説明文
+	 * @param BSArray $tags スマートタグのクラス名の配列
+	 * @param integer $height 高さ
+	 * @return BSDivisionElement ラッパー要素
+	 */
+	public function setDescription ($value, BSArray $tags = null, $height = 64) {
+		if (BSString::isBlank($value)) {
+			return $this;
+		}
+		if ($tags) {
+			$value = BSSmartTag::parse($value, $tags, new BSArray);
+		}
+
+		$wrapper = $this->createWrapper();
+		$element = $wrapper->addElement(new BSDivisionElement);
+		if ($this->getUserAgent()->isMobile()) {
+			$element->setAttribute('align', 'left');
+			$element = $element->createElement('font');
+			$element->setAttribute('size', '-1');
+			$element->setAttribute('color', '#888888');
+		} else {
+			$element->registerStyleClass('description');
+			$element->registerStyleClass('clearfix');
+			if ($wrapper->getStyle('height')) {
+				$wrapper->setStyle('height', $wrapper->getStyle('height') + $height);
+			}
+		}
+		$element->setBody($value);
+		return $wrapper;
+	}
+
+	/**
+	 * div要素のラッパーを返す
+	 *
+	 * @access protected
+	 * @return BSDivisionElement ラッパー要素
+	 */
+	protected function createWrapper () {
+		return $this->wrap(new BSDivisionElement);
 	}
 
 	/**
@@ -236,6 +299,20 @@ class BSXHTMLElement extends BSXMLElement {
 	}
 
 	/**
+	 * 子要素を生成して返す
+	 *
+	 * @access public
+	 * @param string $name 要素名
+	 * @param string $body 要素の本文
+	 * @return BSXMLElement 要素
+	 */
+	public function createElement ($name, $body = null) {
+		$element = $this->addElement(new BSXHTMLElement($name, $this->getUserAgent()));
+		$element->setBody($body);
+		return $element;
+	}
+
+	/**
 	 * 上位のタグでくくって返す
 	 *
 	 * @access public
@@ -244,7 +321,7 @@ class BSXHTMLElement extends BSXMLElement {
 	 */
 	public function wrap (BSXMLElement $parent) {
 		$parent = parent::wrap($parent);
-		$parent->setUserAgent($this->useragent);
+		$parent->setUserAgent($this->getUserAgent());
 		return $parent;
 	}
 }
