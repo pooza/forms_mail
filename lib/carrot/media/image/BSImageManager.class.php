@@ -161,15 +161,31 @@ class BSImageManager {
 	 *   self::FORCE_GIF gif形式を強制
 	 * @return BSURL URL
 	 */
-	public function getURL (BSImageContainer $record, $size, $pixel = null, $flags = null) {
+	public function createURL (BSImageContainer $record, $size, $pixel = null, $flags = null) {
 		if (!$file = $this->getFile($record, $size, $pixel, $flags)) {
 			return null;
 		}
 
 		$flags |= $this->flags;
-		$url = BSFileUtility::getURL('image_cache');
+		$url = BSFileUtility::createURL('image_cache');
 		$url['path'] .= $this->getEntryName($record, $size) . '/' . $file->getName();
 		return $url;
+	}
+
+	/**
+	 * サムネイルのURLを返す
+	 *
+	 * createURLのエイリアス
+	 *
+	 * @access public
+	 * @param BSImageContainer $record 対象レコード
+	 * @param string $size サイズ名
+	 * @param integer $pixel ピクセル数
+	 * @param integer $flags フラグのビット列
+	 * @return BSURL URL
+	 */
+	final public function getURL (BSImageContainer $record, $size, $pixel = null, $flags = null) {
+		return $this->createURL($record, $size, $pixel, $flags);
 	}
 
 	/**
@@ -265,7 +281,7 @@ class BSImageManager {
 		}
 
 		$info = new BSArray;
-		if ($url = $this->getURL($record, $size, $pixel, $flags)) {
+		if ($url = $this->createURL($record, $size, $pixel, $flags)) {
 			$info['url'] = $url->getContents();
 		}
 		$info['width'] = $image->getWidth();
