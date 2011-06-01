@@ -17,7 +17,7 @@ class DeleteAction extends BSRecordAction {
 			$this->request->setError($this->getTable()->getName(), $e->getMessage());
 			return $this->getModule()->getAction('Detail')->forward();
 		}
-		$url = BSModule::getInstance('AdminConnection')->getAction('Detail')->getURL();
+		$url = BSModule::getInstance('AdminConnection')->getAction('Detail')->createURL();
 		$url->setParameter('pane', 'ArticleList');
 		return $url->redirect();
 	}

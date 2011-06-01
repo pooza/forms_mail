@@ -5,7 +5,6 @@
  * @package org.carrot-framework
  * @subpackage DevelopTableReport
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: OptimizeAction.class.php 1834 2010-02-07 10:57:08Z pooza $
  */
 class OptimizeAction extends BSAction {
 	private $database;
@@ -20,7 +19,7 @@ class OptimizeAction extends BSAction {
 	public function execute () {
 		$this->getDatabase()->optimize();
 
-		$url = $this->getModule()->getAction('Database')->getURL();
+		$url = $this->getModule()->getAction('Database')->createURL();
 		$url->setParameter('database', $this->getDatabase()->getName());
 		return $url->redirect();
 	}
