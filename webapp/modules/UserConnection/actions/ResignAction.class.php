@@ -39,7 +39,7 @@ class ResignAction extends BSRecordAction {
 		if ($this->getRecord()) {
 			return $this->getDefaultView();
 		} else {
-			return $this->controller->getAction('not_found');
+			return $this->controller->getAction('not_found')->forward();
 		}
 	}
 
