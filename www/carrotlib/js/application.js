@@ -1,7 +1,7 @@
 /**
  * アプリケーション ユーティリティ関数
  *
- * @package jp.co.commons.forms.mail
+ * @package jp.co.b-shock.forms.mail
  * @author 小石達也 <tkoishi@b-shock.co.jp>
  */
 

@@ -1,6 +1,6 @@
 # アプリケーション定数設定ファイル - パッケージ分
 #
-# @package jo.co.commons.forms.mail
+# @package jp.co.b-shock.forms.mail
 # @author 小石達也 <tkoishi@b-shock.co.jp>
 
 package:

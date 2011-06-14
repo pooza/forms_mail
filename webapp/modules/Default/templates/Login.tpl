@@ -1,10 +1,9 @@
 {*
 ログイン画面テンプレート
 
-@package jo.co.commons.forms.mail
+@package jp.co.b-shock.forms.mail
 @subpackage Default
 @author 小石達也 <tkoishi@b-shock.co.jp>
-@version $Id$
 *}
 {assign var='styleset' value='carrot.LoginForm'}
 {assign var='body.id' value='LoginFormContainer'}

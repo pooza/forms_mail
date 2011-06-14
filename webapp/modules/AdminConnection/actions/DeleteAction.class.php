@@ -2,7 +2,7 @@
 /**
  * Deleteアクション
  *
- * @package jp.co.commons.forms.mail
+ * @package jp.co.b-shock.forms.mail
  * @subpackage AdminConnection
  * @author 小石達也 <tkoishi@b-shock.co.jp>
  */

@@ -2,10 +2,9 @@
 /**
  * Loginアクション
  *
- * @package jo.co.commons.forms.mail
+ * @package jp.co.b-shock.forms.mail
  * @subpackage Default
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id$
  */
 class LoginAction extends BSAction {
 	public function execute () {
