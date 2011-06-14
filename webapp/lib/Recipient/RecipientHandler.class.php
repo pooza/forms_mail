@@ -11,6 +11,20 @@
 class RecipientHandler extends BSTableHandler {
 
 	/**
+	 * @access public
+	 * @param string $criteria 抽出条件
+	 * @param string $order ソート順
+	 */
+	public function __construct ($criteria = null, $order = null) {
+		if (!$order) {
+			$order = new BSTableFieldSet;
+			$order->push('update_date DESC');
+			$order->push('create_date DESC');
+		}
+		parent::__construct($criteria, $order);
+	}
+
+	/**
 	 * レコード追加可能か？
 	 *
 	 * @access protected
