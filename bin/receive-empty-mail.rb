@@ -31,7 +31,7 @@ path = '/AgentRecipient/Create'
 params = []
 params.push('from=' + URI.encode(from))
 params.push('to=' + URI.encode(to))
-params.push('api_key=' + Digest::SHA1.hexdigest(path + Constants.new['BS_CRYPT_SALT']))
+params.push('api_key=' + Digest::SHA1.hexdigest("0\t" + path + Constants.new['BS_CRYPT_SALT']))
 
 Net::HTTP.start(Environment.name) do |http|
   response = http.get(path + '?' + params.join('&'))
