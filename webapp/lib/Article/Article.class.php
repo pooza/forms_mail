@@ -100,7 +100,7 @@ class Article extends BSRecord {
 	 * @access public
 	 * @param BSMailAddress $email 宛先
 	 */
-	public function putLog (BSMailAddress $email) {
+	public function log (BSMailAddress $email) {
 		$this->getLogs()->createRecord(array(
 			'article_id' => $this->getID(),
 			'email' => $email->getContents(),
@@ -176,7 +176,7 @@ class Article extends BSRecord {
 			$mail->getRenderer()->setAttribute('connection', $this->getConnection());
 			$mail->getRenderer()->setAttribute('recipient', $recipient);
 			$mail->send();
-			$this->putLog($email);
+			$this->log($email);
 		} catch (Exception $e) {
 			BSLogManager::getInstance()->put($e->getMessage(), $this);
 		}

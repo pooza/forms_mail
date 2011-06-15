@@ -19,7 +19,7 @@ class BSSendmailMailSender extends BSMailSender {
 	 */
 	public function initialize () {
 		try {
-			self::getSendmailCommand();
+			$this->createCommand();
 			return true;
 		} catch (Exception $e) {
 			return false;
@@ -33,7 +33,7 @@ class BSSendmailMailSender extends BSMailSender {
 	 * @param BSMail $mail メール
 	 */
 	public function send (BSMail $mail) {
-		$sendmail = self::getSendmailCommand();
+		$sendmail = $this->createCommand();
 		$sendmail->push('-f');
 		$sendmail->push($mail->getHeader('from')->getEntity()->getContents());
 
@@ -50,17 +50,16 @@ class BSSendmailMailSender extends BSMailSender {
 		$command->setBackground(true);
 		$command->execute();
 
-		$this->putLog($mail);
+		$this->log($mail);
 	}
 
 	/**
 	 * sendmailコマンドを返す
 	 * 
-	 * @access public
+	 * @access protected
 	 * @return BSCommandLine sendmailコマンド
-	 * @static
 	 */
-	static public function getSendmailCommand () {
+	protected function createCommand () {
 		$command = new BSCommandLine('sbin/sendmail');
 		$command->setDirectory(BSFileUtility::getDirectory('sendmail'));
 		$command->push('-i');
