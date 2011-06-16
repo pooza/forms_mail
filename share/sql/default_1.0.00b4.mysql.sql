@@ -2,4 +2,4 @@
 -- @author 小石達也 <tkoishi@b-shock.co.jp>
 
 SET NAMES 'utf8';
-ALTER TABLE `article` ADD `body_mobile` text NULL DEFAULT NULL  AFTER `body`;
+ALTER TABLE `connection` ADD `replyto_email` varchar(64) NULL DEFAULT NULL  AFTER `sender_email`;
