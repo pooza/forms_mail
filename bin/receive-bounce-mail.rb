@@ -26,20 +26,24 @@ PATTERNS = [
   /\<([^>]+)\>/,
 ]
 
-begin
-  mail = MailParser::Message.new(STDIN)
-  to = mail.to[0].addr_spec.to_s
-
-  from = nil
-  PATTERNS.each |pattern| do
+def get_address (mail)
+  PATTERNS.each do |pattern|
     if (matches = mail.body.match(pattern))
-      from = matches[1]
+      return matches[1].chomp
+    end
+    mail.part.each do |part|
+      if (matches = part.body.match(pattern))
+        return matches[1].chomp
+      end
     end
   end
+  raise 'E-mail address not found.'
+end
 
-  if not from
-    raise 'Could not parse this email.'
-  end
+begin
+  mail = MailParser::Message.new(STDIN)
+  from = get_address(mail)
+  to = mail.to[0].addr_spec.to_s.chomp
 rescue
   raise 'Could not parse this email.'
 end

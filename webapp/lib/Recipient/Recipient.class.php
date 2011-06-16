@@ -64,6 +64,16 @@ class Recipient extends BSRecord {
 	}
 
 	/**
+	 * 非アクティブ化
+	 *
+	 * @access public
+	 * @return BSMailAddress メールアドレス
+	 */
+	public function inactivate () {
+		$this->update(array('status' => 'inactive'));
+	}
+
+	/**
 	 * ラベルを返す
 	 *
 	 * @access public

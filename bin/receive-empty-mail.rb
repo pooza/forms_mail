@@ -21,8 +21,8 @@ require 'carrot/environment'
 
 begin
   mail = MailParser::Message.new(STDIN)
-  from = mail.from.addr_spec.to_s
-  to = mail.to[0].addr_spec.to_s
+  from = mail.from.addr_spec.to_s.chomp
+  to = mail.to[0].addr_spec.to_s.chomp
 rescue
   raise 'Could not parse this email.'
 end

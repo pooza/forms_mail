@@ -10,7 +10,7 @@ class JoinAction extends BSRecordAction {
 	public function execute () {
 		try {
 			$this->database->beginTransaction();
-			$this->getRecord()->registerRecipient(
+			$this->getRecord()->activateRecipient(
 				BSMailAddress::create($this->request['email'])
 			);
 			$this->database->commit();

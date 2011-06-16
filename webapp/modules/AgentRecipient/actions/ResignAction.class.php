@@ -1,19 +1,19 @@
 <?php
 /**
- * Createアクション
+ * Resignアクション
  *
  * @package jp.co.b-shock.forms.mail
  * @subpackage AgentRecipient
  * @author 小石達也 <tkoishi@b-shock.co.jp>
  */
-class CreateAction extends BSRecordAction {
+class ResignAction extends BSRecordAction {
 	private $connection;
 
 	private function getConnection () {
 		if (!$this->connection) {
 			$connections = new ConnectionHandler;
 			$this->connection = $connections->getRecord(array(
-				'emptymail_email' => $this->request['to'],
+				'sender_email' => $this->request['to'],
 			));
 		}
 		return $this->connection;
@@ -25,7 +25,7 @@ class CreateAction extends BSRecordAction {
 			if (!$connection = $this->getConnection()) {
 				throw new RuntimeException('該当する接続がありません。');
 			}
-			$connection->activateRecipient(
+			$connection->inactivateRecipient(
 				BSMailAddress::create($this->request['from'])
 			);
 			$this->database->commit();
@@ -43,6 +43,18 @@ class CreateAction extends BSRecordAction {
 			$this->getModule()->getName()
 		);
 		return BSView::ERROR;
+	}
+
+	/**
+	 * 論理バリデーション
+	 *
+	 * レコード有無のチェックはキャンセル。
+	 *
+	 * @access public
+	 * @return boolean 妥当な入力ならTrue
+	 */
+	public function validate () {
+		return true;
 	}
 }
 

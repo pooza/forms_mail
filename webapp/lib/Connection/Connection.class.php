@@ -67,7 +67,7 @@ class Connection extends BSSortableRecord {
 	 * @access public
 	 * @param BSMailAddress $email メールアドレス
 	 */
-	public function registerRecipient (BSMailAddress $email) {
+	public function activateRecipient (BSMailAddress $email) {
 		$values = new BSArray(array(
 			'connection_id' => $this->getID(),
 			'email' => $email->getContents(),
@@ -87,6 +87,23 @@ class Connection extends BSSortableRecord {
 	}
 
 	/**
+	 * 受取人を非アクティブに
+	 *
+	 * @access public
+	 * @param BSMailAddress $email メールアドレス
+	 */
+	public function inactivateRecipient (BSMailAddress $email) {
+		$values = new BSArray(array(
+			'connection_id' => $this->getID(),
+			'email' => $email->getContents(),
+			'status' => 'active',
+		));
+		if ($recipient = $this->getRecipients()->getRecord($values)) {
+			$recipient->inactivate();
+		}
+	}
+
+	/**
 	 * 受取人を登録
 	 *
 	 * @access public
@@ -94,7 +111,7 @@ class Connection extends BSSortableRecord {
 	 * @final
 	 */
 	final public function join (BSMailAddress $email) {
-		$this->registerRecipient($email);
+		$this->activateRecipient($email);
 	}
 
 	/**
