@@ -6,7 +6,7 @@
  * @subpackage AgentRecipient
  * @author 小石達也 <tkoishi@b-shock.co.jp>
  */
-class CreateAction extends BSRecordAction {
+class CreateAction extends BSAction {
 	private $connection;
 
 	private function getConnection () {

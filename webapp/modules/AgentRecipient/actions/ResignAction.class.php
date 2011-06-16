@@ -6,7 +6,7 @@
  * @subpackage AgentRecipient
  * @author 小石達也 <tkoishi@b-shock.co.jp>
  */
-class ResignAction extends BSRecordAction {
+class ResignAction extends BSAction {
 	private $connection;
 
 	private function getConnection () {
@@ -43,18 +43,6 @@ class ResignAction extends BSRecordAction {
 			$this->getModule()->getName()
 		);
 		return BSView::ERROR;
-	}
-
-	/**
-	 * 論理バリデーション
-	 *
-	 * レコード有無のチェックはキャンセル。
-	 *
-	 * @access public
-	 * @return boolean 妥当な入力ならTrue
-	 */
-	public function validate () {
-		return true;
 	}
 }
 
