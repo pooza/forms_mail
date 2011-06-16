@@ -7,6 +7,9 @@
 From: {$connection.sender_email}
 To: {$recipient.email}
 Subject: {$article.title}
+{if $connection.replyto_email}
+Reply-To: {$connection.replyto_email}
+{/if}
 
 {include file=$article.body_template.path}
 
