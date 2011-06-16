@@ -4,5 +4,6 @@ connection_id,接続
 fields_url,フィールド取得APIのURL
 members_url,メンバー取得APIのURL
 sender_email,送信時メールアドレス
+replyto_email,返信先メールアドレス
 emptymail_email,空メール受信用メールアドレス
 emptymail_reply_body,空メール受信時の返信文面

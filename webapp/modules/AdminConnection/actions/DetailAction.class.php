@@ -20,6 +20,7 @@ class DetailAction extends BSRecordAction {
 			'fields_url' => $this->request['fields_url'],
 			'members_url' => $this->request['members_url'],
 			'sender_email' => $this->request['sender_email'],
+			'replyto_email' => $this->request['replyto_email'],
 			'emptymail_email' => $this->request['emptymail_email'],
 			'emptymail_reply_body' => $this->request['emptymail_reply_body'],
 		);

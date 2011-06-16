@@ -31,6 +31,13 @@
 			</td>
 		</tr>
 		<tr>
+			<th>返信先メールアドレス</th>
+			<td>
+				<input type="text" name="replyto_email" value="{$params.replyto_email}" size="32" maxlength="64" class="english"/><br/>
+				<span class="alert">配信記事に「返信」した場合の宛先です。バウンスメールの自動処理を行う場合に指定してください。</span>
+			</td>
+		</tr>
+		<tr>
 			<th>フィールド取得APIのURL</th>
 			<td>
 				<input type="text" name="fields_url" value="{$params.fields_url}" size="64" maxlength="128" class="english"/>
