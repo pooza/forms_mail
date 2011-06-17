@@ -99,8 +99,8 @@ abstract class BSMobileUserAgent extends BSUserAgent {
 	 * @return string 規定の画像形式
 	 */
 	public function getDefaultImageType () {
-		$constants = BSConstantHandler::getInstance();
-		return $constants['IMAGE_MOBILE_TYPE_' . $this->getCarrier()->getName()];
+		$constants = new BSConstantHandler('IMAGE_MOBILE_TYPE');
+		return $constants[$this->getCarrier()->getName()];
 	}
 
 	/**
@@ -146,7 +146,7 @@ abstract class BSMobileUserAgent extends BSUserAgent {
 	 */
 	public function createMovieElement (BSParameterHolder $params) {
 		$container = new BSDivisionElement;
-		$container->addElement($anchor = new BSAnchorElement);
+		$anchor = $container->addElement(new BSAnchorElement);
 		$anchor->setURL($params['url']);
 		$anchor->setBody($params['label']);
 		return $container;
