@@ -15,7 +15,7 @@ Reply-To: {$connection.replyto_email}
 
 
 今後、こうしたメールが不要でしたら、こちらまで。
-{$recipient.resign_url}
+{$connection.resign_url}
 
 =====
 {const name='app_name_ja'}

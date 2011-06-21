@@ -83,23 +83,6 @@ class Recipient extends BSRecord {
 	public function getLabel ($language = 'ja') {
 		return $this['email'];
 	}
-
-	/**
-	 * アサインすべき値を返す
-	 *
-	 * @access public
-	 * @return mixed アサインすべき値
-	 */
-	public function getAssignValue () {
-		$values = parent::getAssignValue();
-		$url = BSURL::create(null, 'carrot');
-		$url['module'] = 'UserConnection';
-		$url['action'] = 'Resign';
-		$url['record'] = $this->getConnection();
-		$url->setParameter('email', $this['email']);
-		$values['resign_url'] = $url->getShortURL()->getContents();
-		return $values;
-	}
 }
 
 /* vim:set tabstop=4 */
