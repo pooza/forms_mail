@@ -146,16 +146,43 @@
 <div id="RecipientList" class="panel"></div>
 
 <script type="text/javascript">
-document.observe('dom:loaded', function(){ldelim}
-  new ProtoTabs('Tabs', {ldelim}
-    defaultPanel:'{$params.pane|default:'DetailForm'}',
-    ajaxUrls: {ldelim}
+{literal}
+document.observe('dom:loaded', function () {
+  var pane = 'DetailForm';
+  if (CarrotLib.getQueryParameter('pane')) {
+    pane = CarrotLib.getQueryParameter('pane');
+  }
+
+  new ProtoTabs('Tabs', {
+    defaultPanel: pane,
+    ajaxUrls: {
       ArticleList: '/AdminArticle/List',
       RecipientList: '/AdminRecipient/List'
-    {rdelim}
-  {rdelim});
-{rdelim});
+    }
+  });
+});
+
+function updateRecipientList () {
+  var params = {};
+  params.page = 1;
+  params.key = $('key').value;
+  params.status = $('status').value;
+  new Ajax.Updater('RecipientList', '/AdminRecipient/List?' + $H(params).toQueryString());
+}
+
+function clearRecipientCriteria () {
+  new Ajax.Request('/AdminRecipient/ListAll', {
+    onComplete: function (response) {
+      new Ajax.Updater('RecipientList', '/AdminRecipient/List');
+    },
+    onError: function (response) {
+      alert('受取人一覧を取得できませんでした。');
+    }
+  });
+}
+{/literal}
 </script>
+
 
 {include file='AdminFooter'}
 

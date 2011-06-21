@@ -8,6 +8,16 @@
 
 <h2>■ {$action.title}</h2>
 
+<form onsubmit='return false;' class="common_block">
+	<input type="text" id="key" value="{$params.key}" />
+	<select id="status">
+		<option value="">状態...</option>
+		{html_options options=$status_options selected=$params.status}
+	</select>
+	<input type="button" value="抽出" onclick="javascript:void(updateRecipientList())" />
+	<input type="button" value="抽出の解除" onclick="javascript:void(clearRecipientCriteria())" />
+</form>
+
 <div class="alert">
 	空メールによって登録された受取人のみです。
 	「メンバー取得API」による受取人を含みません。
@@ -15,13 +25,13 @@
 
 <table>
 	<tr>
-		<th width="240">メールアドレス</th>
+		<th width="360">メールアドレス</th>
 		<th width="120">登録日</th>
 	</tr>
 
 {foreach from=$recipients item='recipient' name='recipients'}
 	<tr class="{$recipient.status}">
-		<td width="240"><a href="/{$module.name}/Detail/{$recipient.id}">{$recipient.email}</a></td>
+		<td width="360"><a href="/{$module.name}/Detail/{$recipient.id}">{$recipient.email}</a></td>
 		<td width="120" align="center">
 			{$recipient.create_date|date_format:'Y-m-d(ww) H:i'}
 		</td>

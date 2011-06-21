@@ -15,6 +15,13 @@ class ListAction extends BSPaginateTableAction {
 		if (!$this->criteria) {
 			$this->criteria = $this->createCriteriaSet();
 			$this->criteria->register('connection_id', $this->getModule()->getConnection());
+
+			if ($key = $this->request['key']) {
+				$this->criteria->register('email', '%' . $key . '%', 'LIKE');
+			}
+			if ($status = $this->request['status']) {
+				$this->criteria->register('status', $status);
+			}
 		}
 		return $this->criteria;
 	}

@@ -1,0 +1,9 @@
+# モジュール設定ファイル
+#
+# @package jp.co.b-shock.forms.mail
+# @subpackage AdminRecipient
+# @author 小石達也 <tkoishi@b-shock.co.jp>
+
+actions:
+  ListAll:
+    view: BSJSONView
