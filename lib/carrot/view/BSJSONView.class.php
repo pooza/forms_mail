@@ -48,6 +48,9 @@ class BSJSONView extends BSView {
 			}
 			$renderer = $dest;
 		}
+		if (!($renderer instanceof BSJSONRenderer)) {
+			throw new BSViewException(get_class($renderer) . 'をセットできません。');
+		}
 		parent::setRenderer($renderer, $flags);
 	}
 
@@ -66,6 +69,16 @@ class BSJSONView extends BSView {
 			$params['errors'] = $this->request->getErrors();
 		}
 		parent::render();
+	}
+
+	/**
+	 * HTTPキャッシュ有効か
+	 *
+	 * @access public
+	 * @return boolean 有効ならTrue
+	 */
+	public function isCacheable () {
+		return false;
 	}
 }
 
