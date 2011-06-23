@@ -5,7 +5,6 @@
  * @package org.carrot-framework
  * @subpackage Default
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: PingAction.class.php 1812 2010-02-03 15:15:09Z pooza $
  */
 class PingAction extends BSAction {
 	public function execute () {
@@ -16,6 +15,10 @@ class PingAction extends BSAction {
 			$this->request->setError('database', $e->getMessage());
 			return BSView::ERROR;
 		}
+	}
+
+	protected function getViewClass () {
+		return 'BSJSONView';
 	}
 }
 

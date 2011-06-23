@@ -5,7 +5,6 @@
  * @package org.carrot-framework
  * @subpackage AdminUtility
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: GetGeocodeAction.class.php 2299 2010-08-21 10:31:55Z pooza $
  */
 class GetGeocodeAction extends BSAction {
 	public function execute () {
@@ -21,6 +20,10 @@ class GetGeocodeAction extends BSAction {
 		)));
 		$this->request->setAttribute('renderer', $json);
 		return BSView::SUCCESS;
+	}
+
+	protected function getViewClass () {
+		return 'BSJSONView';
 	}
 }
 
