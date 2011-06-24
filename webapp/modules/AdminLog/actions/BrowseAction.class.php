@@ -5,10 +5,19 @@
  * @package org.carrot-framework
  * @subpackage AdminLog
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: BrowseAction.class.php 1812 2010-02-03 15:15:09Z pooza $
  */
 class BrowseAction extends BSAction {
 	private $exception;
+
+	/**
+	 * タイトルを返す
+	 *
+	 * @access public
+	 * @return string タイトル
+	 */
+	public function getTitle () {
+		return '管理ログ';
+	}
 
 	public function execute () {
 		$this->request->setAttribute('dates', $this->getModule()->getDates());

@@ -5,9 +5,19 @@
  * @package org.carrot-framework
  * @subpackage AdminMemcache
  * @author 小石達也 <tkoishi@b-shock.co.jp>
- * @version $Id: SummaryAction.class.php 1835 2010-02-07 11:07:26Z pooza $
  */
 class SummaryAction extends BSAction {
+
+	/**
+	 * タイトルを返す
+	 *
+	 * @access public
+	 * @return string タイトル
+	 */
+	public function getTitle () {
+		return 'Memcacheの状態';
+	}
+
 	public function execute () {
 		try {
 			if ($server = BSMemcacheManager::getInstance()->getServer()) {

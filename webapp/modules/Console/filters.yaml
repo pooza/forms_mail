@@ -3,6 +3,5 @@
 # @package org.carrot-framework
 # @subpackage Console
 # @author 小石達也 <tkoishi@b-shock.co.jp>
-# @version $Id: filters.yaml 2320 2010-08-28 10:14:32Z pooza $
 
 - class: BSConsoleSecurityFilter
