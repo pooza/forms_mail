@@ -8,8 +8,6 @@
  * @version $Id: LoginView.class.php 2429 2010-11-16 11:17:25Z pooza $
  */
 class LoginView extends BSSmartyView {
-	public function execute () {
-	}
 
 	/**
 	 * HTTPキャッシュ有効か
