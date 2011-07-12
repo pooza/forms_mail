@@ -75,24 +75,16 @@ class BSXMLDocument extends BSXMLElement implements BSTextRenderer {
 	 * @return string XML文書
 	 */
 	public function getContents () {
-		$xml = new DOMDocument('1.0', 'utf-8');
-		$xml->loadXML('<?xml version="1.0" encoding="utf-8" ?>' . parent::getContents());
-		$xml->formatOutput = true;
-		$xml->normalizeDocument();
-		return $xml->saveXML();
-	}
-
-	/**
-	 * XMLをパースして要素と属性を抽出
-	 *
-	 * @access public
-	 * @param $string $contents XML文書
-	 */
-	public function setContents ($contents) {
+		$contents = '<?xml version="1.0" encoding="utf-8" ?>' . parent::getContents();
 		if ($this->isDirty()) {
-			$contents = mb_ereg_replace('[+&]', '', $contents);
+			return $contents;
+		} else {
+			$xml = new DOMDocument('1.0', 'utf-8');
+			$xml->loadXML($contents);
+			$xml->formatOutput = true;
+			$xml->normalizeDocument();
+			return $xml->saveXML();
 		}
-		parent::setContents($contents);
 	}
 
 	/**
