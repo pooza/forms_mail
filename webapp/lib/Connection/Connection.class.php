@@ -156,8 +156,8 @@ class Connection extends BSSortableRecord {
 	 * @access protected
 	 * @return BSArray ファイル属性の配列
 	 */
-	protected function getFullAttributes () {
-		$values = parent::getFullAttributes();
+	protected function getSerializableValues () {
+		$values = parent::getSerializableValues();
 		foreach (array('join', 'resign') as $action) {
 			$url = BSURL::create(null, 'carrot');
 			$url['module'] = 'UserConnection';

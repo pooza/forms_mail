@@ -168,7 +168,7 @@ class Article extends BSRecord {
 
 			$mail = new BSSmartyMail;
 			$mail->getRenderer()->setTemplate('Article.mail');
-			$params = $this->getAssignValue();
+			$params = $this->getAssignableValues();
 			if ($email->isMobile() && !BSString::isBlank($this['body_mobile'])) {
 				$params['body_template'] = $this->getAttachmentInfo('body_mobile_template');
 			}
