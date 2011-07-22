@@ -33,7 +33,7 @@ class Article extends BSRecord {
 	public function update ($values, $flags = null) {
 		parent::update($values, $flags);
 		foreach (array('body', 'body_mobile') as $field) {
-			$file = BSFileUtility::getTemporaryFile();
+			$file = BSFileUtility::createTemporaryFile();
 			$file->setContents($this[$field]);
 			$this->setAttachment($file, $field . '_template');
 		}
