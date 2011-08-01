@@ -3,7 +3,6 @@
  
 @package org.carrot-framework
 @author 小石達也 <tkoishi@b-shock.co.jp>
-@version $Id: BSException.mail.tpl 2160 2010-06-19 14:54:59Z pooza $
 *}
 Subject: [{const name='app_name_ja'}] {$priority}
 
@@ -18,3 +17,5 @@ Subject: [{const name='app_name_ja'}] {$priority}
 ブラウザ:
 {$useragent.type}系
 {$useragent.name}
+
+{* vim: set tabstop=4: *}
