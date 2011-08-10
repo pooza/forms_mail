@@ -41,8 +41,7 @@ class CreateAction extends BSRecordAction {
 
 	public function getDefaultView () {
 		if (!$this->request['submit']) {
-			$date = BSDate::getNow()->setAttribute('day', '+1');
-			$date->setHasTime(false);
+			$date = BSDate::getNow()->setParameter('day', '+1');
 			$this->request['publish_date'] = $date->format('Y-m-d H:i');
 		}
 		$connection = $this->getModule()->getConnection();
