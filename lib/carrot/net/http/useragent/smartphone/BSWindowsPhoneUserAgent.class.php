@@ -5,11 +5,11 @@
  */
 
 /**
- * iOSユーザーエージェント
+ * Windows Phoneユーザーエージェント
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
  */
-class BSIOSUserAgent extends BSWebKitUserAgent {
+class BSWindowsPhoneUserAgent extends BSTridentUserAgent {
 
 	/**
 	 * @access protected
@@ -17,8 +17,8 @@ class BSIOSUserAgent extends BSWebKitUserAgent {
 	 */
 	protected function __construct ($name = null) {
 		parent::__construct($name);
-		$this['is_web_kit'] = true;
-		$this->supports['flash'] = false;
+		$this['is_trident'] = true;
+		$this->supports['flash'] = (7 < $this->getVersion());;
 	}
 
 	/**
@@ -28,17 +28,7 @@ class BSIOSUserAgent extends BSWebKitUserAgent {
 	 * @return boolean スマートフォンならTrue
 	 */
 	public function isSmartPhone () {
-		return !$this->isTablet();
-	}
-
-	/**
-	 * タブレット型か？
-	 *
-	 * @access public
-	 * @return boolean タブレット型ならTrue
-	 */
-	public function isTablet () {
-		return BSString::isContain('iPad', $this->getName());
+		return true;
 	}
 
 	/**
@@ -49,26 +39,8 @@ class BSIOSUserAgent extends BSWebKitUserAgent {
 	 */
 	public function getDisplayInfo () {
 		$info = new BSArray;
-		if ($this->isSmartPhone()) {
-			$info['width'] = 480;
-		}
+		$info['width'] = 320;
 		return $info;
-	}
-
-	/**
-	 * レンダリング用ダイジェストを返す
-	 *
-	 * @access public
-	 * @return string ダイジェスト
-	 */
-	public function digest () {
-		if (!$this->digest) {
-			$this->digest = BSCrypt::digest(array(
-				__CLASS__,
-				$this->isTablet(),
-			));
-		}
-		return $this->digest;
 	}
 
 	/**
@@ -78,7 +50,7 @@ class BSIOSUserAgent extends BSWebKitUserAgent {
 	 * @return string パターン
 	 */
 	public function getPattern () {
-		return 'i(Phone|Pod|Pad);';
+		return 'Windows Phone';
 	}
 }
 
