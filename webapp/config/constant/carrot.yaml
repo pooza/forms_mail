@@ -5,7 +5,7 @@
 
 carrot:
   name: carrot Framework
-  ver: 2.4.118
+  ver: 2.4.119
 
 admin:
   email:
@@ -25,7 +25,10 @@ app:
     seconds: 60
   force_https: no
   process:
-    uid: nobody
+    uid:
+      default: nobody
+      darwin: www
+      freebsd: www
 author:
   name:
   email:
