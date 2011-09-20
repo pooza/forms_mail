@@ -95,7 +95,15 @@ abstract class BSMediaConvertor {
 			}
 			$command->push($file->getPath());
 			$this->output = $command->getResult()->join("\n");
-			BSLogManager::getInstance()->put($source . 'を変換しました。', $this);
+
+			if ($size = $file->getSize()) {
+				$message = new BSStringFormat('%sを変換しました。 (%sB)');
+				$message[] = $source;
+				$message[] = BSNumeric::getBinarySize($size);
+				BSLogManager::getInstance()->put($message, $this);
+			} else {
+				throw new BSMediaException($source . 'の変換に失敗しました。');
+			}
 		}
 		return BSUtility::executeMethod($this->getClass(), 'search', array($file));
 	}
@@ -132,11 +140,14 @@ abstract class BSMediaConvertor {
 	 *
 	 * @access public
 	 * @param string $name 定数名
+	 * @param BSPlatform $platform 対象プラットフォーム
 	 * @return string 定数値
 	 */
-	public function getConstant ($name) {
-		$constants = new BSConstantHandler('FFMPEG_CONVERT_' . ltrim($this->getSuffix(), '.'));
-		return $constants[$name];
+	public function getConstant ($name, $platform = null) {
+		if (!$platform) {
+			$platform = BSController::getInstance()->getPlatform();
+		}
+		return $platform->getMediaConverterConstant($this->getName() . '_' . $name);
 	}
 
 	/**
