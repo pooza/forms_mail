@@ -96,13 +96,14 @@ abstract class BSMediaConvertor {
 			$command->push($file->getPath());
 			$this->output = $command->getResult()->join("\n");
 
+			$message = new BSStringFormat('%sを変換しました。(%s)');
+			$message[] = $source;
 			if ($size = $file->getSize()) {
-				$message = new BSStringFormat('%sを変換しました。 (%sB)');
-				$message[] = $source;
-				$message[] = BSNumeric::getBinarySize($size);
+				$message[] = BSNumeric::getBinarySize($size) . 'B';
 				BSLogManager::getInstance()->put($message, $this);
 			} else {
-				throw new BSMediaException($source . 'の変換に失敗しました。');
+				$message[] = 'failed: ' . $command->getContents();
+				throw new BSMediaException($message);
 			}
 		}
 		return BSUtility::executeMethod($this->getClass(), 'search', array($file));
@@ -140,14 +141,11 @@ abstract class BSMediaConvertor {
 	 *
 	 * @access public
 	 * @param string $name 定数名
-	 * @param BSPlatform $platform 対象プラットフォーム
 	 * @return string 定数値
 	 */
-	public function getConstant ($name, $platform = null) {
-		if (!$platform) {
-			$platform = BSController::getInstance()->getPlatform();
-		}
-		return $platform->getMediaConverterConstant($this->getName() . '_' . $name);
+	public function getConstant ($name) {
+		$constants = new BSConstantHandler('FFMPEG_CONVERT_' . ltrim($this->getSuffix(), '.'));
+		return $constants[$name];
 	}
 
 	/**
@@ -168,19 +166,7 @@ abstract class BSMediaConvertor {
 			'padding_top' => 'paddtop',
 			'padding_bottom' => 'padbottom',
 			'strict' => 'strict',
-
-			// libmp3lame
-			'audio_sampling' => 'ar',
-
-			// libx264
-			'gop_length' => 'g',
-			'qp_curve_compression' => 'qcomp',
-			'quantizer_min' => 'qmin',
-			'quantizer_max' => 'qmax',
-			'max_qp_step' => 'qdiff',
-			'subq' => 'subq',
-			'me_range' => 'me_range',
-			'i_qfactor' => 'i_qfactor',
+			'vpre' => 'vpre',
 		));
 	}
 
