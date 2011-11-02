@@ -12,6 +12,12 @@
 interface BSSerializeStorage {
 
 	/**
+	 * @access public
+	 * @param BSSerializer $serializer
+	 */
+	public function __construct (BSSerializer $serializer = null);
+
+	/**
 	 * 初期化
 	 *
 	 * @access public

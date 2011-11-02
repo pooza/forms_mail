@@ -11,6 +11,20 @@
  */
 class BSDefaultSerializeStorage implements BSSerializeStorage {
 	private $attributes;
+	private $serializer;
+
+	/**
+	 * @access public
+	 * @param BSSerializer $serializer
+	 */
+	public function __construct (BSSerializer $serializer = null) {
+		if (!$serializer) {
+			$classes = BSClassLoader::getInstance();
+			$serializer = $classes->getObject(BS_SERIALIZE_SERIALIZER, 'Serializer');
+		}
+		$this->serializer = $serializer;
+		$this->attributes = new BSArray;
+	}
 
 	/**
 	 * 初期化
@@ -19,12 +33,8 @@ class BSDefaultSerializeStorage implements BSSerializeStorage {
 	 * @return string 利用可能ならTrue
 	 */
 	public function initialize () {
-		$this->getDirectory()->setDefaultSuffix($this->getSerializer()->getSuffix());
+		$this->getDirectory()->setDefaultSuffix($this->serializer->getSuffix());
 		return $this->getDirectory()->isWritable();
-	}
-
-	private function getSerializer () {
-		return BSSerializeHandler::getInstance()->getSerializer();
 	}
 
 	private function getDirectory () {
@@ -41,8 +51,7 @@ class BSDefaultSerializeStorage implements BSSerializeStorage {
 	 */
 	public function setAttribute ($name, $value) {
 		$file = $this->getDirectory()->createEntry($name);
-		$file->setMode(0666);
-		$file->setContents($serialized = $this->getSerializer()->encode($value));
+		$file->setContents($serialized = $this->serializer->encode($value));
 		$this->attributes[$name] = $value;
 		return $serialized;
 	}
@@ -54,11 +63,10 @@ class BSDefaultSerializeStorage implements BSSerializeStorage {
 	 * @param string $name 属性の名前
 	 */
 	public function removeAttribute ($name) {
-		if ($this->getAttribute($name)) {
-			$file = $this->getDirectory()->getEntry($name);
+		if ($file = $this->getDirectory()->getEntry($name)) {
 			$file->delete();
-			unset($this->attributes[$name]);
 		}
+		$this->attributes->removeParameter($name);
 	}
 
 	/**
@@ -70,17 +78,12 @@ class BSDefaultSerializeStorage implements BSSerializeStorage {
 	 * @return mixed 属性値
 	 */
 	public function getAttribute ($name, BSDate $date = null) {
-		if (!isset($this->attributes[$name])) {
-			$this->attributes[$name] = null;
-
-			if (!$file = $this->getDirectory()->getEntry($name)) {
-				return null;
-			} else if (!$file->isReadable()) {
-				return null;
-			} else if ($date && $file->getUpdateDate()->isPast($date)) {
-				return null;
+		if (!$this->attributes->hasParameter($name)) {
+			if (($file = $this->getDirectory()->getEntry($name)) && $file->isReadable()) {
+				if (!$date || !$file->getUpdateDate()->isPast($date)) {
+					$this->attributes[$name] = $this->serializer->decode($file->getContents());
+				}
 			}
-			$this->attributes[$name] = $this->getSerializer()->decode($file->getContents());
 		}
 		return $this->attributes[$name];
 	}
@@ -93,10 +96,9 @@ class BSDefaultSerializeStorage implements BSSerializeStorage {
 	 * @return BSDate 更新日
 	 */
 	public function getUpdateDate ($name) {
-		if (!$file = $this->getDirectory()->getEntry($name)) {
-			return null;
+		if ($file = $this->getDirectory()->getEntry($name)) {
+			return $file->getUpdateDate();
 		}
-		return $file->getUpdateDate();
 	}
 }
 
