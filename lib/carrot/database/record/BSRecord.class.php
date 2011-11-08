@@ -18,6 +18,7 @@ abstract class BSRecord implements ArrayAccess,
 	protected $url;
 	protected $criteria;
 	protected $records;
+	protected $digest;
 
 	/**
 	 * @access public
@@ -361,12 +362,11 @@ abstract class BSRecord implements ArrayAccess,
 		if ($old = $this->getAttachment($name)) {
 			$old->delete();
 		}
-		$file->setMode(0666);
-		$file->setBinary(true);
 		if (BSString::isBlank($suffix = $file->getSuffix())) {
+			$file->setBinary(true);
 			$suffix = BSMIMEType::getSuffix($file->analyzeType());
 		}
-		$file->rename($this->getAttachmentBaseName($name) . $suffix);
+		$file->rename($this->getAttachmentBaseName($name) . BSString::toLower($suffix));
 		$file->moveTo($this->getTable()->getDirectory());
 	}
 
@@ -611,13 +611,19 @@ abstract class BSRecord implements ArrayAccess,
 	}
 
 	/**
-	 * シリアライズのダイジェストを返す
+	 * ダイジェストを返す
 	 *
 	 * @access public
-	 * @return string 属性名
+	 * @return string ダイジェスト
 	 */
-	public function digestSerialized () {
-		return sprintf('%s.%08d', get_class($this), $this->getID());
+	public function digest () {
+		if (!$this->digest) {
+			$this->digest = BSCrypt::digest(array(
+				get_class($this),
+				$this->getID(),
+			));
+		}
+		return $this->digest;
 	}
 
 	/**

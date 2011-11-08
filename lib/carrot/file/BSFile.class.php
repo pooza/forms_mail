@@ -45,7 +45,6 @@ class BSFile extends BSDirectoryEntry implements BSRenderer, BSSerializable {
 		if (!$this->id) {
 			$this->id = BSCrypt::digest(array(
 				$this->getPath(),
-				$this->getType(),
 				$this->getSize(),
 				fileinode($this->getPath()),
 				$this->getUpdateDate()->getTimestamp(),
@@ -100,10 +99,15 @@ class BSFile extends BSDirectoryEntry implements BSRenderer, BSSerializable {
 		}
 		if (extension_loaded('fileinfo') && defined('FILEINFO_MIME_TYPE')) {
 			$finfo = new finfo(FILEINFO_MIME_TYPE);
-			return $finfo->file($this->getPath());
+			$type = $finfo->file($this->getPath());
 		} else {
-			return BSController::getInstance()->getPlatform()->analyzeFile($this);
+			$type = BSController::getInstance()->getPlatform()->analyzeFile($this);
 		}
+
+		if (BSString::isBlank($type)) {
+			$type = BSMIMEType::DEFAULT_TYPE;
+		}
+		return $type;
 	}
 
 	/**
@@ -466,16 +470,13 @@ class BSFile extends BSDirectoryEntry implements BSRenderer, BSSerializable {
 	}
 
 	/**
-	 * シリアライズのダイジェストを返す
+	 * ダイジェストを返す
 	 *
 	 * @access public
-	 * @return string 属性名
+	 * @return string ダイジェスト
 	 */
-	public function digestSerialized () {
-		$name = new BSArray(get_class($this));
-		$name->merge(explode('/', $this->getShortPath()));
-		$name->trim();
-		return $name->join('.');
+	public function digest () {
+		return $this->getID();
 	}
 
 	/**
