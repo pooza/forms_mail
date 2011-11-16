@@ -120,9 +120,7 @@ class BSBackupManager {
 		$this->restoreDatabase($dir);
 		$this->restoreDirectories($dir);
 		$this->restoreSerializes($dir);
-
 		$dir->delete();
-		BSRenderManager::getInstance()->clear();
 	}
 
 	private function restoreDatabase (BSDirectory $dir) {
