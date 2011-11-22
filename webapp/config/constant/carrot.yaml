@@ -5,7 +5,7 @@
 
 carrot:
   name: carrot Framework
-  ver: 2.4.141
+  ver: 2.4.142
 
 admin:
   email:
@@ -89,6 +89,7 @@ ffmpeg:
       audio_codec: libfaac
       vpre:
         linux: libx264-default
+        debian: libx264-default
     webm:
     mp3:
 flash:
