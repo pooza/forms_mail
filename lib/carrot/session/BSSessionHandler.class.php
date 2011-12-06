@@ -9,7 +9,7 @@
  *
  * @author 小石達也 <tkoishi@b-shock.co.jp>
  */
-class BSSessionHandler implements BSUserIdentifier {
+class BSSessionHandler {
 	private $storage;
 
 	/**
@@ -26,9 +26,6 @@ class BSSessionHandler implements BSUserIdentifier {
 			throw new BSSessionException('セッションを開始できません。');
 		}
 		session_start();
-		if (BS_SESSION_REGENERATE_ID) {
-			session_regenerate_id(true);
-		}
 	}
 
 	/**
@@ -49,6 +46,15 @@ class BSSessionHandler implements BSUserIdentifier {
 	 */
 	public function getName () {
 		return session_name();
+	}
+
+	/**
+	 * セッションIDを再生成
+	 *
+	 * @access public
+	 */
+	public function refresh () {
+		session_regenerate_id(true);
 	}
 
 	/**
@@ -107,39 +113,6 @@ class BSSessionHandler implements BSUserIdentifier {
 		if (isset($_SESSION[$key])) {
 			unset($_SESSION[$key]);
 		}
-	}
-
-	/**
-	 * ユーザーIDを返す
-	 *
-	 * @access public
-	 * @return string ユーザーID
-	 */
-	public function getUserID () {
-		return $this->getID();
-	}
-
-	/**
-	 * 認証
-	 *
-	 * セッションが成立している時点で認証は困難、或いは不要と思われる。
-	 *
-	 * @access public
-	 * @param string $password パスワード
-	 * @return boolean 正しいユーザーならTrue
-	 */
-	public function auth ($password = null) {
-		return true;
-	}
-
-	/**
-	 * 認証時に与えられるクレデンシャルを返す
-	 *
-	 * @access public
-	 * @return BSArray クレデンシャルの配列
-	 */
-	public function getCredentials () {
-		return new BSArray;
 	}
 }
 

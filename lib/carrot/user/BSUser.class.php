@@ -187,20 +187,16 @@ class BSUser extends BSParameterHolder {
 	 * @return boolean 成功ならTrue
 	 */
 	public function login (BSUserIdentifier $identifier = null, $password = null) {
-		if ((!$identifier || BSString::isBlank($identifier->getID())) && BS_DEBUG) {
-			$identifier = $this->getSession();
+		if ($identifier && $identifier->auth($password)) {
+			$this->id = $identifier->getID();
+			$this->getSession()->write(__CLASS__, $this->id);
+			$this->getSession()->refresh();
+			foreach ($identifier->getCredentials() as $credential) {
+				$this->addCredential($credential);
+			}
+			return true;
 		}
-
-		if (!$identifier || !$identifier->auth($password)) {
-			return false;
-		}
-
-		$this->id = $identifier->getID();
-		$this->getSession()->write(__CLASS__, $this->id);
-		foreach ($identifier->getCredentials() as $credential) {
-			$this->addCredential($credential);
-		}
-		return true;
+		return false;
 	}
 
 	/**
@@ -212,6 +208,7 @@ class BSUser extends BSParameterHolder {
 		$this->id = null;
 		$this->clearCredentials();
 		$this->getSession()->write(__CLASS__, null);
+		$this->getSession()->refresh();
 	}
 
 	/**
