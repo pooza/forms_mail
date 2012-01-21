@@ -6,10 +6,8 @@
 package:
   name: forms-mail
   ver: 1.0.1
-
 crypt:
   salt: I8BDT76KZX6Z6IIE
-
 image:
   qrcode:
     size: 80
