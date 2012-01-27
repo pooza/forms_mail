@@ -19,6 +19,8 @@ carrot:
     - elevator
     - yahoo.color
     - color_picker
-    - jsProgressBarHandler
     - carrot
     - application
+lightpop:
+  files:
+    - jquery.lightpop
