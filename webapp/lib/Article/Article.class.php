@@ -35,7 +35,7 @@ class Article extends BSRecord {
 		foreach (array('body', 'body_mobile') as $field) {
 			$file = BSFileUtility::createTemporaryFile();
 			$file->setContents($this[$field]);
-			$this->setAttachment($file, $field . '_template');
+			$this->setAttachment($file, $field . '_template', 'filename.tpl');
 		}
 	}
 
