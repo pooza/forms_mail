@@ -5,7 +5,7 @@
 
 carrot:
   name: carrot Framework
-  ver: 2.4.165
+  ver: 2.4.166
 
 admin:
   email:
@@ -290,6 +290,7 @@ session:
   storage: default
 smtp:
   host:
+  timeout: 100000 #ミリ秒単位
 sqlite3:
   dir:
     default: /usr/local

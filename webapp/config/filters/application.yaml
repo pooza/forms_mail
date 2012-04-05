@@ -5,7 +5,7 @@
 
 - class: BSFakeUserAgentFilter
 - class: BSLegacyUserAgentFilter
-- class: BSPictogramRequestFilter
+#- class: BSPictogramRequestFilter
 - class: BSEncodingRequestFilter
 - class: BSNewLineRequestFilter
 - class: BSCookieFilter
@@ -17,3 +17,4 @@
     option: KVa
 - class: BSReadingRequestFilter
 - class: BSDateRequestFilter
+- class: BSWrongCharactersRequestFilter
