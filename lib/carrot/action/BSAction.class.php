@@ -490,14 +490,22 @@ abstract class BSAction implements BSHTTPRedirector, BSAssignable, BSValidatorCo
 	 * @return string ビュー名
 	 */
 	public function forward () {
-		$this->controller->registerAction($this);
 		if (!$this->initialize()) {
 			throw new BadFunctionCallException($this . 'が初期化できません。');
 		}
-
-		$filters = new BSFilterSet($this);
-		$filters->execute();
+		$this->controller->registerAction($this);
+		$this->createFilterSet()->execute();
 		return BSView::NONE;
+	}
+
+	/**
+	 * フィルターセットを生成して返す
+	 *
+	 * @access public
+	 * @return BSFilterSet フィルターセット
+	 */
+	public function createFilterSet () {
+		return BSClassLoader::getInstance()->createObject(BS_FILTERSET_CLASS, 'FilterSet');
 	}
 
 	/**

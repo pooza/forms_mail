@@ -5,7 +5,7 @@
 
 carrot:
   name: carrot Framework
-  ver: 2.4.166
+  ver: 2.4.167
 
 admin:
   email:
@@ -60,6 +60,8 @@ decoration_mail:
     docomo: application/x-decomail-template
     au: application/x-kddi-htmlmail
     softbank: application/x-htmlmail-template
+filterset:
+  class: default
 ffmpeg:
   dir:
     default: /usr/local
@@ -254,8 +256,6 @@ sendmail:
 serialize:
   storage: default
   serializer: JSON
-  keep:
-    - BSCounter.*
 service:
   ajaxzip3:
     zipdata:
