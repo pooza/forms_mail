@@ -27,7 +27,7 @@ class ConnectionHandler extends BSSortableTableHandler {
 	 * @return BSArray 子クラス名の配列
 	 * @static
 	 */
-	public function getChildClasses () {
+	static public function getChildClasses () {
 		return new BSArray(array(
 			'Recipient',
 			'Article',

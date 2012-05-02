@@ -729,7 +729,7 @@ abstract class BSTableHandler implements IteratorAggregate, BSDictionary, BSAssi
 		if (!$this->recordClass) {
 			$class = get_class($this);
 			if (mb_ereg('^([[:alpha:]]+)' . self::CLASS_SUFFIX . '$', $class, $matches)) {
-				$this->recordClass = BSClassLoader::getInstance()->getClass($matches[1]);
+				$this->recordClass = BSLoader::getInstance()->getClass($matches[1]);
 			} else {
 				throw new BSDatabaseException($class . 'のクラス名が正しくありません。');
 			}
@@ -795,17 +795,6 @@ abstract class BSTableHandler implements IteratorAggregate, BSDictionary, BSAssi
 	}
 
 	/**
-	 * 子クラスを返す
-	 *
-	 * @access public
-	 * @return BSArray 子クラス名の配列
-	 * @static
-	 */
-	public function getChildClasses () {
-		return new BSArray;
-	}
-
-	/**
 	 * @access public
 	 * @return string 基本情報
 	 */
@@ -816,6 +805,17 @@ abstract class BSTableHandler implements IteratorAggregate, BSDictionary, BSAssi
 			$word = $this->getName();
 		}
 		return $word . 'テーブル';
+	}
+
+	/**
+	 * 子クラスを返す
+	 *
+	 * @access public
+	 * @return BSArray 子クラス名の配列
+	 * @static
+	 */
+	static public function getChildClasses () {
+		return new BSArray;
 	}
 
 	/**
@@ -849,7 +849,7 @@ abstract class BSTableHandler implements IteratorAggregate, BSDictionary, BSAssi
 	 * @static
 	 */
 	static public function create ($class) {
-		$table = BSClassLoader::getInstance()->createObject($class, self::CLASS_SUFFIX);
+		$table = BSLoader::getInstance()->createObject($class, self::CLASS_SUFFIX);
 		if (!($table instanceof BSTableHandler)) {
 			throw new BSDatabaseException($class . 'はテーブルハンドラではありません。');
 		}
