@@ -104,14 +104,14 @@ namespace :var do
   namespace :classes do
     desc 'クラスヒント情報をクリア'
     task :clean do
-      system 'sudo rm var/serialized/BSClassLoader.*'
+      system 'sudo rm var/serialized/BSLoader.*'
     end
   end
 
   namespace :config do
     desc '設定キャッシュをクリア'
     task :clean do
-      system 'sudo rm var/config_cache/*'
+      system 'sudo rm -R var/config_cache/*'
       system 'sudo rm var/serialized/*'
     end
   end

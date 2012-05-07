@@ -145,7 +145,16 @@ class BSBackupManager {
 	}
 
 	private function restoreSerializes (BSDirectory $dir) {
-		BSConfigManager::getInstance()->clearCache();
+		BSConfigManager::getInstance()->clear();
+		BSRequest::getInstance()->getUserAgent()->createImageManager()->clear();
+		BSController::getInstance()->getSerializeHandler()->clear();
+		BSRenderManager::getInstance()->clear();
+
+		// 念のためにクリアしておく
+		if ($server = BSMemcacheManager::getInstance()->getServer()) {
+			$server->flush();
+		}
+
 		foreach (new BSArray($this->config['serializes']) as $name) {
 			foreach (array('.json', '.serialized') as $suffix) {
 				if ($file = $dir->getEntry($name . $suffix)) {
