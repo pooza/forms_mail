@@ -33,7 +33,7 @@ class AdminArticleModule extends BSModule {
 	 */
 	public function serializeCriteria (BSParameterHolder $params) {
 		$serializer = new BSJSONSerializer;
-		$params = BSArray::encode($params);
+		$params = BSArray::create($params);
 		return $serializer->encode($params->decode());
 	}
 }
