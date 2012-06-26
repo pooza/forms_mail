@@ -179,23 +179,11 @@ class BSMIMEHeader extends BSParameterHolder {
 			return $this->name . ': ' . $this->getContents();
 		}
 
-		$contents = BSMIMEUtility::encode($this->getContents());
-		$contents = str_replace(
-			BSMIMEUtility::ENCODE_PREFIX,
-			"\n" . BSMIMEUtility::ENCODE_PREFIX,
-			$contents
-		);
-		$contents = BSString::split($this->name . ': ' . $contents);
-
-		$header = null;
-		foreach (BSString::explode("\n", $contents) as $line) {
-			if (!BSString::isBlank($header)) {
-				$line = "\t" . $line;
-			}
-			$header .= $line . BSMIMEDocument::LINE_SEPARATOR;
-		}
-
-		return $header;
+		$contents = $this->name . ': ' . BSMIMEUtility::encode($this->getContents());
+		$contents = BSString::explode(BSMIMEUtility::ENCODE_PREFIX, $contents);
+		$glue = BSMIMEDocument::LINE_SEPARATOR . ' ' . BSMIMEUtility::ENCODE_PREFIX;
+		$contents = $contents->join($glue) . BSMIMEDocument::LINE_SEPARATOR;
+		return $contents;
 	}
 
 	/**
