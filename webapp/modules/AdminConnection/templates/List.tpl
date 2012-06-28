@@ -7,9 +7,9 @@
 *}
 {include file='AdminHeader'}
 
-<div id="BreadCrumbs">
+<nav class="bread_crumbs">
 	<a href="#">{$action.title}</a>
-</div>
+</nav>
 
 {include file='ErrorMessages'}
 

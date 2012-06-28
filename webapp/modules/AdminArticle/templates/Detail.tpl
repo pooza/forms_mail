@@ -7,11 +7,11 @@
 *}
 {include file='AdminHeader'}
 
-<div id="BreadCrumbs">
+<nav class="bread_crumbs">
 	<a href="/AdminConnection/">接続一覧</a>
 	<a href="/AdminConnection/Detail/{$connection.id}?pane=ArticleList">接続:{$connection.name}</a>
 	<a href="#">{$action.title}</a>
-</div>
+</nav>
 
 <h1>{$action.title}</h1>
 

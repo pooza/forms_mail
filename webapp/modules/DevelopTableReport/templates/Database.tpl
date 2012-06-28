@@ -8,10 +8,10 @@
 {include file='AdminHeader'}
 {include file='ErrorMessages' hide_error_code=true}
 
-<div id="BreadCrumbs">
+<nav class="bread_crumbs">
 	<a href="/{$module.name}/">データベース一覧</a>
 	<a href="#">{$action.title}</a>
-</div>
+</nav>
 
 <h1>{$action.title}</h1>
 

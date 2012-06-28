@@ -5,11 +5,10 @@
 @subpackage Default
 @author 小石達也 <tkoishi@b-shock.co.jp>
 *}
-{assign var='styleset' value='carrot.LoginForm'}
-{assign var='body.id' value='LoginFormContainer'}
+{assign var='body.id' value='login_page'}
 {include file='AdminHeader'}
 
-{form id="LoginForm"}
+{form}
 	<h1>{const name='app_name_ja'}</h1>
 
 	{include file='ErrorMessages'}
