@@ -115,6 +115,7 @@ class BSMovieFile extends BSMediaFile {
 		$container = new BSDivisionElement;
 		$container->registerStyleClass($params['style_class']);
 		$container->setStyles($this->getStyles($params));
+		$container->setStyle('height', 'auto');
 		if ($element = $this->createObjectElement($params)) {
 			$container->addElement($element);
 		}
@@ -135,7 +136,7 @@ class BSMovieFile extends BSMediaFile {
 		$element = new BSFlashObjectElement;
 		$element->setURL(BSURL::create(BS_MOVIE_FLV_PLAYER_HREF));
 		$element->setAttribute('width', $params['width']);
-		$element->setAttribute('height', $params['height']);
+		$element->setAttribute('height', $params['height'] + $this->getPlayerHeight());
 		$element->setParameter('allowfullscreen', 'true');
 		$element->setParameter('allowscriptaccess', 'always');
 
@@ -220,6 +221,8 @@ class BSMovieFile extends BSMediaFile {
 		$this->resizeByWidth($params, $useragent);
 		$element = new BSVideoElement;
 		$element->registerSource($this->createURL($params));
+		$element->setAttribute('width', $params['width']);
+		$element->setAttribute('height', $params['height']);
 		return $element;
 	}
 
