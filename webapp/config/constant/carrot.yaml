@@ -155,6 +155,7 @@ memcache:
   host: localhost
   port: 11211
 module:
+  cache_parameters: yes
   prefixes:
     - Admin
     - Develop
