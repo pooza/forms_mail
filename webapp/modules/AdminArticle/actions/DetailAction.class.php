@@ -39,7 +39,7 @@ class DetailAction extends BSRecordAction {
 	}
 
 	public function getDefaultView () {
-		if (!$this->request['submit']) {
+		if (!$this->request['_submitted']) {
 			$record = $this->getRecord();
 			$serializer = new BSJSONSerializer;
 			$this->request['fields'] = $serializer->decode($record['criteria']);
