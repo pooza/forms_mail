@@ -170,7 +170,8 @@ class Article extends BSRecord {
 			$mail->getRenderer()->setTemplate('Article.mail');
 			$params = $this->getAssignableValues();
 			if ($email->isMobile() && !BSString::isBlank($this['body_mobile'])) {
-				$params['body_template'] = $this->getAttachmentInfo('body_mobile_template');
+//				$params['body_template'] = $this->getAttachmentInfo('body_mobile_template');
+				$params['body'] = $this['body_mobile'];
 			}
 			$mail->getRenderer()->setAttribute('article', $params);
 			$mail->getRenderer()->setAttribute('connection', $this->getConnection());

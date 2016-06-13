@@ -1,4 +1,5 @@
 #!/usr/local/bin/ruby -Ku
+# encoding: utf-8
 
 # 記事の送信
 #
@@ -11,6 +12,7 @@ while (File.ftype(path) == 'link')
 end
 ROOT_DIR = File.dirname(File.dirname(path))
 $LOAD_PATH.push(ROOT_DIR + '/lib/ruby')
+$LOAD_PATH.push(ROOT_DIR)
 
 require 'carrot/batch_action'
 

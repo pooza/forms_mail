@@ -7,7 +7,7 @@
 {include file='ErrorMessages'}
 {form}
 	<input type="text" name="email" value="{$params.email}" />
-	<input type="submit" value="登録" />
+	<input type="submit" value="退会" />
 {/form}
 {include file='UserFooter'}
 

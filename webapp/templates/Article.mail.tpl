@@ -11,12 +11,12 @@ Subject: {$article.title}
 Reply-To: {$connection.replyto_email}
 {/if}
 
-{include file=$article.body_template.path}
+{$article.body}
 
 
 今後、こうしたメールが不要でしたら、こちらまで。
 {$connection.resign_url}
 
 =====
-{const name='app_name_ja'}
-email: {$connection.sender_email}
+メールマガジン
+email: info@dipps.co.jp
